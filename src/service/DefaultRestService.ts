@@ -1,9 +1,9 @@
 import { v4 as uuidV4 } from "uuid";
 
+import { ApiError } from "../types/ApiError";
 import { ApiResponse } from "../types/ApiResponse";
 import { LoggerService } from "./LoggerService";
-import {SecuritySessionUtils} from "./SecuritySessionUtils";
-import {ApiError} from "../types/ApiError";
+import { SecuritySessionUtils } from "./SecuritySessionUtils";
 
 export interface FetchConfig {
     params?: object;

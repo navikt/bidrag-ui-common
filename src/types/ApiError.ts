@@ -1,4 +1,4 @@
-import {CustomError} from "./CustomError";
+import { CustomError } from "./CustomError";
 
 export class ApiError extends CustomError {
     public declare status: number;

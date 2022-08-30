@@ -44,10 +44,10 @@
     "url": "git@github.com:navikt/bidrag-ui-commons.git"
   },
   "author": "NAVIKT",
-  "peerDependencies": {},
   "release": {
     "branches": [
       "main"
     ]
-  }
+  },
+  "peerDependencies": {}
 }
