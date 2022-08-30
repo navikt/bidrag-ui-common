@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:navikt/bidrag-ui-commons.git"
+    "url": "git@github.com:navikt/bidrag-ui-common.git"
   },
   "author": "NAVIKT",
   "release": {
