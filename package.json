@@ -39,10 +39,7 @@
     "semantic-release": "^19.0.5",
     "typescript": "^4.8.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:navikt/bidrag-ui-common.git"
-  },
+  "repository": "github:navikt/bidrag-ui-common",
   "author": "NAVIKT",
   "release": {
     "branches": [
