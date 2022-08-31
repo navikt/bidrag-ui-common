@@ -1,0 +1,11 @@
+.github/
+.idea/
+coverage/
+node_modules/
+test/
+.cache/
+example/
+
+.gitignore
+CODEOWNERS
+tsconfig.json
