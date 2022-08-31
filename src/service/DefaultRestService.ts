@@ -2,8 +2,8 @@ import { v4 as uuidV4 } from "uuid";
 
 import { ApiError } from "../types/ApiError";
 import { ApiResponse } from "../types/ApiResponse";
+import { SecuritySessionUtils } from "../utils/SecuritySessionUtils";
 import { LoggerService } from "./LoggerService";
-import { SecuritySessionUtils } from "./SecuritySessionUtils";
 
 export interface FetchConfig {
     params?: object;
@@ -119,7 +119,13 @@ export class DefaultRestService {
     }
 
     private static mapErrorToApiError(error: Error) {
-        return new ApiError(error.message, error.stack ?? "", SecuritySessionUtils.getCorrelationId() ?? uuidV4(), 500);
+        return new ApiError(
+            error.message,
+            error.stack ?? "",
+            SecuritySessionUtils.getCorrelationId() ?? uuidV4(),
+            500,
+            error
+        );
     }
 
     private static isDocument(response: Response) {
