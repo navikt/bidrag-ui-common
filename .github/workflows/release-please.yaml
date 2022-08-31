@@ -12,16 +12,18 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
       - uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
+        if: ${{ steps.release.outputs.release_created }}
       - name: Install dependencies
-        if: ${{ steps.release.outputs.release_created }}
         run: yarn install --frozen-lockfile
+        if: ${{ steps.release.outputs.release_created }}
       - name: Build
-        if: ${{ steps.release.outputs.release_created }}
         run: yarn build
-      - name: Publish
         if: ${{ steps.release.outputs.release_created }}
+      - name: Publish
         run: yarn publish
+        if: ${{ steps.release.outputs.release_created }}
