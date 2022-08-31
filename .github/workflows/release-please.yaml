@@ -7,10 +7,10 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v3.4.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: node
+#      - uses: google-github-actions/release-please-action@v3.4.1
+#        with:
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#          release-type: node
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -22,3 +22,5 @@ jobs:
         run: yarn build
       - name: Publish
         run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
