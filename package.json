@@ -1,0 +1,58 @@
+{
+  "name": "@navikt/bidrag-ui-common",
+  "version": "1.0.6",
+  "author": "NAVIKT",
+  "private": false,
+  "description": "Bidrag ui common packages",
+  "license": "MIT",
+  "repository": "github:navikt/bidrag-ui-common",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*",
+    "src/**/*"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint ./src/**/*.ts package.json --quiet",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn lint"
+  },
+  "peerDependencies": {
+    "react": ">=16.6.0 || 17 || 18",
+    "react-dom": ">=16.6.0 || 17 || 18"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.18",
+    "@types/react-dom": "^18.0.6",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^8.1.0",
+    "eslint-config-eslint": "^7.0.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-unused-imports": "^1.1.5",
+    "prettier": "^2.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "semantic-release": "^19.0.5",
+    "typescript": "^4.8.2"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+name: Release and publish
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+      - name: Check
+        run: | 
+          echo ${{steps.release.outputs.release_created}}
+      - uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+        if: ${{ steps.release.outputs.release_created }}
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        if: ${{ steps.release.outputs.release_created }}
+      - name: Build
+        run: yarn build
+        if: ${{ steps.release.outputs.release_created }}
+      - name: Publish
+        run: yarn publish
+        if: ${{ steps.release.outputs.release_created }}
