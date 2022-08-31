@@ -26,9 +26,9 @@ Release Please sjekker om commit meldingen inneholder [conventionalcommits](http
 
 Det vil si at hvis commit meldingen har prefix:
 
-`fix:` som representerer bug fix så vil den bumpe versjonen med patch (0.0.X)
-`feat:` som representerer ny featyre vil bumpe versjonen med minor (0.X.0)
-`feat!:`, or `fix!:`, `refactor!:`, etc., som representerer "breaking change" (indikert av !) vil bumpe versjon med major (X.0.0)
+* `fix:` som representerer bug fix så vil den bumpe versjonen med patch (0.0.X)
+* `feat:` som representerer ny featyre vil bumpe versjonen med minor (0.X.0)
+* `feat!:`, or `fix!:`, `refactor!:`, etc., som representerer "breaking change" (indikert av !) vil bumpe versjon med major (X.0.0)
 
 Release please vil opprette en PR som oppdaterer CHANGELOG.md filen med commit meldingen siden forrige release. Når PR er merget til main så vil nye release publiseres til GPR (Github package registry) med oppdaterte versjonen
 
