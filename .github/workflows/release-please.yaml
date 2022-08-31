@@ -11,7 +11,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
-          package-name: release-please-action
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
