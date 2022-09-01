@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/navikt/bidrag-ui-common/compare/v1.0.1...v1.0.2) (2022-09-01)
+
+
+### Bug Fixes
+
+* Build support both cjs and esm ([fd99afb](https://github.com/navikt/bidrag-ui-common/commit/fd99afba034a7a2548c3a6269baf6e651be0fc3e))
+
 ## [1.0.1](https://github.com/navikt/bidrag-ui-common/compare/v1.0.0...v1.0.1) (2022-08-31)
 
 
