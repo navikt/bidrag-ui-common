@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+    "outDir": "./cjs",
+    "module": "commonjs",
     "target": "ESNext",
-    "module": "esnext",
     "declaration": true,
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -15,7 +16,6 @@
     "isolatedModules": false,
     "sourceMap": true,
     "jsx": "react-jsx",
-    "outDir": "./lib",
     "baseUrl": "src",
     "typeRoots": ["node_modules/@types"]
   },
