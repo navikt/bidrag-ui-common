@@ -1,8 +1,13 @@
-export type FileData = ArrayBuffer | Blob | Uint8Array | string;
+import { FileData } from "../types/FileTypes";
+import { Base64ByteConverter } from "./Base64ByteConverter";
 
 export class FileUtils {
     static dataToFileUrl(data: FileData, type: string): string {
-        const fileBlob = new Blob([data], { type: type });
+        let byteData = data;
+        if (typeof data === "string") {
+            byteData = this._base64ToArrayBuffer(data);
+        }
+        const fileBlob = new Blob([byteData], { type: type });
         return URL.createObjectURL(fileBlob);
     }
 
@@ -21,13 +26,11 @@ export class FileUtils {
         }
     }
 
-    static _base64ToArrayBuffer(base64: string) {
-        const binary_string = window.atob(base64);
-        const len = binary_string.length;
-        const bytes = new Uint8Array(len);
-        for (let i = 0; i < len; i++) {
-            bytes[i] = binary_string.charCodeAt(i);
-        }
-        return bytes.buffer;
+    static _arrayBufferToBase64(data: Uint8Array) {
+        return Base64ByteConverter.fromByteArray(data);
+    }
+
+    static _base64ToArrayBuffer(data: string): ArrayBuffer {
+        return Base64ByteConverter.toByteArray(data);
     }
 }
