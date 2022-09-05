@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/navikt/bidrag-ui-common/compare/v1.0.3...v1.1.0) (2022-09-05)
+
+
+### Features
+
+* Add broadcast and document editor types ([9650041](https://github.com/navikt/bidrag-ui-common/commit/965004147293f1a96bb623a4e6bb9c3778eccd90))
+* Add FileUtils for opening files ([7b06a27](https://github.com/navikt/bidrag-ui-common/commit/7b06a27f1173a63fda84e6eb46036355dbe61e5b))
+
 ## [1.0.3](https://github.com/navikt/bidrag-ui-common/compare/v1.0.2...v1.0.3) (2022-09-01)
 
 
