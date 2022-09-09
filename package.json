@@ -30,13 +30,13 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "core-js": "^3.25.1",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "concurrently": "^7.3.0",
+    "core-js": "^3.25.1",
     "eslint": "^8.1.0",
     "eslint-config-eslint": "^7.0.0",
     "eslint-config-google": "^0.14.0",

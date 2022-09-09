@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from "uuid";
-import {SessionStorage} from "./Storage";
+
+import { SessionStorage } from "./Storage";
 
 export class SecuritySessionUtils {
     static async hentSecuritySessionTokenFromBackend() {
