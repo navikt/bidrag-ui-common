@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.2.0](https://github.com/navikt/bidrag-ui-common/compare/v1.1.0...v1.2.0) (2022-09-09)
+
+
+### Features
+
+* Add broadcast and document editor types ([9650041](https://github.com/navikt/bidrag-ui-common/commit/965004147293f1a96bb623a4e6bb9c3778eccd90))
+* Add FileUtils for opening files ([7b06a27](https://github.com/navikt/bidrag-ui-common/commit/7b06a27f1173a63fda84e6eb46036355dbe61e5b))
+
+
+### Bug Fixes
+
+* Add editor types ([abea2e9](https://github.com/navikt/bidrag-ui-common/commit/abea2e937eb96777f2a16f5bc287fd0977c41448))
+* Build support both cjs and esm ([fd99afb](https://github.com/navikt/bidrag-ui-common/commit/fd99afba034a7a2548c3a6269baf6e651be0fc3e))
+* first release ([cfc2583](https://github.com/navikt/bidrag-ui-common/commit/cfc25831baaf3290f6c64b5762b4d1d2ea7c778c))
+* Fix lint errors ([b716972](https://github.com/navikt/bidrag-ui-common/commit/b7169723a31adf737777479c2b106d13a330b4c2))
+* fix publish script ([ce73860](https://github.com/navikt/bidrag-ui-common/commit/ce73860c66aa638caf5e11206c2b5d50bcf0f778))
+
 ## [1.1.0](https://github.com/navikt/bidrag-ui-common/compare/v1.0.3...v1.1.0) (2022-09-05)
 
 
