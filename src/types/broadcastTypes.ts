@@ -32,11 +32,15 @@ export class Broadcast {
         bc.close();
     }
 
-    static waitForBroadcast<T>(name: string): Promise<BroadcastMessage<T>> {
+    static waitForBroadcast<T>(name: string, id?: string): Promise<BroadcastMessage<T>> {
         return new Promise((resolve, reject) => {
             function onResult(obj: MessageEvent<string>): void {
-                resolve(JSON.parse(obj.data) as BroadcastMessage<T>);
-                bc.close();
+                const data = JSON.parse(obj.data) as BroadcastMessage<T>
+                if (!id || data.id === id){
+                    resolve(data);
+                    bc.close();
+                }
+
             }
             const bc = new BroadcastChannel(name);
             bc.onmessage = onResult;

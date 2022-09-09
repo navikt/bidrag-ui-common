@@ -1,4 +1,5 @@
 import { v4 as uuidV4 } from "uuid";
+import {SessionStorage} from "./Storage";
 
 export class SecuritySessionUtils {
     static async hentSecuritySessionTokenFromBackend() {
@@ -16,8 +17,8 @@ export class SecuritySessionUtils {
     }
 
     static getCorrelationId(): string {
-        const correlationId = LocalStorage.get("correlationId") ?? `bidrag-dokument-ui/${uuidV4()}`;
-        LocalStorage.set("correlationId", correlationId);
+        const correlationId = SessionStorage.get("correlationId") ?? `bidrag-dokument-ui/${uuidV4()}`;
+        SessionStorage.set("correlationId", correlationId);
         return correlationId;
     }
     static async getSession(): Promise<SessionResponse> {
@@ -36,16 +37,4 @@ export class SecuritySessionUtils {
 interface SessionResponse {
     user_id: string;
     correlation_id: string;
-}
-export class LocalStorage {
-    static reset() {
-        window.sessionStorage.clear();
-    }
-    static get(key: string) {
-        return window.sessionStorage.getItem(key);
-    }
-
-    static set(key: string, value: string) {
-        window.sessionStorage.setItem(key, value);
-    }
 }
