@@ -18,12 +18,7 @@ export class SecuritySessionUtils {
     }
 
     static getCorrelationId(): string {
-        let correlationId = SessionStorage.get("correlationId");
-        if (!correlationId) {
-            correlationId = `${this.getAppName()}/${uuidV4()}`;
-            SessionStorage.set("correlationId", correlationId);
-        }
-        return correlationId;
+       return SessionStorage.getOrDefault("correlationId", `${this.getAppName()}/${uuidV4()}`);
     }
 
     static getAppName() {

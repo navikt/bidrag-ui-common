@@ -5,6 +5,15 @@ export class SessionStorage {
     static get(key: string) {
         return window.sessionStorage.getItem(key);
     }
+
+    static getOrDefault(key: string, defaultValue: string){
+        const value = window.sessionStorage.getItem(key)
+        if (!value){
+            this.set(key, defaultValue)
+            return defaultValue;
+        }
+        return value;
+    }
     static set(key: string, value: string) {
         window.sessionStorage.setItem(key, value);
     }
