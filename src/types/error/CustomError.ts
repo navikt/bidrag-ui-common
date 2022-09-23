@@ -1,8 +1,8 @@
 export class CustomError extends Error {
-    public correlationId: string;
+    public correlationId: string | null;
     status = 500;
 
-    constructor(name: string, correlationId: string, message: string, stack: string, cause: unknown | undefined) {
+    constructor(name: string, correlationId: string | null, message: string, stack?: string, cause?: unknown | undefined) {
         super();
         this.name = name;
         this.message = message;
@@ -14,7 +14,7 @@ export class CustomError extends Error {
             // @ts-ignore
             Error.captureStackTrace(this);
         }
-        this.stack = this.stack + "\n" + stack;
+        this.stack = this.stack + "\r\n\r\n" + stack;
         this.correlationId = correlationId;
     }
 }

@@ -1,8 +1,9 @@
-import {BroadcastMessage} from "./types/broadcastTypes";
-import {HentPersonResponse} from "./types/personTypes";
+import {BroadcastMessage, HentPersonResponse} from "./types";
 declare global {
     interface Window {
         app_name: string,
+        appName: string;
+        moduleName: string;
         showErrorPage: (
             stack_trace: string,
             message: string,

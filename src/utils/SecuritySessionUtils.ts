@@ -18,9 +18,19 @@ export class SecuritySessionUtils {
     }
 
     static getCorrelationId(): string {
-        const correlationId = SessionStorage.get("correlationId") ?? `bidrag-dokument-ui/${uuidV4()}`;
-        SessionStorage.set("correlationId", correlationId);
+        let correlationId = SessionStorage.get("correlationId");
+        if (!correlationId) {
+            correlationId = `${this.getAppName()}/${uuidV4()}`;
+            SessionStorage.set("correlationId", correlationId);
+        }
         return correlationId;
+    }
+
+    static getAppName() {
+        if (window.appName) {
+            return `${window.appName}/${window.moduleName ?? "ukjent"}`;
+        }
+        return "bidrag-ui";
     }
     static async getSession(): Promise<SessionResponse> {
         return {

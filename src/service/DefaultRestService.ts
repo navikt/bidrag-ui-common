@@ -1,8 +1,8 @@
 import { v4 as uuidV4 } from "uuid";
 
-import { ApiError } from "../types/ApiError";
-import { ApiResponse } from "../types/ApiResponse";
-import { SecuritySessionUtils } from "../utils/SecuritySessionUtils";
+import { ApiError } from "../types";
+import { ApiResponse } from "../types";
+import { SecuritySessionUtils } from "../utils";
 import { LoggerService } from "./LoggerService";
 
 export interface FetchConfig {
@@ -78,7 +78,9 @@ export class DefaultRestService {
                     const responseParsed = await DefaultRestService.parseResponseBody(response);
                     const responseError = typeof responseParsed == "object" ? responseParsed?.error : responseParsed;
                     const warningMessage = response?.headers?.get("Warning") ?? responseParsed.message ?? responseError;
-                    LoggerService.warn(`Fikk respons med status ${response.status} og melding ${warningMessage}`);
+                    LoggerService.warn(
+                        `Fikk respons med status ${response.status} og melding ${warningMessage} fra endepunkt ${this.baseUrl}${url}`
+                    );
                     return { ok: false, status: response.status, data: warningMessage } as ApiResponse<T>;
                 }
                 const responseParsed = await DefaultRestService.parseResponseBody(response);
@@ -91,7 +93,7 @@ export class DefaultRestService {
                 } else {
                     error = await DefaultRestService.mapErrorResponseToApiError(err);
                 }
-                LoggerService.error(error.message, error);
+                LoggerService.error(error.message + ` - endepunkt=${this.baseUrl}${url}`, error);
                 throw error;
             });
     }
@@ -105,7 +107,7 @@ export class DefaultRestService {
             "Content-type": "application/json; charset=UTF-8",
             "X-Correlation-ID": correlationId,
             "Nav-Call-Id": correlationId,
-            "Nav-Consumer-Id": window.app_name ?? "bidrasg-ui",
+            "Nav-Consumer-Id": SecuritySessionUtils.getAppName(),
         };
     }
 
@@ -113,9 +115,27 @@ export class DefaultRestService {
         const errorParsed = await DefaultRestService.parseResponseBody(error);
         const correlationId = error.headers?.get("x-correlation-id") ?? SecuritySessionUtils.getCorrelationId();
         const warningMessage = error?.headers?.get("Warning");
-        const stackTrace = errorParsed.stack ?? "Ukjent feil";
-        const errorMessageFromResponse = error.statusText + (warningMessage ? " - " + warningMessage : "");
+        const stackTrace = this.getStackFromErrorBody(errorParsed);
+        const errorMessageFromResponse = `${warningMessage ?? "ukjent feil"} - status=${error.statusText}(${
+            error.status
+        })`;
         return new ApiError(errorMessageFromResponse, stackTrace, correlationId, 500);
+    }
+
+    private static getStackFromErrorBody(errorParsed: object | string): string {
+        if (errorParsed && typeof errorParsed == "string") {
+            return errorParsed;
+        }
+        if (errorParsed && typeof errorParsed == "object") {
+            return (
+                Object.keys(errorParsed)
+                    // @ts-ignore
+                    .map((key) => `key=${errorParsed[key]}`)
+                    .join("-")
+            );
+        }
+
+        return "ukjent feil";
     }
 
     private static mapErrorToApiError(error: Error) {
