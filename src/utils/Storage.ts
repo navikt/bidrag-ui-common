@@ -6,10 +6,10 @@ export class SessionStorage {
         return window.sessionStorage.getItem(key);
     }
 
-    static getOrDefault(key: string, defaultValue: string){
-        const value = window.sessionStorage.getItem(key)
-        if (!value){
-            this.set(key, defaultValue)
+    static getOrDefault(key: string, defaultValue: string) {
+        const value = window.sessionStorage.getItem(key);
+        if (!value) {
+            this.set(key, defaultValue);
             return defaultValue;
         }
         return value;

@@ -18,7 +18,7 @@ export class SecuritySessionUtils {
     }
 
     static getCorrelationId(): string {
-       return SessionStorage.getOrDefault("correlationId", `${this.getAppName()}/${uuidV4()}`);
+        return SessionStorage.getOrDefault("correlationId", `${this.getAppName()}/${uuidV4()}`);
     }
 
     static getAppName() {
