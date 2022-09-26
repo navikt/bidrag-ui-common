@@ -21,12 +21,17 @@ export class SecuritySessionUtils {
         return SessionStorage.getOrDefault("correlationId", `${this.getAppName()}/${uuidV4()}`);
     }
 
-    static getAppName() {
+    static getAppModuleName() {
         if (window.appName) {
             return `${window.appName}/${window.moduleName ?? "ukjent"}`;
         }
         return "bidrag-ui";
     }
+
+    static getAppName() {
+        return window.appName ?? "bidrag-ui";
+    }
+
     static async getSession(): Promise<SessionResponse> {
         return {
             user_id: "",
