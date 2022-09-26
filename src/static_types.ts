@@ -1,16 +1,11 @@
 import {BroadcastMessage, HentPersonResponse} from "./types";
+import {LogErrorType} from "./types";
 declare global {
     interface Window {
         app_name: string,
         appName: string;
         moduleName: string;
-        showErrorPage: (
-            stack_trace: string,
-            message: string,
-            errorType?: string,
-            status?: number,
-            correlationId?: string
-        ) => void;
+        showErrorPage: (error: LogErrorType) => void;
         openPersonsok: () => Window | null;
         waitForPersonSokResult: () => Promise<BroadcastMessage<HentPersonResponse>>;
         countMetric: (name: string, value: string) => void;

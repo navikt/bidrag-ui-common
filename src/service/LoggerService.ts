@@ -1,29 +1,33 @@
 import { CustomError } from "../types";
 import { ErrorInfo, LogErrorType, LogInfo, LogLevel } from "../types";
 import { LogResponse } from "../types";
+import { SecuritySessionUtils } from "../utils";
 
 export class LoggerService {
-    static info(msg: string): void {
+    static info(msg: string): Promise<LogResponse> {
         try {
-            this.mapAndLog(msg, LogLevel.INFO);
+            return this.mapAndLog(msg, LogLevel.INFO);
         } catch (e) {
             console.log(e);
+            return Promise.resolve({ exceptionCode: "unkown", errorCode: "unkown" });
         }
     }
 
-    static warn(msg: string): void {
+    static warn(msg: string): Promise<LogResponse> {
         try {
-            this.mapAndLog(msg, LogLevel.WARNING);
+            return this.mapAndLog(msg, LogLevel.WARNING);
         } catch (e) {
             console.log(e);
+            return Promise.resolve({ exceptionCode: "unkown", errorCode: "unkown" });
         }
     }
 
-    static error(msg: string, error: LogErrorType): void {
+    static error(msg: string, error: LogErrorType): Promise<LogResponse> {
         try {
-            this.mapAndLog(msg, LogLevel.ERROR, error);
+            return this.mapAndLog(msg, LogLevel.ERROR, error);
         } catch (e) {
             console.log(e);
+            return Promise.resolve({ exceptionCode: "unkown", errorCode: "unkown" });
         }
     }
 
@@ -33,6 +37,7 @@ export class LoggerService {
             level,
             appName: window.appName ?? "bidrag-ui",
             moduleName: window.moduleName ?? "ukjent",
+            correlationId: SecuritySessionUtils.getCorrelationId(),
         };
         const errorInfo = this.mapError(error);
         logInfo.error = errorInfo;
