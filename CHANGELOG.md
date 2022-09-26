@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/navikt/bidrag-ui-common/compare/v1.3.1...v1.3.2) (2022-09-26)
+
+
+### Bug Fixes
+
+* LoggerService add correlationId ([146f8b2](https://github.com/navikt/bidrag-ui-common/commit/146f8b2092981a143f55554f8d403b9ac292a1f3))
+
 ## [1.3.1](https://github.com/navikt/bidrag-ui-common/compare/v1.3.0...v1.3.1) (2022-09-23)
 
 
