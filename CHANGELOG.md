@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/navikt/bidrag-ui-common/compare/v1.3.2...v1.3.3) (2022-09-26)
+
+
+### Bug Fixes
+
+* Change correlationId to only use appName ([e0354a7](https://github.com/navikt/bidrag-ui-common/commit/e0354a7884b4f7ab0c8d67a70755faa7b3711c6b))
+
 ## [1.3.2](https://github.com/navikt/bidrag-ui-common/compare/v1.3.1...v1.3.2) (2022-09-26)
 
 
