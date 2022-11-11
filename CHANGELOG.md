@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.5](https://github.com/navikt/bidrag-ui-common/compare/v1.3.4...v1.3.5) (2022-11-11)
+
+
+### Bug Fixes
+
+* Add request time to log ([7719c4b](https://github.com/navikt/bidrag-ui-common/commit/7719c4b704ad3c59ac2492065ed91ddbaf4856b7))
+
 ## [1.3.4](https://github.com/navikt/bidrag-ui-common/compare/v1.3.3...v1.3.4) (2022-11-11)
 
 
