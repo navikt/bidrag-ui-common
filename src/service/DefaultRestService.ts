@@ -58,6 +58,7 @@ export class DefaultRestService {
         config?: FetchConfig
     ): Promise<ApiResponse<T>> {
         const headers = await this.createDefaultHeaders();
+        const requestStart = performance.now();
         return fetch(`${this.baseUrl}${url}`, {
             mode: "cors",
             credentials: this.app == "self" ? "include" : "omit",
@@ -93,9 +94,11 @@ export class DefaultRestService {
                 } else {
                     error = await DefaultRestService.mapErrorResponseToApiError(err, body);
                 }
+                const requestEnd = performance.now();
+                const requestTime = requestEnd - requestStart;
                 LoggerService.error(
                     error.message +
-                        ` - ${method} request til endepunkt=${this.baseUrl}${url} fra url=${window.location.href}`,
+                        ` - ${method} request til endepunkt=${this.baseUrl}${url} fra url=${window.location.href} med requestTid=${requestTime}ms`,
                     error
                 );
                 throw error;
