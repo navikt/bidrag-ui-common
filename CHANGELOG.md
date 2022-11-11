@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/navikt/bidrag-ui-common/compare/v1.3.3...v1.3.4) (2022-11-11)
+
+
+### Bug Fixes
+
+* Better logging with secure log ([#23](https://github.com/navikt/bidrag-ui-common/issues/23)) ([85d48da](https://github.com/navikt/bidrag-ui-common/commit/85d48da4fca5cf3bf7550892ada6a5431555c0a4))
+
 ## [1.3.3](https://github.com/navikt/bidrag-ui-common/compare/v1.3.2...v1.3.3) (2022-09-26)
 
 
