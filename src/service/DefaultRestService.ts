@@ -89,11 +89,15 @@ export class DefaultRestService {
             .catch(async (err): Promise<ApiError> => {
                 let error: ApiError;
                 if (err instanceof Error) {
-                    error = DefaultRestService.mapErrorToApiError(err);
+                    error = DefaultRestService.mapErrorToApiError(err, body);
                 } else {
-                    error = await DefaultRestService.mapErrorResponseToApiError(err);
+                    error = await DefaultRestService.mapErrorResponseToApiError(err, body);
                 }
-                LoggerService.error(error.message + ` - endepunkt=${this.baseUrl}${url}`, error);
+                LoggerService.error(
+                    error.message +
+                        ` - ${method} request til endepunkt=${this.baseUrl}${url} fra url=${window.location.href}`,
+                    error
+                );
                 throw error;
             });
     }
@@ -111,7 +115,7 @@ export class DefaultRestService {
         };
     }
 
-    private static async mapErrorResponseToApiError(error: Response) {
+    private static async mapErrorResponseToApiError(error: Response, body: string | undefined) {
         const errorParsed = await DefaultRestService.parseResponseBody(error);
         const correlationId = error.headers?.get("x-correlation-id") ?? SecuritySessionUtils.getCorrelationId();
         const warningMessage = error?.headers?.get("Warning");
@@ -119,7 +123,10 @@ export class DefaultRestService {
         const errorMessageFromResponse = `${warningMessage ?? "ukjent feil"} - status=${error.statusText}(${
             error.status
         })`;
-        return new ApiError(errorMessageFromResponse, stackTrace, correlationId, 500);
+        return new ApiError(errorMessageFromResponse, stackTrace, correlationId, 500, undefined, {
+            message: `Det skjedde feil med feilmelding: ${errorMessageFromResponse}`,
+            stack: `Requesten som førte til feilen inneholdt melding ${body}`,
+        });
     }
 
     private static getStackFromErrorBody(errorParsed: object | string): string {
@@ -138,13 +145,14 @@ export class DefaultRestService {
         return "ukjent feil";
     }
 
-    private static mapErrorToApiError(error: Error) {
+    private static mapErrorToApiError(error: Error, body: string | undefined) {
         return new ApiError(
             error.message,
             error.stack ?? "",
             SecuritySessionUtils.getCorrelationId() ?? uuidV4(),
             500,
-            error
+            error,
+            { message: error.message, stack: body }
         );
     }
 

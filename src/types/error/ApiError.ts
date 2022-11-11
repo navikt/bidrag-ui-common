@@ -1,3 +1,4 @@
+import { SecureLog } from "../logTypes";
 import { CustomError } from "./CustomError";
 
 export class ApiError extends CustomError {
@@ -7,9 +8,17 @@ export class ApiError extends CustomError {
     public ok = false;
     public error?: Error;
 
-    constructor(message: string, stack: string, correlationId: string, status: number, error?: Error) {
+    constructor(
+        message: string,
+        stack: string,
+        correlationId: string,
+        status: number,
+        error?: Error,
+        secureLog?: SecureLog
+    ) {
         super("ApiException", correlationId, message, stack, error?.cause);
         this.status = status;
         this.error = error;
+        this.secureLog = secureLog;
     }
 }

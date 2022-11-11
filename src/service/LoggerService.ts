@@ -42,6 +42,10 @@ export class LoggerService {
         const errorInfo = this.mapError(error);
         logInfo.error = errorInfo;
 
+        if (error instanceof CustomError) {
+            logInfo.securelog = error?.secureLog;
+        }
+
         if (errorInfo) {
             // Log on console for easy debugging
             console.error(

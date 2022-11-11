@@ -1,8 +1,17 @@
+import { SecureLog } from "../logTypes";
+
 export class CustomError extends Error {
     public correlationId: string | null;
+    public secureLog?: SecureLog;
     status = 500;
 
-    constructor(name: string, correlationId: string | null, message: string, stack?: string, cause?: unknown | undefined) {
+    constructor(
+        name: string,
+        correlationId: string | null,
+        message: string,
+        stack?: string,
+        cause?: unknown | undefined
+    ) {
         super();
         this.name = name;
         this.message = message;
