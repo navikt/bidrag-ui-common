@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.6](https://github.com/navikt/bidrag-ui-common/compare/v1.3.5...v1.3.6) (2022-11-13)
+
+
+### Bug Fixes
+
+* Update error message format ([3b4554f](https://github.com/navikt/bidrag-ui-common/commit/3b4554ff9fb2c48ad8e32303717f9443b2171718))
+
 ## [1.3.5](https://github.com/navikt/bidrag-ui-common/compare/v1.3.4...v1.3.5) (2022-11-11)
 
 
