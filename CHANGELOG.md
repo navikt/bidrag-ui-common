@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.7](https://github.com/navikt/bidrag-ui-common/compare/v1.3.6...v1.3.7) (2022-11-14)
+
+
+### Bug Fixes
+
+* Add SecureLoggerService.ts and improve errorlog mapping ([bba269e](https://github.com/navikt/bidrag-ui-common/commit/bba269e9573ceae66e5c8c83361e853d8a8e7047))
+
 ## [1.3.6](https://github.com/navikt/bidrag-ui-common/compare/v1.3.5...v1.3.6) (2022-11-13)
 
 
