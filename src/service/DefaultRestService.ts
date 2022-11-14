@@ -2,8 +2,10 @@ import { v4 as uuidV4 } from "uuid";
 
 import { ApiError } from "../types";
 import { ApiResponse } from "../types";
+import { SimpleError } from "../types/error/SimpleError";
 import { SecuritySessionUtils } from "../utils";
 import { LoggerService } from "./LoggerService";
+import { SecureLoggerService } from "./SecureLoggerService";
 
 export interface FetchConfig {
     params?: object;
@@ -93,12 +95,18 @@ export class DefaultRestService {
                 const requestTime = requestEnd - requestStart;
                 const requestInfo = `${method} kall utført til endepunkt=${this.baseUrl}${url} fra browserurl=${window.location.href} med requestTid=${requestTime}ms`;
                 if (err instanceof Error) {
-                    error = DefaultRestService.mapErrorToApiError(err, requestInfo, body);
+                    error = DefaultRestService.mapErrorToApiError(err);
                 } else {
-                    error = await DefaultRestService.mapErrorResponseToApiError(err, requestInfo, body);
+                    error = await DefaultRestService.mapErrorResponseToApiError(err);
                 }
 
-                LoggerService.error(error.message, error);
+                const errorMessage = `${error.message} - ${requestInfo}`;
+                LoggerService.error(errorMessage, error);
+                body &&
+                    SecureLoggerService.error(
+                        errorMessage,
+                        new SimpleError(`Requesten som førte til feilen inneholdt melding ${body}`)
+                    );
                 throw error;
             });
     }
@@ -116,11 +124,7 @@ export class DefaultRestService {
         };
     }
 
-    private static async mapErrorResponseToApiError(
-        error: Response,
-        requestInfo: string | undefined,
-        body: string | undefined
-    ) {
+    private static async mapErrorResponseToApiError(error: Response) {
         const errorParsed = await DefaultRestService.parseResponseBody(error);
         const correlationId = error.headers?.get("x-correlation-id") ?? SecuritySessionUtils.getCorrelationId();
         const warningMessage = error?.headers?.get("Warning");
@@ -129,20 +133,7 @@ export class DefaultRestService {
             error.status
         })`;
 
-        const errorMessage = `${errorMessageFromResponse} - ${requestInfo}`;
-        return new ApiError(
-            errorMessage,
-            stackTrace,
-            correlationId,
-            500,
-            undefined,
-            body
-                ? {
-                      message: `Det skjedde en feil med feilmelding: ${errorMessage}`,
-                      stack: `Requesten som førte til feilen inneholdt melding ${body}`,
-                  }
-                : undefined
-        );
+        return new ApiError(errorMessageFromResponse, stackTrace, correlationId, 500, undefined);
     }
 
     private static getStackFromErrorBody(errorParsed: object | string): string {
@@ -161,21 +152,13 @@ export class DefaultRestService {
         return "ukjent feil";
     }
 
-    private static mapErrorToApiError(error: Error, requestInfo: string | undefined, body: string | undefined) {
-        const errorMessage = `${error.message} - ${requestInfo}`;
-
+    private static mapErrorToApiError(error: Error) {
         return new ApiError(
-            errorMessage,
+            error.message,
             error.stack ?? "",
             SecuritySessionUtils.getCorrelationId() ?? uuidV4(),
             500,
-            error,
-            body
-                ? {
-                      message: `Det skjedde en feil med feilmelding: ${errorMessage}`,
-                      stack: `Requesten som førte til feilen inneholdt melding ${body}`,
-                  }
-                : undefined
+            error
         );
     }
 

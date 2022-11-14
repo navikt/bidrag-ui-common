@@ -1,8 +1,5 @@
-import { SecureLog } from "../logTypes";
-
 export class CustomError extends Error {
     public correlationId: string | null;
-    public secureLog?: SecureLog;
     status = 500;
 
     constructor(

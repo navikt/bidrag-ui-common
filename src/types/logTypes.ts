@@ -1,4 +1,5 @@
 import { CustomError } from "./error/CustomError";
+import { SimpleError } from "./error/SimpleError";
 
 export enum LogLevel {
     INFO = "INFO",
@@ -14,7 +15,6 @@ export interface LogInfo {
     level: LogLevel;
     message: string;
     error?: ErrorInfo;
-    securelog?: SecureLog;
 }
 
 export interface ErrorInfo {
@@ -28,11 +28,7 @@ export interface ErrorInfo {
     errorCode?: string;
 }
 
-export interface SecureLog {
-    message: string;
-    stack?: string;
-}
-export type LogErrorType = Error | CustomError;
+export type LogErrorType = Error | CustomError | SimpleError;
 
 export type LogResponse = ErrorCode;
 export interface ErrorCode {

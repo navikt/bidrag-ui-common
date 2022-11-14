@@ -2,9 +2,9 @@ import { LogInfo } from "../types";
 import { LogResponse } from "../types";
 import { AbstractLoggerService } from "./AbstractLoggerService";
 
-export class LoggerService extends AbstractLoggerService {
+export class SecureLoggerService extends AbstractLoggerService {
     static override log(logInfo: LogInfo): Promise<LogResponse> {
-        return fetch("/log", {
+        return fetch("/log/secure", {
             mode: "cors",
             cache: "no-cache",
             body: JSON.stringify(logInfo),
