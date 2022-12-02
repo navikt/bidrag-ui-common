@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.8](https://github.com/navikt/bidrag-ui-common/compare/v1.3.7...v1.3.8) (2022-12-02)
+
+
+### Bug Fixes
+
+* Export SecureLoggerService.ts from index file ([9c03469](https://github.com/navikt/bidrag-ui-common/commit/9c03469cff2394f5e7fbdaa4006f4788325e7eb4))
+
 ## [1.3.7](https://github.com/navikt/bidrag-ui-common/compare/v1.3.6...v1.3.7) (2022-11-14)
 
 
