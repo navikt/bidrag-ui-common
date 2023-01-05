@@ -12,7 +12,7 @@ export interface FetchConfig {
     headers?: object;
 }
 
-type MethodType = "GET" | "POST" | "PUT" | "PATCH";
+type MethodType = "GET" | "POST" | "PUT" | "PATCH" | "OPTIONS";
 
 export class DefaultRestService {
     private readonly app: string;
@@ -51,6 +51,10 @@ export class DefaultRestService {
 
     get<T>(url: string, config?: FetchConfig): Promise<ApiResponse<T>> {
         return this.fetchResponse(url, "GET", undefined, config);
+    }
+
+    options<T>(url: string, config?: FetchConfig): Promise<ApiResponse<T>> {
+        return this.fetchResponse(url, "OPTIONS", undefined, config);
     }
 
     private async fetchResponse<T>(
