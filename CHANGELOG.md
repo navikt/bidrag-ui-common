@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.9](https://github.com/navikt/bidrag-ui-common/compare/v1.3.8...v1.3.9) (2023-01-05)
+
+
+### Bug Fixes
+
+* Add options to DefaultRestService.ts ([b26e802](https://github.com/navikt/bidrag-ui-common/commit/b26e802fc093910ecc799e91f44b99618b42f95d))
+
 ## [1.3.8](https://github.com/navikt/bidrag-ui-common/compare/v1.3.7...v1.3.8) (2022-12-02)
 
 
