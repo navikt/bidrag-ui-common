@@ -17,9 +17,9 @@ export abstract class AbstractLoggerService {
         }
     }
 
-    static warn(msg: string): Promise<LogResponse> {
+    static warn(msg: string, error?: LogErrorType): Promise<LogResponse> {
         try {
-            return this.mapAndLog(msg, LogLevel.WARNING);
+            return this.mapAndLog(msg, LogLevel.WARNING, error);
         } catch (e) {
             console.log(e);
             return Promise.resolve({ exceptionCode: "unkown", errorCode: "unkown" });
@@ -53,6 +53,7 @@ export abstract class AbstractLoggerService {
         if (errorInfo) {
             // Log on console for easy debugging
             console.error(
+                message,
                 `Det skjedde en feil: ${errorInfo.message}`,
                 `correlationId=${errorInfo.correlationId}`,
                 errorInfo.stack_trace

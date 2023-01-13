@@ -103,9 +103,14 @@ export class DefaultRestService {
                 } else {
                     error = await DefaultRestService.mapErrorResponseToApiError(err);
                 }
-
                 const errorMessage = `${error.message} - ${requestInfo}`;
-                LoggerService.error(errorMessage, error);
+
+                if (err instanceof TypeError) {
+                    LoggerService.warn("TypeError: " + errorMessage, error);
+                } else {
+                    LoggerService.error(errorMessage, error);
+                }
+
                 body &&
                     SecureLoggerService.error(
                         errorMessage,
