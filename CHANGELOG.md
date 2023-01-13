@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.10](https://github.com/navikt/bidrag-ui-common/compare/v1.3.9...v1.3.10) (2023-01-13)
+
+
+### Bug Fixes
+
+* Log failed to fetch as warning instead of error ([e7bb9bf](https://github.com/navikt/bidrag-ui-common/commit/e7bb9bf0c8fc246b66a6f2103117e5f4bc5130ab))
+
 ## [1.3.9](https://github.com/navikt/bidrag-ui-common/compare/v1.3.8...v1.3.9) (2023-01-05)
 
 
