@@ -8,10 +8,10 @@ export class SecuritySessionUtils {
         return (await tokenReq.json()).id_token;
     }
 
-    static async getSecurityTokenForApp(app: string) {
+    static async getSecurityTokenForApp(app: string, cluster?: string) {
         const tokenReq = await fetch("/token", {
             method: "POST",
-            body: JSON.stringify({ app }),
+            body: JSON.stringify({ app, cluster }),
             headers: { "Content-type": "application/json; charset=UTF-8" },
         });
         return await tokenReq.text();

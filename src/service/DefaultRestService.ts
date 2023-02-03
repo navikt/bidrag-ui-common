@@ -16,10 +16,12 @@ type MethodType = "GET" | "POST" | "PUT" | "PATCH" | "OPTIONS";
 
 export class DefaultRestService {
     private readonly app: string;
+    private readonly cluster: string;
     private readonly baseUrl: string = "";
 
-    constructor(app: string, baseUrl?: string) {
+    constructor(app: string, baseUrl?: string, gcpApp?: boolean) {
         this.app = app;
+        this.cluster = gcpApp ? "gcp" : "fss";
         if (baseUrl) {
             this.baseUrl = baseUrl.endsWith("/") ? baseUrl.substring(0, baseUrl.length - 1) : baseUrl;
         }
@@ -122,7 +124,9 @@ export class DefaultRestService {
 
     private async createDefaultHeaders() {
         const idToken =
-            this.app && this.app !== "self" ? await SecuritySessionUtils.getSecurityTokenForApp(this.app) : "";
+            this.app && this.app !== "self"
+                ? await SecuritySessionUtils.getSecurityTokenForApp(this.app, this.cluster)
+                : "";
         const correlationId = SecuritySessionUtils.getCorrelationId();
         return {
             Authorization: "Bearer " + idToken,
