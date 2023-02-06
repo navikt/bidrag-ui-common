@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/navikt/bidrag-ui-common/compare/v1.4.0...v1.4.1) (2023-02-06)
+
+
+### Bug Fixes
+
+* Add is logged in method ([b6b9730](https://github.com/navikt/bidrag-ui-common/commit/b6b97308aecb6d973990c16b82f286daebc94434))
+
 ## [1.4.0](https://github.com/navikt/bidrag-ui-common/compare/v1.3.10...v1.4.0) (2023-02-03)
 
 
