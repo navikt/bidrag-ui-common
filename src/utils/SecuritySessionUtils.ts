@@ -8,6 +8,12 @@ export class SecuritySessionUtils {
         return (await tokenReq.json()).id_token;
     }
 
+    static async isLoggedIn(): Promise<boolean> {
+        return fetch("/me", { method: "GET" })
+            .then((res) => res.status == 200)
+            .catch((ex) => false);
+    }
+
     static async getSecurityTokenForApp(app: string, cluster?: string) {
         const tokenReq = await fetch("/token", {
             method: "POST",
