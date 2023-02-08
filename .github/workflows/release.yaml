@@ -23,5 +23,6 @@ jobs:
           release-type: node
       - name: Publish
         run: yarn publish
+        if: ${{ steps.release.outputs.release_created }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
