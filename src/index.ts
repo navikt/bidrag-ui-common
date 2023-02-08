@@ -5,3 +5,4 @@ export * from "./service/MetricService";
 export * from "./service/SecureLoggerService";
 export * from "./types";
 export * from "./utils";
+export * from "./hooks";
