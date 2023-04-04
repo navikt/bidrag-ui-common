@@ -17,10 +17,12 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
+    "prebuild": "yarn lint",
     "build": "concurrently \"tsc\" \"tsc -p tsconfig.esm.json\"",
     "lint": "eslint ./src/**/*.ts package.json --quiet",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn lint"
+    "release": "changeset publish",
+    "version-packages": "changeset version"
   },
   "peerDependencies": {
     "react": ">=16.6.0 || 17 || 18",
@@ -31,6 +33,8 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.1",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "@types/uuid": "^8.3.4",
