@@ -1,6 +1,6 @@
 import { AxiosInstance, InternalAxiosRequestConfig } from "axios";
 
-import { SecuritySessionUtils } from "../utils";
+import { SecuritySessionUtils } from "../../utils";
 
 interface AxiosClient {
     instance: AxiosInstance;
@@ -16,7 +16,7 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
         },
         function (error) {
             // error handling here
-            return Promise.reject(error);
+            return Promise.reject(error.stack_trace);
         }
     );
 
