@@ -3,6 +3,8 @@ on:
   push:
     branches-ignore:
       - 'main'
+env:
+  NPM_TOKEN: ${{ secrets.READER_TOKEN }}
 jobs:
   build:
     runs-on: ubuntu-latest
