@@ -20,13 +20,9 @@
   "scripts": {
     "prebuild": "tailwindcss -i ./src/react/index.css -o ./styles/index.css",
     "build": "concurrently \"tsc\" \"tsc -p tsconfig.esm.json\"",
-    "build-tailwind": "tailwindcss -i ./src/react/index.css -o ./esm/index.css",
-    "changeset": "changeset",
     "lint": "eslint ./src/**/*.ts package.json --quiet",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn lint",
-    "release": "yarn boot && yarn docgen && changeset publish",
-    "version": "changeset version"
+    "prepublishOnly": "yarn lint"
   },
   "peerDependencies": {
     "@navikt/ds-css": ">=2.8.11",
