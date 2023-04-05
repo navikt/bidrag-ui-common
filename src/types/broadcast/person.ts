@@ -1,4 +1,4 @@
-export interface HentPersonResponse {
+export interface PersonBroadcastMessage {
     navn: string;
     aktoerId?: string;
     ident?: string;

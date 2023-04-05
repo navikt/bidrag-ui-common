@@ -14,10 +14,14 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": false,
+    "skipLibCheck": true,
     "sourceMap": true,
     "jsx": "react-jsx",
     "baseUrl": "src",
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "paths": {
+      "@navikt/bidrag*": ["./packages/*/"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/__tests__/*"]
