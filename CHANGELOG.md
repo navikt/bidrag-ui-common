@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/navikt/bidrag-ui-common/compare/v1.4.1...v1.5.0) (2023-04-05)
+
+
+### Features
+
+* Refactor and add React components ([#46](https://github.com/navikt/bidrag-ui-common/issues/46)) ([4ba0e5f](https://github.com/navikt/bidrag-ui-common/commit/4ba0e5f86f2bd2bab38470d30b41d220c5f375ca))
+
+
+### Bug Fixes
+
+* Legger til en hook for axios rest tjenester ([#34](https://github.com/navikt/bidrag-ui-common/issues/34)) ([c79665f](https://github.com/navikt/bidrag-ui-common/commit/c79665fbd74c0e262a516ff51e9d6f7bba901289))
+
 ## [1.4.2](https://github.com/navikt/bidrag-ui-common/compare/v1.4.1...v1.4.2) (2023-02-08)
 
 
