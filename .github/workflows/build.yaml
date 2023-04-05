@@ -1,8 +1,10 @@
-name: Publish Package to npmjs
+name: Build package
 on:
   push:
     branches-ignore:
       - 'main'
+env:
+  NPM_TOKEN: ${{ secrets.READER_TOKEN }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,6 +13,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
       - run: yarn lint
       - run: yarn build

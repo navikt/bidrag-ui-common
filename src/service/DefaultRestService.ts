@@ -1,11 +1,10 @@
 import { v4 as uuidV4 } from "uuid";
 
-import { ApiError } from "../types";
+import { LoggerService } from "../logging/LoggerService";
+import { SecureLoggerService } from "../logging/SecureLoggerService";
+import { ApiError, SimpleError } from "../types";
 import { ApiResponse } from "../types";
-import { SimpleError } from "../types/error/SimpleError";
 import { SecuritySessionUtils } from "../utils";
-import { LoggerService } from "./LoggerService";
-import { SecureLoggerService } from "./SecureLoggerService";
 
 export interface FetchConfig {
     params?: object;
