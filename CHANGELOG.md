@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/navikt/bidrag-ui-common/compare/v1.4.1...v1.4.2) (2023-04-05)
+
+
+### Bug Fixes
+
+* Legger til en hook for axios rest tjenester ([#34](https://github.com/navikt/bidrag-ui-common/issues/34)) ([c79665f](https://github.com/navikt/bidrag-ui-common/commit/c79665fbd74c0e262a516ff51e9d6f7bba901289))
+
 ## [1.4.2](https://github.com/navikt/bidrag-ui-common/compare/v1.4.1...v1.4.2) (2023-02-08)
 
 
