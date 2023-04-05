@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+env:
+  NPM_TOKEN: ${{ secrets.READER_TOKEN }}
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -26,3 +28,4 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
