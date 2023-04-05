@@ -1,4 +1,4 @@
-import { FileData } from "../types/FileTypes";
+import { FileData } from "../types";
 import { Base64ByteConverter } from "./Base64ByteConverter";
 
 export class FileUtils {

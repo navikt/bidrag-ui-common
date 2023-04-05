@@ -1,10 +1,4 @@
-import { SessionStorage } from "../utils";
-
-export interface EditDocumentBroadcastMessage {
-    document: string;
-    config?: EditDocumentConfig;
-}
-
+import { SessionStorage } from "../../utils";
 export interface EditDocumentConfig {
     removedPages: number[];
 }

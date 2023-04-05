@@ -1,6 +1,6 @@
+import { AbstractLoggerService } from "../service/AbstractLoggerService";
 import { LogInfo } from "../types";
 import { LogResponse } from "../types";
-import { AbstractLoggerService } from "./AbstractLoggerService";
 
 export class SecureLoggerService extends AbstractLoggerService {
     static override log(logInfo: LogInfo): Promise<LogResponse> {

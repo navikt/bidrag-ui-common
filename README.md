@@ -32,3 +32,11 @@ Det vil si at hvis commit meldingen har prefix:
 
 Release please vil opprette en PR som oppdaterer CHANGELOG.md filen med commit meldingen siden forrige release. Når PR er merget til main så vil nye release publiseres til GPR (Github package registry) med oppdaterte versjonen
 
+# Bruke React componenter
+### Styling
+React componentene bruker tailwindcss for styling. Når du skal bruke React componentene må derfor også en felles css fil fra bidrag-ui-common importeres for at stylingen skal fungere.
+Det kan gjøres ved å legge inn følgende import
+
+```React
+import "@navikt/bidrag-ui-common/styles/index.css";
+```
