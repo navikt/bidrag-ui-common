@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/navikt/bidrag-ui-common/compare/v1.5.0...v1.5.1) (2023-04-17)
+
+
+### Features
+
+* Errorhandler and logger on axios api and update on document types ([7efcb26](https://github.com/navikt/bidrag-ui-common/commit/7efcb26e02e736d4cdbff300ed5c33642030d00b))
+
 ## [1.5.0](https://github.com/navikt/bidrag-ui-common/compare/v1.4.1...v1.5.0) (2023-04-05)
 
 
