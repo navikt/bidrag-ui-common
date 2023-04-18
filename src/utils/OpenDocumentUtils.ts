@@ -3,11 +3,13 @@ import { EditDocumentBroadcastMessage, EditDocumentConfig, EditorConfigStorage }
 
 export class OpenDocumentUtils {
     static åpneDokument(journalpostid: string, dokumentreferanse?: string) {
-        window.open(`/aapnedokument/${journalpostid}${dokumentreferanse ? "/" + dokumentreferanse : ""}`);
+        window.open(
+            `/aapnedokument/${journalpostid}${dokumentreferanse ? "/" + dokumentreferanse : ""}?openInNewWindow=false`
+        );
     }
 
     static åpneDokumenter(dokumenter: string[]) {
-        window.open(`/aapnedokument?${dokumenter.map((d) => `dokument=${d}`).join("&")}`);
+        window.open(`/aapnedokument?${dokumenter.map((d) => `dokument=${d}`).join("&")}&openInNewWindow=false`);
     }
 
     static openDocumentEditorWithDocuments(dokumenter: string[], editDocumentConfig?: EditDocumentConfig, id?: string) {
