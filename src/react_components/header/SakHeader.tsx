@@ -2,7 +2,7 @@ import { Heading } from "@navikt/ds-react";
 import { Cell } from "@navikt/ds-react";
 import { Grid } from "@navikt/ds-react";
 import { CopyToClipboard } from "@navikt/ds-react-internal";
-import React from "react";
+import React from "react_components";
 
 import { IRolleDetaljer } from "../../types/roller/IRolleDetaljer";
 import { RolleType } from "../../types/roller/RolleType";

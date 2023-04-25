@@ -1,5 +1,5 @@
 import { CopyToClipboard } from "@navikt/ds-react-internal";
-import React from "react";
+import React from "react_components";
 
 import { IRolleDetaljer } from "../../types/roller/IRolleDetaljer";
 import { RolleTag } from "./RolleTag";
@@ -12,9 +12,8 @@ interface IRolledetaljerProps {
 export const RolleDetaljer = ({ rolle, withBorder = true }: IRolledetaljerProps) => {
     return (
         <div
-            className={`px-6 py-2 ${
-                withBorder && "border-[var(--a-border-divider)] border-solid border-b"
-            } flex items-center`}
+            className={`px-6 py-2 ${withBorder && "border-[var(--a-border-divider)] border-solid border-b"
+                } flex items-center`}
         >
             <RolleTag rolleType={rolle.rolleType} />
             <span>{rolle.navn}</span>

@@ -1,5 +1,5 @@
 export * from "./logging";
-export * from "./react";
+export * from "./react_components";
 export * from "./service/DefaultRestService";
 export * from "./types";
 export * from "./utils";

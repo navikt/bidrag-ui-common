@@ -18,7 +18,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "prebuild": "tailwindcss -i ./src/react/index.css -o ./styles/index.css",
+    "prebuild": "tailwindcss -i ./src/react_components/index.css -o ./styles/index.css",
     "build": "concurrently \"tsc\" \"tsc -p tsconfig.esm.json\"",
     "lint": "eslint ./src/**/*.ts package.json --quiet",
     "prepare": "yarn build",

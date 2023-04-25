@@ -1,5 +1,5 @@
 import { Tag } from "@navikt/ds-react";
-import React from "react";
+import React from "react_components";
 
 import { ROLE_TAGS } from "../../types/roller/RoleTags";
 import { RolleType } from "../../types/roller/RolleType";
