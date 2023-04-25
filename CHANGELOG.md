@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/navikt/bidrag-ui-common/compare/v1.5.2...v1.6.0) (2023-04-25)
+
+
+### Features
+
+* Avansert sok button and refactoring ([155f5c4](https://github.com/navikt/bidrag-ui-common/commit/155f5c42d16ef6106fa80b38574852aeab682578))
+
 ## [1.5.2](https://github.com/navikt/bidrag-ui-common/compare/v1.5.1...v1.5.2) (2023-04-18)
 
 
