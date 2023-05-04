@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/navikt/bidrag-ui-common/compare/v1.6.1...v1.6.2) (2023-05-04)
+
+
+### Bug Fixes
+
+* Sakheader styling fix ([9fc0d02](https://github.com/navikt/bidrag-ui-common/commit/9fc0d021d607eefbfcc97471ec612a86519fff7c))
+
 ## [1.6.1](https://github.com/navikt/bidrag-ui-common/compare/v1.6.0...v1.6.1) (2023-05-04)
 
 
