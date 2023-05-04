@@ -1,3 +1,4 @@
+import { BodyShort } from "@navikt/ds-react";
 import { CopyToClipboard } from "@navikt/ds-react-internal";
 import React from "react_components";
 
@@ -11,14 +12,15 @@ interface IRolledetaljerProps {
 }
 export const RolleDetaljer = ({ rolle, withBorder = true }: IRolledetaljerProps) => {
     return (
-        <div
-            className={`px-6 py-2 ${withBorder && "border-[var(--a-border-divider)] border-solid border-b"
+        <BodyShort
+            size="small"
+            className={`px-8 py-2 ${withBorder && "border-[var(--a-border-divider)] border-solid border-b"
                 } flex items-center`}
         >
             <RolleTag rolleType={rolle.rolleType} />
             <span>{rolle.navn}</span>
-            <span className="mx-4">/</span> {rolle.ident}
+            <span className="mx-1">/</span> {rolle.ident}
             <CopyToClipboard size="small" copyText={rolle.ident} popoverText="Kopiert til utklippstavlen" />
-        </div>
+        </BodyShort>
     );
 };
