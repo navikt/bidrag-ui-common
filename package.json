@@ -44,7 +44,7 @@
     "@navikt/ds-react": "^2.8.11",
     "@navikt/ds-react-internal": "^2.8.11",
     "@types/node": "^18.15.11",
-    "@types/react": "^18.2.0",
+    "@types/react": "^18.2.7",
     "@types/react-dom": "^18.0.11",
     "@types/react-modal": "^3.13.1",
     "@types/uuid": "^9.0.1",
