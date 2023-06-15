@@ -6,7 +6,7 @@ interface BisysLinkProps {
     page: "sakshistorikk" | "oppgaveliste" | "sak";
 }
 export default function BisysLink({ bisysUrl, page }: BisysLinkProps): ReactElement {
-    const sessionState = new URLSearchParams().get("sessionState");
+    const sessionState = new URLSearchParams(window.location.href).get("sessionState");
     function getBisysLink() {
         switch (page) {
             case "oppgaveliste":
