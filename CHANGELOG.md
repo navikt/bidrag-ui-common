@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.4](https://github.com/navikt/bidrag-ui-common/compare/v1.6.3...v1.6.4) (2023-06-15)
+
+
+### Bug Fixes
+
+* BisysLink sessionstate ([2db7957](https://github.com/navikt/bidrag-ui-common/commit/2db7957e8af311343163e40ccdfe082c0a142d80))
+
 ## [1.6.3](https://github.com/navikt/bidrag-ui-common/compare/v1.6.2...v1.6.3) (2023-06-15)
 
 
