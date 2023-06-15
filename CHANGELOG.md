@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.3](https://github.com/navikt/bidrag-ui-common/compare/v1.6.2...v1.6.3) (2023-06-15)
+
+
+### Bug Fixes
+
+* Bisys link and styling fix ([6bb3602](https://github.com/navikt/bidrag-ui-common/commit/6bb3602c952223d153aff0c2a06431c295820b0e))
+* SakHeader export ([aa580a5](https://github.com/navikt/bidrag-ui-common/commit/aa580a5dc6e32e2268c3365db8fab16f7fabcbea))
+
 ## [1.6.2](https://github.com/navikt/bidrag-ui-common/compare/v1.6.1...v1.6.2) (2023-05-04)
 
 
