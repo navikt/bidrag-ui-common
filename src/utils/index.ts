@@ -1,4 +1,5 @@
 export * from "./ArrayUtils";
+export * from "./DateUtils";
 export * from "./FileUtils";
 export * from "./IdentUtils";
 export * from "./ObjectUtils";

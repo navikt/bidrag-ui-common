@@ -1,12 +1,10 @@
-import { BodyShort } from "@navikt/ds-react";
+import { BodyShort, CopyButton } from "@navikt/ds-react";
 import { Cell } from "@navikt/ds-react";
 import { Grid } from "@navikt/ds-react";
-import { CopyToClipboard } from "@navikt/ds-react-internal";
-import React from "react_components";
 
 import { IRolleDetaljer } from "../../types/roller/IRolleDetaljer";
 import { RolleType } from "../../types/roller/RolleType";
-import { RolleDetaljer } from "../roller/RolleDetaljer";
+import RolleDetaljer from "../roller/RolleDetaljer";
 
 interface ISkjermbildeDetaljer {
     navn: string;
@@ -49,7 +47,7 @@ function SkjermbildeDetaljer({ saksnummer, skjermbilde }: { saksnummer: string; 
         <div className="flex flex-row">
             <span className="text-base flex items-center font-normal">
                 <BodyShort size={"small"}>Saksnr. {saksnummer}</BodyShort>
-                <CopyToClipboard size="xsmall" copyText={saksnummer} popoverText="Kopierte saksnummer" />
+                <CopyButton size="small" copyText={saksnummer} activeText="Kopierte saksnummer" />
             </span>
             {skjermbilde && (
                 <>
@@ -58,7 +56,7 @@ function SkjermbildeDetaljer({ saksnummer, skjermbilde }: { saksnummer: string; 
                         <BodyShort size={"small"}>
                             {skjermbilde.navn} {skjermbilde.referanse}
                         </BodyShort>
-                        <CopyToClipboard size="xsmall" copyText={skjermbilde.referanse} popoverText="Kopiert" />
+                        <CopyButton size="small" copyText={skjermbilde.referanse} activeText="Kopiert" />
                     </span>
                 </>
             )}
