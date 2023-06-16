@@ -13,7 +13,7 @@ export abstract class AbstractLoggerService {
         }
     }
 
-    static warn(msg: string, error?: LogErrorType): Promise<LogResponse> {
+    static warn(msg: string, error?: LogErrorType | ErrorInfo): Promise<LogResponse> {
         try {
             return this.mapAndLog(msg, LogLevel.WARNING, error);
         } catch (e) {
@@ -22,7 +22,7 @@ export abstract class AbstractLoggerService {
         }
     }
 
-    static error(msg: string, error: LogErrorType): Promise<LogResponse> {
+    static error(msg: string, error: LogErrorType | ErrorInfo): Promise<LogResponse> {
         try {
             return this.mapAndLog(msg, LogLevel.ERROR, error);
         } catch (e) {
@@ -35,7 +35,7 @@ export abstract class AbstractLoggerService {
         throw new Error("Not implemented");
     }
 
-    protected static mapAndLog(message: string, level: LogLevel, error?: LogErrorType) {
+    protected static mapAndLog(message: string, level: LogLevel, error?: LogErrorType | ErrorInfo) {
         const logInfo: LogInfo = {
             message,
             level,
@@ -43,16 +43,21 @@ export abstract class AbstractLoggerService {
             moduleName: StringUtils.isEmpty(window.moduleName) ? "ukjent" : window.moduleName,
             correlationId: SecuritySessionUtils.getCorrelationId(),
         };
-        const errorInfo = this.mapError(error);
-        logInfo.error = errorInfo;
+        let errorInfo = error;
+        if (error instanceof Error) {
+            errorInfo = this.mapError(error);
+        }
+        logInfo.error = errorInfo as ErrorInfo;
 
         if (errorInfo) {
             // Log on console for easy debugging
             console.error(
                 message,
                 `Det skjedde en feil: ${errorInfo.message}`,
-                `correlationId=${errorInfo.correlationId}`,
-                errorInfo.stack_trace
+                //@ts-ignore
+                `correlationId=${errorInfo["correlationId"]}`,
+                //@ts-ignore
+                errorInfo["stack_trace"]
             );
         } else {
             console.log(logInfo.message, logInfo);

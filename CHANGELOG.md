@@ -1,11 +1,61 @@
 # Changelog
 
+## [1.6.4](https://github.com/navikt/bidrag-ui-common/compare/v1.6.3...v1.6.4) (2023-06-15)
+
+
+### Bug Fixes
+
+* BisysLink sessionstate ([2db7957](https://github.com/navikt/bidrag-ui-common/commit/2db7957e8af311343163e40ccdfe082c0a142d80))
+
+## [1.6.3](https://github.com/navikt/bidrag-ui-common/compare/v1.6.2...v1.6.3) (2023-06-15)
+
+
+### Bug Fixes
+
+* Bisys link and styling fix ([6bb3602](https://github.com/navikt/bidrag-ui-common/commit/6bb3602c952223d153aff0c2a06431c295820b0e))
+* SakHeader export ([aa580a5](https://github.com/navikt/bidrag-ui-common/commit/aa580a5dc6e32e2268c3365db8fab16f7fabcbea))
+
+## [1.6.2](https://github.com/navikt/bidrag-ui-common/compare/v1.6.1...v1.6.2) (2023-05-04)
+
+
+### Bug Fixes
+
+* Sakheader styling fix ([9fc0d02](https://github.com/navikt/bidrag-ui-common/commit/9fc0d021d607eefbfcc97471ec612a86519fff7c))
+
+## [1.6.1](https://github.com/navikt/bidrag-ui-common/compare/v1.6.0...v1.6.1) (2023-05-04)
+
+
+### Bug Fixes
+
+* Update sakheader styling ([d074dba](https://github.com/navikt/bidrag-ui-common/commit/d074dbadc888eafdf7fcb96f6994f51906c6aa1a))
+
+## [1.6.0](https://github.com/navikt/bidrag-ui-common/compare/v1.5.2...v1.6.0) (2023-04-25)
+
+
+### Features
+
+* Avansert sok button and refactoring ([155f5c4](https://github.com/navikt/bidrag-ui-common/commit/155f5c42d16ef6106fa80b38574852aeab682578))
+
+## [1.5.2](https://github.com/navikt/bidrag-ui-common/compare/v1.5.1...v1.5.2) (2023-04-18)
+
+
+### Bug Fixes
+
+* OpenDocumentUtils - Open document in same window ([48160ed](https://github.com/navikt/bidrag-ui-common/commit/48160ed04be8ab3fef097a286bfa7a10e61f98ae))
+
+## [1.5.1](https://github.com/navikt/bidrag-ui-common/compare/v1.5.0...v1.5.1) (2023-04-17)
+
+
+### Features
+
+* Errorhandler and logger on axios api and update on document types ([7efcb26](https://github.com/navikt/bidrag-ui-common/commit/7efcb26e02e736d4cdbff300ed5c33642030d00b))
+
 ## [1.5.0](https://github.com/navikt/bidrag-ui-common/compare/v1.4.1...v1.5.0) (2023-04-05)
 
 
 ### Features
 
-* Refactor and added React components ([#43](https://github.com/navikt/bidrag-ui-common/issues/43)) ([09312ff](https://github.com/navikt/bidrag-ui-common/commit/09312ff91ccbf108c55ba8690bc2451cc84d5335))
+* Refactor and add React components ([#46](https://github.com/navikt/bidrag-ui-common/issues/46)) ([4ba0e5f](https://github.com/navikt/bidrag-ui-common/commit/4ba0e5f86f2bd2bab38470d30b41d220c5f375ca))
 
 
 ### Bug Fixes

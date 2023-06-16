@@ -4,4 +4,10 @@ export enum RolleType {
     BA = "BA",
     RM = "RM",
     FR = "FR",
+
+    BIDRAGS_PLIKTIG = "BIDRAGS_PLIKTIG",
+    BIDRAGS_MOTTAKER = "BIDRAGS_MOTTAKER",
+    BARN = "BARN",
+    REELL_MOTTAKER = "REELL_MOTTAKER",
+    FEILREGISTRERT = "FEILREGISTRERT",
 }
