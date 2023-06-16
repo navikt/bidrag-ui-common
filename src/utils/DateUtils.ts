@@ -7,7 +7,7 @@ export const addDays = (date: Date, days: number) => {
     newDate.setDate(newDate.getDate() + days);
     return newDate;
 };
-export const deductDays = (date: Date, days) => {
+export const deductDays = (date: Date, days: number) => {
     const newDate = new Date(date);
     newDate.setDate(newDate.getDate() - days);
     return newDate;
