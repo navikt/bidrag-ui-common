@@ -15,14 +15,8 @@ export const deductDays = (date: Date, days: number) => {
 export const lastDayOfMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth() + 1, 0);
 export const firstDayOfMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth(), 1);
 export const isValidDate = (date: any) => date && date instanceof Date && isFinite(date.getTime());
-export const isFirstDayOfMonth = (date: Date) => {
-    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    return firstDay.getDate() === date.getDate();
-};
-export const isLastDayOfMonth = (date: Date) => {
-    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    return lastDay.getDate() === date.getDate();
-};
+export const isFirstDayOfMonth = (date: Date) => firstDayOfMonth(date).getDate() === date.getDate();
+export const isLastDayOfMonth = (date: Date) => lastDayOfMonth(date).getDate() === date.getDate();
 export const isAfterDate = (date: string, maxValidate: string) => {
     if (!isValidDate(new Date(date))) {
         return false;
