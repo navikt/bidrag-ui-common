@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.5](https://github.com/navikt/bidrag-ui-common/compare/v1.6.4...v1.6.5) (2023-06-16)
+
+
+### Bug Fixes
+
+* Remove dayjs, edit date-utils ([#84](https://github.com/navikt/bidrag-ui-common/issues/84)) ([584a67e](https://github.com/navikt/bidrag-ui-common/commit/584a67eb7244817944536f3068e35387c5f1346c))
+
 ## [1.6.4](https://github.com/navikt/bidrag-ui-common/compare/v1.6.3...v1.6.4) (2023-06-15)
 
 
