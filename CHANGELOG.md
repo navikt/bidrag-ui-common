@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.6](https://github.com/navikt/bidrag-ui-common/compare/v1.6.5...v1.6.6) (2023-06-19)
+
+
+### Bug Fixes
+
+* Avansert sok styling changes ([6f041bd](https://github.com/navikt/bidrag-ui-common/commit/6f041bd758005816bfef1fb63a87515786db1e6d))
+
 ## [1.6.5](https://github.com/navikt/bidrag-ui-common/compare/v1.6.4...v1.6.5) (2023-06-16)
 
 
