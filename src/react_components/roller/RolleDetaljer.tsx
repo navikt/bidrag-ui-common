@@ -19,7 +19,7 @@ const RolleDetaljer = ({ rolle, withBorder = true }: IRolledetaljerProps) => {
             <RolleTag rolleType={rolle.rolleType} />
             <span>{rolle.navn}</span>
             <span className="mx-1">/</span> {rolle.ident}
-            <CopyButton size="small" copyText={rolle.ident} activeText="Kopiert til utklippstavlen" />
+            <CopyButton size="small" copyText={rolle.ident} />
         </BodyShort>
     );
 };

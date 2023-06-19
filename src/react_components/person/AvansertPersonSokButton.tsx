@@ -1,13 +1,17 @@
-import { Button, Heading, Modal } from "@navikt/ds-react";
+import { Button, ButtonProps, Heading, Modal } from "@navikt/ds-react";
 import { ReactElement, useRef, useState } from "react";
 
 import { BroadcastError, PersonBroadcastMessage } from "../../types/broadcast";
 
-interface AvansertSokProps {
+type AvansertSokProps = {
     onResult: (data: PersonBroadcastMessage | null) => void;
     onError?: (errorMessage: string) => void;
-}
-export default function AvansertPersonSokButton({ onResult, onError }: AvansertSokProps): ReactElement {
+};
+export default function AvansertPersonSokButton({
+    onResult,
+    onError,
+    ...buttonProps
+}: AvansertSokProps & ButtonProps): ReactElement {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const closeModal = () => {
         searchCanceled.current = true;
@@ -62,11 +66,14 @@ export default function AvansertPersonSokButton({ onResult, onError }: AvansertS
                 </Modal>
             )}
 
-            <div
-                className={"pdlSearchButton"}
-                style={{ padding: "30px 10px 0px 10px", height: "min-content", alignSelf: "baseline" }}
-            >
-                <Button variant="tertiary" size="xsmall" type={"button"} onClick={openAdvancedSearch}>
+            <div className={"pdlSearchButton whitespace-nowrap self-center h-full"}>
+                <Button
+                    {...buttonProps}
+                    variant={buttonProps.variant ?? "secondary"}
+                    size={buttonProps.size ?? "small"}
+                    type={"button"}
+                    onClick={openAdvancedSearch}
+                >
                     Avansert søk
                 </Button>
             </div>
