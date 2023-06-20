@@ -1,9 +1,9 @@
 import { BodyShort, CopyButton } from "@navikt/ds-react";
-import { Cell } from "@navikt/ds-react";
-import { Grid } from "@navikt/ds-react";
 
 import { IRolleDetaljer } from "../../types/roller/IRolleDetaljer";
 import { RolleType } from "../../types/roller/RolleType";
+import BidragCell from "../grid/BidragCell";
+import BidragGrid from "../grid/BidragGrid";
 import RolleDetaljer from "../roller/RolleDetaljer";
 
 interface ISkjermbildeDetaljer {
@@ -22,22 +22,26 @@ export default function SakHeader({ saksnummer, roller, skjermbilde }: ISakHeade
             <div className="px-6 py-1 flex items-center border-[var(--a-border-divider)] border-solid border-b border-0">
                 <SkjermbildeDetaljer saksnummer={saksnummer} skjermbilde={skjermbilde} />
             </div>
-            <Grid className={"max-w-5xl"}>
-                <Cell xs={12} sm={10} md={9} lg={6}>
-                    {roller
-                        ?.filter((r) => r.rolleType != RolleType.BA)
-                        .map((rolle, i) => (
+            <BidragGrid
+                className={
+                    "max-w-5xl grid-flow-row grid-rows-none md:grid-flow-col sm:grid-rows-4 md:grid-rows-4 lg:grid-rows-3 xl:grid-rows-3 2xl:grid-rows-2"
+                }
+            >
+                {roller
+                    ?.filter((r) => r.rolleType != RolleType.BA)
+                    .map((rolle, i) => (
+                        <BidragCell xs={12} md={7} lg={7}>
                             <RolleDetaljer key={rolle.ident + i} rolle={rolle} withBorder={false} />
-                        ))}
-                </Cell>
-                <Cell xs={12} md={10} lg={6}>
-                    {roller
-                        ?.filter((r) => r.rolleType == RolleType.BA)
-                        .map((rolle, i) => (
+                        </BidragCell>
+                    ))}
+                {roller
+                    ?.filter((r) => r.rolleType == RolleType.BA)
+                    .map((rolle, i) => (
+                        <BidragCell xs={12} md={7} lg={7}>
                             <RolleDetaljer key={rolle.ident + i} rolle={rolle} withBorder={false} />
-                        ))}
-                </Cell>
-            </Grid>
+                        </BidragCell>
+                    ))}
+            </BidragGrid>
         </div>
     );
 }

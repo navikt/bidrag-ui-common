@@ -12,7 +12,7 @@ const RolleDetaljer = ({ rolle, withBorder = true }: IRolledetaljerProps) => {
     return (
         <BodyShort
             size="small"
-            className={`px-6 py-1 ${
+            className={`px-6 py-1 w-max ${
                 withBorder && "border-[var(--a-border-divider)] border-solid border-b"
             } flex items-center`}
         >
