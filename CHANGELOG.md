@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.7](https://github.com/navikt/bidrag-ui-common/compare/v1.6.6...v1.6.7) (2023-06-21)
+
+
+### Bug Fixes
+
+* Bidrag grid og sak header ([#88](https://github.com/navikt/bidrag-ui-common/issues/88)) ([ef3fb4b](https://github.com/navikt/bidrag-ui-common/commit/ef3fb4b704e55584f281baa271bed1ccd5ce9909))
+
 ## [1.6.6](https://github.com/navikt/bidrag-ui-common/compare/v1.6.5...v1.6.6) (2023-06-19)
 
 
