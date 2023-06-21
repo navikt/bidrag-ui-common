@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.8](https://github.com/navikt/bidrag-ui-common/compare/v1.6.7...v1.6.8) (2023-06-21)
+
+
+### Bug Fixes
+
+* export declarations of react components ([d4f70d9](https://github.com/navikt/bidrag-ui-common/commit/d4f70d9222244de247ee47e9d016930252c9a075))
+
 ## [1.6.7](https://github.com/navikt/bidrag-ui-common/compare/v1.6.6...v1.6.7) (2023-06-21)
 
 
