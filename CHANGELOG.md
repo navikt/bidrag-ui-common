@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.9](https://github.com/navikt/bidrag-ui-common/compare/v1.6.8...v1.6.9) (2023-06-21)
+
+
+### Bug Fixes
+
+* Sakheader rolle sortering ([86efe56](https://github.com/navikt/bidrag-ui-common/commit/86efe56cfbf923d0d258025131f0ba2ee3a25701))
+
 ## [1.6.8](https://github.com/navikt/bidrag-ui-common/compare/v1.6.7...v1.6.8) (2023-06-21)
 
 
