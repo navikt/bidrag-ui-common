@@ -8,7 +8,7 @@ import RolleDetaljer from "../roller/RolleDetaljer";
 
 interface ISkjermbildeDetaljer {
     navn: string;
-    referanse: string;
+    referanse: string | number;
 }
 interface ISakHeaderProps {
     saksnummer: string;
@@ -30,15 +30,15 @@ export default function SakHeader({ saksnummer, roller, skjermbilde }: ISakHeade
                 {roller
                     ?.filter((r) => r.rolleType != RolleType.BA)
                     .map((rolle, i) => (
-                        <BidragCell xs={12} md={7} lg={7}>
-                            <RolleDetaljer key={rolle.ident + i} rolle={rolle} withBorder={false} />
+                        <BidragCell key={rolle.ident + i} xs={12} md={7} lg={7}>
+                            <RolleDetaljer rolle={rolle} withBorder={false} />
                         </BidragCell>
                     ))}
                 {roller
                     ?.filter((r) => r.rolleType == RolleType.BA)
                     .map((rolle, i) => (
-                        <BidragCell xs={12} md={7} lg={7}>
-                            <RolleDetaljer key={rolle.ident + i} rolle={rolle} withBorder={false} />
+                        <BidragCell key={rolle.ident + i} xs={12} md={7} lg={7}>
+                            <RolleDetaljer rolle={rolle} withBorder={false} />
                         </BidragCell>
                     ))}
             </BidragGrid>
@@ -55,12 +55,12 @@ function SkjermbildeDetaljer({ saksnummer, skjermbilde }: { saksnummer: string; 
             </span>
             {skjermbilde && (
                 <>
-                    <div className="pl-1 pr-1">/</div>
+                    <div className="mx-1 self-center">/</div>
                     <span className="text-base flex items-center font-normal">
                         <BodyShort size={"small"}>
                             {skjermbilde.navn} {skjermbilde.referanse}
                         </BodyShort>
-                        <CopyButton size="small" copyText={skjermbilde.referanse} activeText="Kopiert" />
+                        <CopyButton size="small" copyText={skjermbilde.referanse?.toString()} activeText="Kopiert" />
                     </span>
                 </>
             )}

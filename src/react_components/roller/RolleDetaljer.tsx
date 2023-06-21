@@ -18,7 +18,8 @@ const RolleDetaljer = ({ rolle, withBorder = true }: IRolledetaljerProps) => {
         >
             <RolleTag rolleType={rolle.rolleType} />
             <span>{rolle.navn}</span>
-            <span className="mx-1">/</span> {rolle.ident}
+            <span className="mx-1">/</span>
+            <span>{rolle.ident}</span>
             <CopyButton size="small" copyText={rolle.ident} />
         </BodyShort>
     );
