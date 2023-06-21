@@ -11,7 +11,23 @@ module.exports = {
         react: {
             version: "detect", // Tells eslint-plugin-react to automatically detect the version of React to use
         },
-        "json/sort-package-json": ["name", "version", "author", "private", "description", "license", "repository", "main", "types", "files", "publishConfig", "scripts", "peerDependencies",  "dependencies", "devDependencies"],
+        "json/sort-package-json": [
+            "name",
+            "version",
+            "author",
+            "private",
+            "description",
+            "license",
+            "repository",
+            "main",
+            "types",
+            "files",
+            "publishConfig",
+            "scripts",
+            "peerDependencies",
+            "dependencies",
+            "devDependencies",
+        ],
     },
     plugins: ["@typescript-eslint", "prettier", "json-format", "simple-import-sort", "unused-imports"],
     extends: [

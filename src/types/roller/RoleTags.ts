@@ -13,3 +13,10 @@ export const ROLE_TAGS = {
     [RolleType.REELL_MOTTAKER]: "alt3",
     [RolleType.FEILREGISTRERT]: "error",
 } as const;
+export const ROLE_FORKORTELSER = {
+    [RolleType.BIDRAGS_MOTTAKER]: "BM",
+    [RolleType.BIDRAGS_PLIKTIG]: "BP",
+    [RolleType.BARN]: "BA",
+    [RolleType.REELL_MOTTAKER]: "RM",
+    [RolleType.FEILREGISTRERT]: "FR",
+} as const;
