@@ -28,14 +28,14 @@ export default function SakHeader({ saksnummer, roller, skjermbilde }: ISakHeade
                 }
             >
                 {roller
-                    ?.filter((r) => r.rolleType != RolleType.BA)
+                    ?.filter((r) => r.rolleType != RolleType.BA && r.rolleType != RolleType.BARN)
                     .map((rolle, i) => (
                         <BidragCell key={rolle.ident + i} xs={12} md={7} lg={7}>
                             <RolleDetaljer rolle={rolle} withBorder={false} />
                         </BidragCell>
                     ))}
                 {roller
-                    ?.filter((r) => r.rolleType == RolleType.BA)
+                    ?.filter((r) => r.rolleType == RolleType.BA || r.rolleType == RolleType.BARN)
                     .map((rolle, i) => (
                         <BidragCell key={rolle.ident + i} xs={12} md={7} lg={7}>
                             <RolleDetaljer rolle={rolle} withBorder={false} />
