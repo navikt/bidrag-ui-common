@@ -1,10 +1,10 @@
-export * from "./bisys/BisysLink";
-export * from "./grid/BidragCell";
-export * from "./grid/BidragContainer";
-export * from "./grid/BidragGrid";
-export * from "./header/SakHeader";
+export { default as BisysLink } from "./bisys/BisysLink";
+export { default as BidragCell } from "./grid/BidragCell";
+export { default as BidragContainer } from "./grid/BidragContainer";
+export { default as BidragGrid } from "./grid/BidragGrid";
+export { default as SakHeader } from "./header/SakHeader";
 export * from "./hooks";
-export * from "./person/AvansertPersonSokButton";
-export * from "./roller/RolleDetaljer";
-export * from "./roller/RolleTag";
+export { default as AvansertPersonSokButton } from "./person/AvansertPersonSokButton";
+export { default as RolleDetaljer } from "./roller/RolleDetaljer";
+export { default as RolleTag } from "./roller/RolleTag";
 export {};
