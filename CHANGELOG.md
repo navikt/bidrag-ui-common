@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.10](https://github.com/navikt/bidrag-ui-common/compare/v1.6.9...v1.6.10) (2023-07-03)
+
+
+### Bug Fixes
+
+* Rename avansert sok to personsok ([#93](https://github.com/navikt/bidrag-ui-common/issues/93)) ([f9a573b](https://github.com/navikt/bidrag-ui-common/commit/f9a573b84ffc965e6fc380bf24ae5aef0d795c51))
+
 ## [1.6.9](https://github.com/navikt/bidrag-ui-common/compare/v1.6.8...v1.6.9) (2023-06-21)
 
 
