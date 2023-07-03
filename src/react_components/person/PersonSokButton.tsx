@@ -3,15 +3,15 @@ import { ReactElement, useRef, useState } from "react";
 
 import { BroadcastError, PersonBroadcastMessage } from "../../types/broadcast";
 
-type AvansertSokProps = {
+type PersonSokProps = {
     onResult: (data: PersonBroadcastMessage | null) => void;
     onError?: (errorMessage: string) => void;
 };
-export default function AvansertPersonSokButton({
+export default function PersonSokButton({
     onResult,
     onError,
     ...buttonProps
-}: AvansertSokProps & ButtonProps): ReactElement {
+}: PersonSokProps & ButtonProps): ReactElement {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const closeModal = () => {
         searchCanceled.current = true;
@@ -20,7 +20,7 @@ export default function AvansertPersonSokButton({
     const openModal = () => setModalOpen(true);
     const searchCanceled = useRef<boolean>(false);
 
-    function openAdvancedSearch() {
+    function openPersonSearch() {
         openModal();
         searchCanceled.current = false;
         const openedWindow = window.openPersonsok();
@@ -58,23 +58,23 @@ export default function AvansertPersonSokButton({
                     closeButton={false}
                 >
                     <Modal.Content>
-                        <Heading size="medium">Venter på resultat fra avansert søk ...</Heading>
+                        <Heading size="medium">Venter på resultat fra personsøk ...</Heading>
                         <Button onClick={closeModal} style={{ marginTop: "1rem" }}>
                             Avbryt
                         </Button>
                     </Modal.Content>
                 </Modal>
             )}
-
             <div className={"pdlSearchButton whitespace-nowrap self-center h-full"}>
                 <Button
                     {...buttonProps}
                     variant={buttonProps.variant ?? "secondary"}
                     size={buttonProps.size ?? "small"}
                     type={"button"}
-                    onClick={openAdvancedSearch}
+                    title="Åpne personsøk"
+                    onClick={openPersonSearch}
                 >
-                    Avansert søk
+                    Personsøk
                 </Button>
             </div>
         </>
