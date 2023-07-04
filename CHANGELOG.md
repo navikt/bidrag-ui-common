@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.11](https://github.com/navikt/bidrag-ui-common/compare/v1.6.10...v1.6.11) (2023-07-04)
+
+
+### Bug Fixes
+
+* Add debounce hook ([#96](https://github.com/navikt/bidrag-ui-common/issues/96)) ([f12e2b5](https://github.com/navikt/bidrag-ui-common/commit/f12e2b52e71a43b4a06815344da28941c26339a6))
+
 ## [1.6.10](https://github.com/navikt/bidrag-ui-common/compare/v1.6.9...v1.6.10) (2023-07-03)
 
 
