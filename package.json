@@ -20,11 +20,11 @@
   "scripts": {
     "prebuild": "tailwindcss -i ./src/react_components/index.css -o ./styles/index.css",
     "build": "concurrently \"tsc\" \"tsc -p tsconfig.esm.json\"",
+    "build-storybook": "storybook build",
     "lint": "eslint ./src/**/*.ts package.json --quiet",
     "prepare": "yarn build",
     "prepublishOnly": "yarn lint",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6006"
   },
   "peerDependencies": {
     "@navikt/ds-css": ">=2.8.11",
