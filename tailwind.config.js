@@ -4,16 +4,15 @@ module.exports = {
     safelist: [
         {
             pattern: /col-span-(.*)/,
-            variants: ['lg', 'md', 'sm', 'md'],
-          },
+            variants: ["lg", "md", "sm", "md"],
+        },
     ],
     theme: {
         extend: {
             gridTemplateColumns: {
-                'auto': 'repeat(auto-fill, minmax(50px, auto))',
-                'autosmall': 'repeat(auto-fill, minmax(max-content, 1092px))',
-
-              }
+                auto: "repeat(auto-fill, minmax(50px, auto))",
+                autosmall: "repeat(auto-fill, minmax(max-content, 1092px))",
+            },
         },
     },
     plugins: [],

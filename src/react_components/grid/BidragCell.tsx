@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+
 type GridProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 type BidragCellProps = {
@@ -18,7 +19,7 @@ export default function BidragCell({
     return (
         <div
             {...otherProps}
-            className={`${otherProps.className} col-span-12 sm:col-span-${xs} md:col-span-${md} sm:col-span-${sm} lg:col-span-${lg}`}
+            className={`${otherProps.className} col-span-12 xs:col-span-${xs} sm:col-span-${sm} md:col-span-${md} lg:col-span-${lg}`}
         >
             {children}
         </div>
