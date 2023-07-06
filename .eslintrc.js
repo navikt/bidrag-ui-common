@@ -1,16 +1,21 @@
 module.exports = {
-    parser: "@typescript-eslint/parser", // Specifies the ESLint parser
+    parser: "@typescript-eslint/parser",
+    // Specifies the ESLint parser
     parserOptions: {
-        ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
-        sourceType: "module", // Allows for the use of imports
+        ecmaVersion: 2020,
+        // Allows for the parsing of modern ECMAScript features
+        sourceType: "module",
+        // Allows for the use of imports
         ecmaFeatures: {
             jsx: true, // Allows for the parsing of JSX
         },
     },
+
     settings: {
         react: {
             version: "detect", // Tells eslint-plugin-react to automatically detect the version of React to use
         },
+
         "json/sort-package-json": [
             "name",
             "version",
@@ -35,6 +40,7 @@ module.exports = {
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended",
+        "plugin:storybook/recommended",
     ],
     rules: {
         "sort-imports": "off",
@@ -49,7 +55,12 @@ module.exports = {
         "@typescript-eslint/ban-types": "warn",
         "unused-imports/no-unused-vars": [
             "warn",
-            { vars: "all", varsIgnorePattern: "^_", args: "after-used", argsIgnorePattern: "^_" },
+            {
+                vars: "all",
+                varsIgnorePattern: "^_",
+                args: "after-used",
+                argsIgnorePattern: "^_",
+            },
         ],
     },
     overrides: [
