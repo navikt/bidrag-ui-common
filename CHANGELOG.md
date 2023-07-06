@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/navikt/bidrag-ui-common/compare/v1.6.11...v1.7.0) (2023-07-06)
+
+
+### Features
+
+* Add storybook ([#98](https://github.com/navikt/bidrag-ui-common/issues/98)) ([022388b](https://github.com/navikt/bidrag-ui-common/commit/022388b036acab182ad596ec674818482b02931b))
+
 ## [1.6.11](https://github.com/navikt/bidrag-ui-common/compare/v1.6.10...v1.6.11) (2023-07-04)
 
 
