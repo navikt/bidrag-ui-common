@@ -44,7 +44,7 @@ export const Forskudd: Story = {
             {
                 rolleType: RolleType.BARN,
                 navn: "Johnsen, Leah Olivia",
-                ident: "03141170855",
+                ident: "03141170858",
             },
         ],
         skjermbilde: { navn: "Søknad om forskudd", referanse: `#77777` },
