@@ -33,13 +33,18 @@ export const Forskudd: Story = {
             },
             {
                 rolleType: RolleType.BARN,
-                navn: "Berg, Sophia Frida",
+                navn: "Johnsen, Sophia Frida",
                 ident: "03522150877",
             },
             {
                 rolleType: RolleType.BARN,
-                navn: "Pettersen, Leah Olivia",
+                navn: "Johnsen, Leah Olivia",
                 ident: "07512150855",
+            },
+            {
+                rolleType: RolleType.BARN,
+                navn: "Johnsen, Leah Olivia",
+                ident: "03141170855",
             },
         ],
         skjermbilde: { navn: "Søknad om forskudd", referanse: `#77777` },
