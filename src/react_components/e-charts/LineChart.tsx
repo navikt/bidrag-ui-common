@@ -64,7 +64,7 @@ export function EChartLineChart({ option, style }: ReactEChartsProps): ReactNode
         const canvas = chartRef.current!.querySelector<HTMLCanvasElement>("canvas");
         const chart = getInstanceByDom(chartRef.current as HTMLDivElement);
         const dataLen = option.series && option.series[0] && option.series[0].data ? option.series[0].data.length : 0;
-        const handleKeydown = (e) => {
+        const handleKeydown = (e: KeyboardEvent) => {
             if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
                 chart?.dispatchAction({
                     type: "downplay",
