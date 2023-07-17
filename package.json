@@ -58,6 +58,7 @@
     "@storybook/react": "^7.0.25",
     "@storybook/react-webpack5": "^7.0.25",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@types/echarts": "^4.9.18",
     "@types/lodash": "^4.14.195",
     "@types/node": "^18.15.11",
     "@types/react": "18.2.6",
