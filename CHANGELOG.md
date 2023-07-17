@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/navikt/bidrag-ui-common/compare/v1.7.0...v1.8.0) (2023-07-17)
+
+
+### Features
+
+* Add echart ([#104](https://github.com/navikt/bidrag-ui-common/issues/104)) ([dd7626a](https://github.com/navikt/bidrag-ui-common/commit/dd7626a12779a785cdfe1cd79b23f020d3d53826))
+
 ## [1.7.0](https://github.com/navikt/bidrag-ui-common/compare/v1.6.11...v1.7.0) (2023-07-06)
 
 
