@@ -62,7 +62,6 @@ const createDefaultHeaders = async (app: string, cluster: string) => {
     const correlationId = SecuritySessionUtils.getCorrelationId();
     return {
         Authorization: "Bearer " + idToken,
-        "Content-type": "application/json; charset=UTF-8",
         "X-Correlation-ID": correlationId,
         "Nav-Call-Id": correlationId,
         "Nav-Consumer-Id": SecuritySessionUtils.getAppName(),
