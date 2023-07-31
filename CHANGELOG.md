@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/navikt/bidrag-ui-common/compare/v1.8.0...v1.8.1) (2023-07-31)
+
+
+### Bug Fixes
+
+* Upgrade dependencies and remove content-type from useApi ([#110](https://github.com/navikt/bidrag-ui-common/issues/110)) ([de86154](https://github.com/navikt/bidrag-ui-common/commit/de86154a1b7c4ed3df0d1463a3a4d355cece2dea))
+
 ## [1.8.0](https://github.com/navikt/bidrag-ui-common/compare/v1.7.0...v1.8.0) (2023-07-17)
 
 
