@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.2](https://github.com/navikt/bidrag-ui-common/compare/v1.8.1...v1.8.2) (2023-07-31)
+
+
+### Bug Fixes
+
+* Sakheader roller gap ([2215876](https://github.com/navikt/bidrag-ui-common/commit/2215876d08a7a4f135e03a2730989d8ef6e8c672))
+
 ## [1.8.1](https://github.com/navikt/bidrag-ui-common/compare/v1.8.0...v1.8.1) (2023-07-31)
 
 
