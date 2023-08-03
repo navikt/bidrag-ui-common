@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.3](https://github.com/navikt/bidrag-ui-common/compare/v1.8.2...v1.8.3) (2023-08-03)
+
+
+### Bug Fixes
+
+* OpendocumentUtils add support for optimize print ([6efe88a](https://github.com/navikt/bidrag-ui-common/commit/6efe88a4fd5e4660bb8929356b6736e3a4d1c4bb))
+
 ## [1.8.2](https://github.com/navikt/bidrag-ui-common/compare/v1.8.1...v1.8.2) (2023-07-31)
 
 
