@@ -3,9 +3,11 @@ import { EditDocumentBroadcastMessage, EditDocumentConfig, EditorConfigStorage }
 
 export class OpenDocumentUtils {
     static åpneDokument(journalpostid: string, dokumentreferanse?: string, optimizeForPrint?: boolean) {
-        const opimizeForPrintQuery = optimizeForPrint != null ? `&optimizeForPrint=${optimizeForPrint}` : ""
+        const opimizeForPrintQuery = optimizeForPrint != null ? `&optimizeForPrint=${optimizeForPrint}` : "";
         window.open(
-            `/aapnedokument/${journalpostid}${dokumentreferanse ? "/" + dokumentreferanse : ""}?openInNewWindow=false${opimizeForPrintQuery}`
+            `/aapnedokument/${journalpostid}${
+                dokumentreferanse ? "/" + dokumentreferanse : ""
+            }?openInNewWindow=false${opimizeForPrintQuery}`
         );
     }
 
