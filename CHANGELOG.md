@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.4](https://github.com/navikt/bidrag-ui-common/compare/v1.8.3...v1.8.4) (2023-08-03)
+
+
+### Bug Fixes
+
+* Opendocument with optimizeForPrint option ([75c9187](https://github.com/navikt/bidrag-ui-common/commit/75c9187aecb5f79fc7ec5599c06d99824c5f1241))
+
 ## [1.8.3](https://github.com/navikt/bidrag-ui-common/compare/v1.8.2...v1.8.3) (2023-08-03)
 
 
