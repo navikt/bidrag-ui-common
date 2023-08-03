@@ -1,5 +1,60 @@
 # Changelog
 
+## [1.9.0](https://github.com/navikt/bidrag-ui-common/compare/v1.8.3...v1.9.0) (2023-08-03)
+
+
+### Features
+
+* Add broadcast and document editor types ([9650041](https://github.com/navikt/bidrag-ui-common/commit/965004147293f1a96bb623a4e6bb9c3778eccd90))
+* Add echart ([#104](https://github.com/navikt/bidrag-ui-common/issues/104)) ([dd7626a](https://github.com/navikt/bidrag-ui-common/commit/dd7626a12779a785cdfe1cd79b23f020d3d53826))
+* Add FileUtils for opening files ([7b06a27](https://github.com/navikt/bidrag-ui-common/commit/7b06a27f1173a63fda84e6eb46036355dbe61e5b))
+* Add storybook ([#98](https://github.com/navikt/bidrag-ui-common/issues/98)) ([022388b](https://github.com/navikt/bidrag-ui-common/commit/022388b036acab182ad596ec674818482b02931b))
+* Avansert sok button and refactoring ([155f5c4](https://github.com/navikt/bidrag-ui-common/commit/155f5c42d16ef6106fa80b38574852aeab682578))
+* Errorhandler and logger on axios api and update on document types ([7efcb26](https://github.com/navikt/bidrag-ui-common/commit/7efcb26e02e736d4cdbff300ed5c33642030d00b))
+* Improve error handling and logging ([61af74e](https://github.com/navikt/bidrag-ui-common/commit/61af74ebcf8164936cf9b55f9c64092964182ac8))
+* Option to add app cluster on DefaultRestService ([61f4432](https://github.com/navikt/bidrag-ui-common/commit/61f443271611840aeabe19a3e6ae7504d21cc206))
+* Refactor and add React components ([#46](https://github.com/navikt/bidrag-ui-common/issues/46)) ([4ba0e5f](https://github.com/navikt/bidrag-ui-common/commit/4ba0e5f86f2bd2bab38470d30b41d220c5f375ca))
+
+
+### Bug Fixes
+
+* Add debounce hook ([#96](https://github.com/navikt/bidrag-ui-common/issues/96)) ([f12e2b5](https://github.com/navikt/bidrag-ui-common/commit/f12e2b52e71a43b4a06815344da28941c26339a6))
+* Add editor types ([abea2e9](https://github.com/navikt/bidrag-ui-common/commit/abea2e937eb96777f2a16f5bc287fd0977c41448))
+* Add is logged in method ([b6b9730](https://github.com/navikt/bidrag-ui-common/commit/b6b97308aecb6d973990c16b82f286daebc94434))
+* Add options to DefaultRestService.ts ([b26e802](https://github.com/navikt/bidrag-ui-common/commit/b26e802fc093910ecc799e91f44b99618b42f95d))
+* Add request time to log ([7719c4b](https://github.com/navikt/bidrag-ui-common/commit/7719c4b704ad3c59ac2492065ed91ddbaf4856b7))
+* Add SecureLoggerService.ts and improve errorlog mapping ([bba269e](https://github.com/navikt/bidrag-ui-common/commit/bba269e9573ceae66e5c8c83361e853d8a8e7047))
+* Avansert sok styling changes ([6f041bd](https://github.com/navikt/bidrag-ui-common/commit/6f041bd758005816bfef1fb63a87515786db1e6d))
+* Better logging with secure log ([#23](https://github.com/navikt/bidrag-ui-common/issues/23)) ([85d48da](https://github.com/navikt/bidrag-ui-common/commit/85d48da4fca5cf3bf7550892ada6a5431555c0a4))
+* Bidrag grid og sak header ([#88](https://github.com/navikt/bidrag-ui-common/issues/88)) ([ef3fb4b](https://github.com/navikt/bidrag-ui-common/commit/ef3fb4b704e55584f281baa271bed1ccd5ce9909))
+* Bisys link and styling fix ([6bb3602](https://github.com/navikt/bidrag-ui-common/commit/6bb3602c952223d153aff0c2a06431c295820b0e))
+* BisysLink sessionstate ([2db7957](https://github.com/navikt/bidrag-ui-common/commit/2db7957e8af311343163e40ccdfe082c0a142d80))
+* Build support both cjs and esm ([fd99afb](https://github.com/navikt/bidrag-ui-common/commit/fd99afba034a7a2548c3a6269baf6e651be0fc3e))
+* Change correlationId to only use appName ([e0354a7](https://github.com/navikt/bidrag-ui-common/commit/e0354a7884b4f7ab0c8d67a70755faa7b3711c6b))
+* export declarations of react components ([d4f70d9](https://github.com/navikt/bidrag-ui-common/commit/d4f70d9222244de247ee47e9d016930252c9a075))
+* Export SecureLoggerService.ts from index file ([9c03469](https://github.com/navikt/bidrag-ui-common/commit/9c03469cff2394f5e7fbdaa4006f4788325e7eb4))
+* first release ([cfc2583](https://github.com/navikt/bidrag-ui-common/commit/cfc25831baaf3290f6c64b5762b4d1d2ea7c778c))
+* Fix lint errors ([b716972](https://github.com/navikt/bidrag-ui-common/commit/b7169723a31adf737777479c2b106d13a330b4c2))
+* fix publish script ([ce73860](https://github.com/navikt/bidrag-ui-common/commit/ce73860c66aa638caf5e11206c2b5d50bcf0f778))
+* Legger til en hook for axios rest tjenester ([#34](https://github.com/navikt/bidrag-ui-common/issues/34)) ([c79665f](https://github.com/navikt/bidrag-ui-common/commit/c79665fbd74c0e262a516ff51e9d6f7bba901289))
+* Lint fix ([5adcb2d](https://github.com/navikt/bidrag-ui-common/commit/5adcb2d9f1a46d1e1cfcc940b0741278943e253c))
+* Lint fix ([3c954ff](https://github.com/navikt/bidrag-ui-common/commit/3c954ff099e4bb7e985a6594d745452e0f7c9c77))
+* Log failed to fetch as warning instead of error ([e7bb9bf](https://github.com/navikt/bidrag-ui-common/commit/e7bb9bf0c8fc246b66a6f2103117e5f4bc5130ab))
+* LoggerService add correlationId ([146f8b2](https://github.com/navikt/bidrag-ui-common/commit/146f8b2092981a143f55554f8d403b9ac292a1f3))
+* Opendocument with optimizeForPrint option ([52d9800](https://github.com/navikt/bidrag-ui-common/commit/52d9800968f70c8ba6c007d1543895636d3cc24b))
+* OpenDocumentUtils - Open document in same window ([48160ed](https://github.com/navikt/bidrag-ui-common/commit/48160ed04be8ab3fef097a286bfa7a10e61f98ae))
+* OpendocumentUtils add support for optimize print ([6efe88a](https://github.com/navikt/bidrag-ui-common/commit/6efe88a4fd5e4660bb8929356b6736e3a4d1c4bb))
+* Refactor ([9322297](https://github.com/navikt/bidrag-ui-common/commit/932229725e045a324d5f7d365c198d10e596f26d))
+* Remove dayjs, edit date-utils ([#84](https://github.com/navikt/bidrag-ui-common/issues/84)) ([584a67e](https://github.com/navikt/bidrag-ui-common/commit/584a67eb7244817944536f3068e35387c5f1346c))
+* Rename avansert sok to personsok ([#93](https://github.com/navikt/bidrag-ui-common/issues/93)) ([f9a573b](https://github.com/navikt/bidrag-ui-common/commit/f9a573b84ffc965e6fc380bf24ae5aef0d795c51))
+* SakHeader export ([aa580a5](https://github.com/navikt/bidrag-ui-common/commit/aa580a5dc6e32e2268c3365db8fab16f7fabcbea))
+* Sakheader rolle sortering ([86efe56](https://github.com/navikt/bidrag-ui-common/commit/86efe56cfbf923d0d258025131f0ba2ee3a25701))
+* Sakheader roller gap ([2215876](https://github.com/navikt/bidrag-ui-common/commit/2215876d08a7a4f135e03a2730989d8ef6e8c672))
+* Sakheader styling fix ([9fc0d02](https://github.com/navikt/bidrag-ui-common/commit/9fc0d021d607eefbfcc97471ec612a86519fff7c))
+* Update error message format ([3b4554f](https://github.com/navikt/bidrag-ui-common/commit/3b4554ff9fb2c48ad8e32303717f9443b2171718))
+* Update sakheader styling ([d074dba](https://github.com/navikt/bidrag-ui-common/commit/d074dbadc888eafdf7fcb96f6994f51906c6aa1a))
+* Upgrade dependencies and remove content-type from useApi ([#110](https://github.com/navikt/bidrag-ui-common/issues/110)) ([de86154](https://github.com/navikt/bidrag-ui-common/commit/de86154a1b7c4ed3df0d1463a3a4d355cece2dea))
+
 ## [1.8.3](https://github.com/navikt/bidrag-ui-common/compare/v1.8.2...v1.8.3) (2023-08-03)
 
 
