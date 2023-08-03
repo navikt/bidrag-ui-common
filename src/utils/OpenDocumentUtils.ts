@@ -2,9 +2,10 @@ import { LoggerService } from "../logging";
 import { EditDocumentBroadcastMessage, EditDocumentConfig, EditorConfigStorage } from "../types";
 
 export class OpenDocumentUtils {
-    static åpneDokument(journalpostid: string, dokumentreferanse?: string) {
+    static åpneDokument(journalpostid: string, dokumentreferanse?: string, optimizeForPrint?: boolean) {
+        const opimizeForPrintQuery = optimizeForPrint != null ? `&optimizeForPrint=${optimizeForPrint}` : ""
         window.open(
-            `/aapnedokument/${journalpostid}${dokumentreferanse ? "/" + dokumentreferanse : ""}?openInNewWindow=false`
+            `/aapnedokument/${journalpostid}${dokumentreferanse ? "/" + dokumentreferanse : ""}?openInNewWindow=false${opimizeForPrintQuery}`
         );
     }
 
