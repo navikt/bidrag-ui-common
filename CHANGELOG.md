@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.5](https://github.com/navikt/bidrag-ui-common/compare/v1.8.4...v1.8.5) (2023-08-04)
+
+
+### Bug Fixes
+
+* Sakheader grid styling ([e1c862b](https://github.com/navikt/bidrag-ui-common/commit/e1c862b02364cd0c2264d16632264832da496d05))
+
 ## [1.8.4](https://github.com/navikt/bidrag-ui-common/compare/v1.8.3...v1.8.4) (2023-08-03)
 
 
