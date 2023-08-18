@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.6](https://github.com/navikt/bidrag-ui-common/compare/v1.8.5...v1.8.6) (2023-08-18)
+
+
+### Bug Fixes
+
+* Support for syntetisk app name([#120](https://github.com/navikt/bidrag-ui-common/issues/120)) ([52bb824](https://github.com/navikt/bidrag-ui-common/commit/52bb82492ee083199d1f5f01361e6663f863bb0a))
+
 ## [1.8.5](https://github.com/navikt/bidrag-ui-common/compare/v1.8.4...v1.8.5) (2023-08-04)
 
 
