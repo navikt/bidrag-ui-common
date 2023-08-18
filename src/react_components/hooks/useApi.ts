@@ -33,7 +33,7 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
     }
     api.instance.interceptors.request.use(
         async (config: InternalAxiosRequestConfig) => {
-            const secHeaders = await createDefaultHeaders(app, cluster);
+            const secHeaders = await createDefaultHeaders(app, cluster, config.baseURL);
             Object.assign(config.headers, secHeaders);
 
             return config;
@@ -57,8 +57,9 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 
     return api;
 }
-const createDefaultHeaders = async (app: string, cluster: string) => {
-    const idToken = await SecuritySessionUtils.getSecurityTokenForApp(app, cluster);
+const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: string) => {
+    const appName = baseUrl?.includes("syntetisk") ? app + "-syntetisk" : app;
+    const idToken = await SecuritySessionUtils.getSecurityTokenForApp(appName, cluster);
     const correlationId = SecuritySessionUtils.getCorrelationId();
     return {
         Authorization: "Bearer " + idToken,

@@ -45,7 +45,7 @@ export class SecuritySessionUtils {
         };
     }
 
-    static async hentSaksbehandlerId() {
+    static async hentSaksbehandlerId(): Promise<string | undefined> {
         const tokenReq = await fetch("/me", { method: "GET" });
         return (await tokenReq.json()).navIdent;
     }
