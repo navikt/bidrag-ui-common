@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.7](https://github.com/navikt/bidrag-ui-common/compare/v1.8.6...v1.8.7) (2023-08-18)
+
+
+### Bug Fixes
+
+* Add RedirectUtils ([#122](https://github.com/navikt/bidrag-ui-common/issues/122)) ([d5e43eb](https://github.com/navikt/bidrag-ui-common/commit/d5e43ebd1e31871a164b112a992f41d9c454ce55))
+
 ## [1.8.6](https://github.com/navikt/bidrag-ui-common/compare/v1.8.5...v1.8.6) (2023-08-18)
 
 
