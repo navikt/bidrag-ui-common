@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.8](https://github.com/navikt/bidrag-ui-common/compare/v1.8.7...v1.8.8) (2023-08-24)
+
+
+### Bug Fixes
+
+* SakHeader rekkefølge på BM og BP ([#125](https://github.com/navikt/bidrag-ui-common/issues/125)) ([9e7d0cf](https://github.com/navikt/bidrag-ui-common/commit/9e7d0cf1b200d1848e3edc1d854328a6c5744821))
+
 ## [1.8.7](https://github.com/navikt/bidrag-ui-common/compare/v1.8.6...v1.8.7) (2023-08-18)
 
 
