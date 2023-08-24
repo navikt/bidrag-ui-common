@@ -24,11 +24,14 @@ export default function SakHeader({ saksnummer, roller, skjermbilde }: ISakHeade
             </div>
             <BidragGrid
                 className={
-                    "max-w-5xl grid-flow-row grid-rows-none md:grid-flow-col sm:grid-rows-4 md:grid-rows-4 lg:grid-rows-3 xl:grid-rows-3 2xl:grid-rows-2 gap-1 grid-cols-[max-content]"
+                    "max-w-5xl grid-flow-row grid-rows-none md:grid-flow-col sm:grid-rows-4 md:grid-rows-4 lg:grid-rows-3 xl:grid-rows-3 2xl:grid-rows-2 !gap-1 grid-cols-[max-content]"
                 }
             >
                 {roller
                     ?.filter((r) => r.rolleType != RolleType.BA && r.rolleType != RolleType.BARN)
+                    ?.sort((a, b) =>
+                        a.rolleType == RolleType.BM || a.rolleType == RolleType.BIDRAGS_MOTTAKER ? 1 : -1
+                    )
                     .map((rolle, i) => (
                         <BidragCell key={rolle.ident + i} xs={12} md={7} lg={7}>
                             <RolleDetaljer rolle={rolle} withBorder={false} />
