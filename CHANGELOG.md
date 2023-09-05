@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.9](https://github.com/navikt/bidrag-ui-common/compare/v1.8.8...v1.8.9) (2023-09-05)
+
+
+### Bug Fixes
+
+* Rolletyper enum ([#127](https://github.com/navikt/bidrag-ui-common/issues/127)) ([2c5195c](https://github.com/navikt/bidrag-ui-common/commit/2c5195cb71258980cc67c9f6f9442ca1a106726b))
+
 ## [1.8.8](https://github.com/navikt/bidrag-ui-common/compare/v1.8.7...v1.8.8) (2023-08-24)
 
 
