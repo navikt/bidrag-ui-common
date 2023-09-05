@@ -7,6 +7,11 @@ env:
   NPM_TOKEN: ${{ secrets.READER_TOKEN }}
 jobs:
   release-please:
+    permissions:
+      contents: "write"
+      id-token: "write"
+      packages: "write"
+      pull-requests: "write"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

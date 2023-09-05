@@ -7,16 +7,24 @@ export const ROLE_TAGS = {
     [RolleType.RM]: "alt3",
     [RolleType.FR]: "error",
 
+    [RolleType.BIDRAGSMOTTAKER]: "success",
+    [RolleType.BIDRAGSPLIKTIG]: "warning",
+    [RolleType.BARN]: "alt1",
+    [RolleType.REELMOTTAKER]: "alt3",
+    [RolleType.FEILREGISTRERT]: "error",
+
     [RolleType.BIDRAGS_MOTTAKER]: "success",
     [RolleType.BIDRAGS_PLIKTIG]: "warning",
-    [RolleType.BARN]: "alt1",
     [RolleType.REELL_MOTTAKER]: "alt3",
-    [RolleType.FEILREGISTRERT]: "error",
 } as const;
 export const ROLE_FORKORTELSER = {
+    [RolleType.BIDRAGSMOTTAKER]: "BM",
+    [RolleType.BIDRAGSPLIKTIG]: "BP",
+    [RolleType.BARN]: "BA",
+    [RolleType.REELMOTTAKER]: "RM",
+    [RolleType.FEILREGISTRERT]: "FR",
+
     [RolleType.BIDRAGS_MOTTAKER]: "BM",
     [RolleType.BIDRAGS_PLIKTIG]: "BP",
-    [RolleType.BARN]: "BA",
     [RolleType.REELL_MOTTAKER]: "RM",
-    [RolleType.FEILREGISTRERT]: "FR",
 } as const;

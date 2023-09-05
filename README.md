@@ -35,7 +35,7 @@ Release please vil opprette en PR som oppdaterer CHANGELOG.md filen med commit m
 # Bruke React componenter
 ### Styling
 React componentene bruker tailwindcss for styling. Når du skal bruke React componentene må derfor også en felles css fil fra bidrag-ui-common importeres for at stylingen skal fungere.
-Det kan gjøres ved å legge inn følgende import
+Det kan gjøres ved å legge inn følgende importd
 
 
 ```React
