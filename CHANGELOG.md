@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.10](https://github.com/navikt/bidrag-ui-common/compare/v1.8.9...v1.8.10) (2023-09-13)
+
+
+### Bug Fixes
+
+* RolleTyper typescript warnings ([#129](https://github.com/navikt/bidrag-ui-common/issues/129)) ([c16aa90](https://github.com/navikt/bidrag-ui-common/commit/c16aa90910d7b7f81ffc9f475ca328e6242a46f0))
+
 ## [1.8.9](https://github.com/navikt/bidrag-ui-common/compare/v1.8.8...v1.8.9) (2023-09-05)
 
 
