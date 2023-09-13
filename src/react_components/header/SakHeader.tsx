@@ -1,7 +1,7 @@
 import { BodyShort, CopyButton } from "@navikt/ds-react";
 
 import { IRolleDetaljer } from "../../types/roller/IRolleDetaljer";
-import { RolleType } from "../../types/roller/RolleType";
+import { RolleTypeAbbreviation, RolleTypeDeprecated, RolleTypeFullName } from "../../types/roller/RolleType";
 import BidragCell from "../grid/BidragCell";
 import BidragGrid from "../grid/BidragGrid";
 import RolleDetaljer from "../roller/RolleDetaljer";
@@ -10,11 +10,13 @@ interface ISkjermbildeDetaljer {
     navn: string;
     referanse: string | number;
 }
+
 interface ISakHeaderProps {
     saksnummer: string;
     roller: IRolleDetaljer[];
     skjermbilde?: ISkjermbildeDetaljer;
 }
+
 export default function SakHeader({ saksnummer, roller, skjermbilde }: ISakHeaderProps) {
     return (
         <div className="bg-[var(--a-gray-50)] border-[var(--a-border-divider)] border-solid border-b w-full border-0">
@@ -28,9 +30,11 @@ export default function SakHeader({ saksnummer, roller, skjermbilde }: ISakHeade
                 }
             >
                 {roller
-                    ?.filter((r) => r.rolleType != RolleType.BA && r.rolleType != RolleType.BARN)
+                    ?.filter((r) => r.rolleType != RolleTypeAbbreviation.BA && r.rolleType != RolleTypeFullName.BARN)
                     ?.sort((a, b) =>
-                        a.rolleType == RolleType.BM || a.rolleType == RolleType.BIDRAGS_MOTTAKER ? 1 : -1
+                        a.rolleType == RolleTypeAbbreviation.BM || a.rolleType == RolleTypeDeprecated.BIDRAGS_MOTTAKER
+                            ? 1
+                            : -1
                     )
                     .map((rolle, i) => (
                         <BidragCell key={rolle.ident + i} xs={12} md={7} lg={7}>
@@ -38,7 +42,7 @@ export default function SakHeader({ saksnummer, roller, skjermbilde }: ISakHeade
                         </BidragCell>
                     ))}
                 {roller
-                    ?.filter((r) => r.rolleType == RolleType.BA || r.rolleType == RolleType.BARN)
+                    ?.filter((r) => r.rolleType == RolleTypeAbbreviation.BA || r.rolleType == RolleTypeFullName.BARN)
                     .map((rolle, i) => (
                         <BidragCell key={rolle.ident + i} xs={12} md={7} lg={7}>
                             <RolleDetaljer rolle={rolle} withBorder={false} />
