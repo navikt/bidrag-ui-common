@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import SakHeader from "../react_components/header/SakHeader";
-import { RolleType } from "../types";
+import { RolleTypeDeprecated, RolleTypeFullName } from "../types";
 
 const meta = {
     title: "Example/SakHeader",
@@ -22,32 +22,32 @@ export const Forskudd: Story = {
         saksnummer: "1234",
         roller: [
             {
-                rolleType: RolleType.BIDRAGS_PLIKTIG,
+                rolleType: RolleTypeDeprecated.BIDRAGS_PLIKTIG,
                 navn: "Haugen, Jacob Theodor",
                 ident: "31459900198",
             },
             {
-                rolleType: RolleType.BIDRAGS_MOTTAKER,
+                rolleType: RolleTypeDeprecated.BIDRAGS_MOTTAKER,
                 navn: "Johnsen, Iben Iben",
                 ident: "21470262629",
             },
             {
-                rolleType: RolleType.BARN,
+                rolleType: RolleTypeFullName.BARN,
                 navn: "Johnsen, Sophia Frida",
                 ident: "03522150877",
             },
             {
-                rolleType: RolleType.BARN,
+                rolleType: RolleTypeFullName.BARN,
                 navn: "Johnsen, Leah Olivia",
                 ident: "07512150855",
             },
             {
-                rolleType: RolleType.BARN,
+                rolleType: RolleTypeFullName.BARN,
                 navn: "Johnsen, Leah Olivia",
                 ident: "03141170858",
             },
             {
-                rolleType: RolleType.BARN,
+                rolleType: RolleTypeFullName.BARN,
                 navn: "Johnsen, Sofia",
                 ident: "05541133853",
             },
