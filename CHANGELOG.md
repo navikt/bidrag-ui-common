@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.11](https://github.com/navikt/bidrag-ui-common/compare/v1.8.10...v1.8.11) (2023-09-18)
+
+
+### Bug Fixes
+
+* Oppdater open document utils ([cd93525](https://github.com/navikt/bidrag-ui-common/commit/cd935254c790a115115e8f0ff828782fa2b4db34))
+
 ## [1.8.10](https://github.com/navikt/bidrag-ui-common/compare/v1.8.9...v1.8.10) (2023-09-13)
 
 
