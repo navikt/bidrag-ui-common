@@ -2,17 +2,36 @@ import { LoggerService } from "../logging";
 import { EditDocumentBroadcastMessage, EditDocumentConfig, EditorConfigStorage } from "../types";
 
 export class OpenDocumentUtils {
-    static åpneDokument(journalpostid: string, dokumentreferanse?: string, optimizeForPrint?: boolean) {
-        const opimizeForPrintQuery = optimizeForPrint != null ? `&optimizeForPrint=${optimizeForPrint}` : "";
+    static åpneDokument(
+        journalpostid: string,
+        dokumentreferanse?: string,
+        optimizeForPrint?: boolean,
+        openInNewWindow = false
+    ) {
         window.open(
-            `/aapnedokument/${journalpostid}${
-                dokumentreferanse ? "/" + dokumentreferanse : ""
-            }?openInNewWindow=false${opimizeForPrintQuery}`
+            OpenDocumentUtils.getÅpneDokumentLenke(journalpostid, dokumentreferanse, optimizeForPrint, openInNewWindow)
         );
     }
 
-    static åpneDokumenter(dokumenter: string[]) {
-        window.open(`/aapnedokument?${dokumenter.map((d) => `dokument=${d}`).join("&")}&openInNewWindow=false`);
+    static getÅpneDokumentLenke(
+        journalpostid: string,
+        dokumentreferanse?: string,
+        optimizeForPrint?: boolean,
+        openInNewWindow = false
+    ): string {
+        const opimizeForPrintQuery = optimizeForPrint != null ? `&optimizeForPrint=${optimizeForPrint}` : "";
+        const openInNewWindowQuery = `openInNewWindow=${openInNewWindow ? "true" : "false"}`;
+        const dokumentReferanseParam = dokumentreferanse ? "/" + dokumentreferanse : "";
+        return `/aapnedokument/${journalpostid}${dokumentReferanseParam}?${openInNewWindowQuery}${opimizeForPrintQuery}`;
+    }
+
+    static åpneDokumenter(dokumenter: string[], openInNewWindow = false) {
+        window.open(OpenDocumentUtils.getÅpneDokumenterLenke(dokumenter, openInNewWindow));
+    }
+
+    static getÅpneDokumenterLenke(dokumenter: string[], openInNewWindow = false) {
+        const openInNewWindowQuery = `openInNewWindow=${openInNewWindow ? "true" : "false"}`;
+        return `/aapnedokument?${dokumenter.map((d) => `dokument=${d}`).join("&")}&${openInNewWindowQuery}`;
     }
 
     static openDocumentEditorWithDocuments(dokumenter: string[], editDocumentConfig?: EditDocumentConfig, id?: string) {
