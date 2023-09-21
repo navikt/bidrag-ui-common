@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.12](https://github.com/navikt/bidrag-ui-common/compare/v1.8.11...v1.8.12) (2023-09-21)
+
+
+### Bug Fixes
+
+* Add metric types ([bd2ea9d](https://github.com/navikt/bidrag-ui-common/commit/bd2ea9df96e75296412869b9cb83d26293b6c0d5))
+
 ## [1.8.11](https://github.com/navikt/bidrag-ui-common/compare/v1.8.10...v1.8.11) (2023-09-18)
 
 
