@@ -1,3 +1,4 @@
+export { default as AutoSuggest } from "./autosuggest/AutoSuggest";
 export { default as BisysLink } from "./bisys/BisysLink";
 export { default as BidragCell } from "./grid/BidragCell";
 export { default as BidragContainer } from "./grid/BidragContainer";
