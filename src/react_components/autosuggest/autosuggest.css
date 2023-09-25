@@ -2,6 +2,19 @@
   width: inherit;
 }
 
+.autosuggest-input {
+    position: relative;
+    display: inline-block;
+}
+.autosuggest-input::before {
+    position: absolute;
+    content: " \2304";
+    top: 11px;
+    right: -1px;
+    height: 25px;
+    width: 25px;
+}
+
 .autosuggest .autosuggest-input {
   width: inherit;
   display: flex;
@@ -15,24 +28,6 @@
   width: inherit;
 }
 
-.autosuggest .autosuggest-input .chevron--ned {
-  align-self: center;
-  position: relative;
-  left: -5px;
-  margin-left: -20px;
-  opacity: 0.5;
-  top: -10px;
-}
-
-.autosuggest .autosuggest-input.has-label .chevron--ned {
-  top: unset;
-}
-
-
-.autosuggest .autosuggest-input.has-description .chevron--ned {
-  top: 10px;
-}
-  
 
 .autosuggest ul {
   list-style: none;

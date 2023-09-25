@@ -1,17 +1,13 @@
-import { ChevronDownIcon } from "@navikt/aksel-icons";
 import { TextField } from "@navikt/ds-react";
 import React, { ChangeEvent, useRef, useState } from "react";
 import { useEffect } from "react";
 import { ReactElement } from "react";
 
+import { removeNonPrintableCharachters } from "../../utils/StringUtils";
+
 export function capitalizeFirstLetter(s: string) {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
-}
-
-export function removeNonPrintableCharachters(s: string) {
-    // eslint-disable-next-line no-control-regex
-    return s?.replace(/[\x00-\x1F]/g, "");
 }
 
 export function convertStringToNumber(value: string | number): number {
@@ -186,12 +182,12 @@ export default function AutoSuggest(props: AutoSuggestProps) {
                     onFocus={onFocus}
                     onKeyDown={onKeyDown}
                     style={{ marginBottom: props.error ? "0px" : "30px" }}
-                    className="w-full"
+                    className="w-full autosuggest_input"
+                    autoComplete="off"
                     error={props.error}
                     id={"autogsuggest_" + props.label}
                     value={userInput}
                 />
-                <ChevronDownIcon className={"chevron--ned"} />
             </div>
             <SelectableOptions
                 avoidBlur={avoidBlur}
