@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/navikt/bidrag-ui-common/compare/v1.8.12...v1.9.0) (2023-09-25)
+
+
+### Features
+
+* Ny autosuggest komponent ([274e269](https://github.com/navikt/bidrag-ui-common/commit/274e269b88c8dc37a09259d1ddaee7a4d7a14174))
+
 ## [1.8.12](https://github.com/navikt/bidrag-ui-common/compare/v1.8.11...v1.8.12) (2023-09-21)
 
 
