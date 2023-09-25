@@ -1,0 +1,74 @@
+.autosuggest {
+  width: inherit;
+}
+
+.autosuggest-input {
+    position: relative;
+    display: inline-block;
+}
+.autosuggest-input::before {
+    position: absolute;
+    content: " \2304";
+    top: 11px;
+    right: -1px;
+    height: 25px;
+    width: 25px;
+}
+
+.autosuggest .autosuggest-input {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: -16px;
+}
+
+.autosuggest .autosuggest-input input {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: inherit;
+}
+
+
+.autosuggest ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 8px;
+  background: white;
+  z-index: 50;
+  max-height: 500px;
+  overflow: hidden;
+  overflow-y: auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.autosuggest .options li {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: inherit;
+  padding: 0.5em;
+  border-bottom: lightgrey 1px solid;
+}
+
+.autosuggest .options li:hover {
+  padding: 0.5em;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: var(--a-surface-active);
+  color: black;
+}
+
+.autosuggest .options li.option-active {
+  font-weight: bold;
+  background-color: var(--a-surface-active);
+  color: black;
+}
+
+.autosuggest .options li.option-no-content:hover {
+  cursor: initial;
+  font-weight: initial;
+}
