@@ -6,7 +6,7 @@
     position: relative;
     display: inline-block;
 }
-.autosuggest-input::before {
+.autosuggest-input:not(.empty-list)::before {
   position: absolute;
   content: " \2039";
   transform: rotate(270deg) scale(1.8);

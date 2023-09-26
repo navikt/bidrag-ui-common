@@ -161,13 +161,12 @@ export default function AutoSuggest(props: AutoSuggestProps) {
         }
     }
 
+    const className = `${props.label ? "has-label" : ""} ${props.description ? "has-description" : ""} ${
+        props.options.length == 0 ? "empty-list" : ""
+    }`;
     return (
         <div className={"autosuggest relative"} onBlur={onBlur}>
-            <div
-                className={`autosuggest-input ${props.label ? "has-label" : ""} ${
-                    props.description ? "has-description" : ""
-                }`}
-            >
+            <div className={`autosuggest-input ${className}`}>
                 <TextField
                     size="small"
                     label={props.label}
