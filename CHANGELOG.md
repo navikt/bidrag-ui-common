@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.2](https://github.com/navikt/bidrag-ui-common/compare/v1.9.1...v1.9.2) (2023-09-26)
+
+
+### Bug Fixes
+
+* Create new release ([0cefdd0](https://github.com/navikt/bidrag-ui-common/commit/0cefdd0bb3c4d41e1ece7f24b0babc9d7f873aba))
+
 ## [1.9.1](https://github.com/navikt/bidrag-ui-common/compare/v1.9.0...v1.9.1) (2023-09-26)
 
 
