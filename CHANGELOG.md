@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.3](https://github.com/navikt/bidrag-ui-common/compare/v1.9.2...v1.9.3) (2023-09-26)
+
+
+### Bug Fixes
+
+* Autosuggest styling no options ([#138](https://github.com/navikt/bidrag-ui-common/issues/138)) ([67eff94](https://github.com/navikt/bidrag-ui-common/commit/67eff945d2df9cd8312d3d1662ee66a5bff88b11))
+
 ## [1.9.2](https://github.com/navikt/bidrag-ui-common/compare/v1.9.1...v1.9.2) (2023-09-26)
 
 
