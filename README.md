@@ -41,3 +41,4 @@ Det kan gjøres ved å legge inn følgende importd
 ```React
 import "@navikt/bidrag-ui-common/styles/index.css";
 ```
+
