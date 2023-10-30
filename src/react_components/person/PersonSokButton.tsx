@@ -65,7 +65,7 @@ export default function PersonSokButton({
                     }}
                 >
                     <Modal.Footer>
-                        <Button size="small" onClick={closeModal} style={{ marginTop: "1rem" }}>
+                        <Button size="medium" onClick={closeModal}>
                             Avbryt
                         </Button>
                     </Modal.Footer>
