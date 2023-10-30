@@ -31,7 +31,7 @@ export abstract class AbstractLoggerService {
         }
     }
 
-    protected static log(logInfo: LogInfo): Promise<LogResponse> {
+    protected static log(): Promise<LogResponse> {
         throw new Error("Not implemented");
     }
 
