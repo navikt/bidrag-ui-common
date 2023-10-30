@@ -11,7 +11,7 @@ export class SecuritySessionUtils {
     static async isLoggedIn(): Promise<boolean> {
         return fetch("/me", { method: "GET" })
             .then((res) => res.status == 200)
-            .catch((ex) => false);
+            .catch(() => false);
     }
 
     static async getSecurityTokenForApp(app: string, cluster?: string) {

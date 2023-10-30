@@ -1,4 +1,4 @@
-import { Button, ButtonProps, Heading, Modal } from "@navikt/ds-react";
+import { Button, ButtonProps, Modal } from "@navikt/ds-react";
 import { ReactElement, useRef, useState } from "react";
 
 import { BroadcastError, PersonBroadcastMessage } from "../../types/broadcast";
@@ -52,17 +52,23 @@ export default function PersonSokButton({
                 <Modal
                     open
                     aria-label={"personsok"}
-                    onClose={() => setModalOpen(false)}
-                    shouldCloseOnEsc={false}
-                    shouldCloseOnOverlayClick={false}
-                    closeButton={false}
+                    onClose={(e) => {
+                        setModalOpen(false);
+                    }}
+                    onCancel={(e) => {
+                        e.preventDefault();
+                    }}
+                    closeOnBackdropClick={false}
+                    header={{
+                        heading: "Venter på resultat fra personsøk ...",
+                        closeButton: false,
+                    }}
                 >
-                    <Modal.Content>
-                        <Heading size="medium">Venter på resultat fra personsøk ...</Heading>
-                        <Button onClick={closeModal} style={{ marginTop: "1rem" }}>
+                    <Modal.Footer>
+                        <Button size="medium" onClick={closeModal}>
                             Avbryt
                         </Button>
-                    </Modal.Content>
+                    </Modal.Footer>
                 </Modal>
             )}
             <div className={"pdlSearchButton whitespace-nowrap self-center h-full"}>
