@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/navikt/bidrag-ui-common/compare/v1.9.4...v1.10.0) (2023-10-30)
+
+
+### Features
+
+* Upgrade ds-react ([#143](https://github.com/navikt/bidrag-ui-common/issues/143)) ([8f79e22](https://github.com/navikt/bidrag-ui-common/commit/8f79e22c2f7ea48da3654f2981c0a7a5687b5d31))
+
 ## [1.9.4](https://github.com/navikt/bidrag-ui-common/compare/v1.9.3...v1.9.4) (2023-10-23)
 
 
