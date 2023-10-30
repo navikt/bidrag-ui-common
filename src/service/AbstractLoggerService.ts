@@ -31,7 +31,8 @@ export abstract class AbstractLoggerService {
         }
     }
 
-    protected static log(): Promise<LogResponse> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    protected static log(_logInfo: LogInfo): Promise<LogResponse> {
         throw new Error("Not implemented");
     }
 
