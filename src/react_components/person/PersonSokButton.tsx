@@ -1,5 +1,5 @@
 import { Button, ButtonProps, Modal } from "@navikt/ds-react";
-import { ReactElement, useRef, useState } from "react";
+import { ReactNode, useRef } from "react";
 
 import { BroadcastError, PersonBroadcastMessage } from "../../types/broadcast";
 
@@ -11,13 +11,14 @@ export default function PersonSokButton({
     onResult,
     onError,
     ...buttonProps
-}: PersonSokProps & ButtonProps): ReactElement {
-    const [modalOpen, setModalOpen] = useState<boolean>(false);
+}: PersonSokProps & Exclude<ButtonProps, "children">): ReactNode {
+    const ref = useRef<HTMLDialogElement>(null);
+
     const closeModal = () => {
         searchCanceled.current = true;
-        setModalOpen(false);
+        ref.current?.close();
     };
-    const openModal = () => setModalOpen(true);
+    const openModal = () => ref.current?.showModal();
     const searchCanceled = useRef<boolean>(false);
 
     function openPersonSearch() {
@@ -48,29 +49,25 @@ export default function PersonSokButton({
     }
     return (
         <>
-            {modalOpen && (
-                <Modal
-                    open
-                    aria-label={"personsok"}
-                    onClose={(e) => {
-                        setModalOpen(false);
-                    }}
-                    onCancel={(e) => {
-                        e.preventDefault();
-                    }}
-                    closeOnBackdropClick={false}
-                    header={{
-                        heading: "Venter på resultat fra personsøk ...",
-                        closeButton: false,
-                    }}
-                >
-                    <Modal.Footer>
-                        <Button size="medium" onClick={closeModal}>
-                            Avbryt
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
-            )}
+            <Modal
+                ref={ref}
+                aria-label={"personsok"}
+                onClose={closeModal}
+                onCancel={(e) => {
+                    e.preventDefault();
+                }}
+                closeOnBackdropClick={false}
+                header={{
+                    heading: "Venter på resultat fra personsøk ...",
+                    closeButton: false,
+                }}
+            >
+                <Modal.Footer>
+                    <Button size="medium" type={"button"} title="Avbryt" onClick={closeModal}>
+                        Avbryt
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <div className={"pdlSearchButton whitespace-nowrap self-center h-full"}>
                 <Button
                     {...buttonProps}
