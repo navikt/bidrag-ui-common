@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/navikt/bidrag-ui-common/compare/v1.10.0...v1.10.1) (2023-10-31)
+
+
+### Bug Fixes
+
+* Upgrade axios and add useMutationState hook ([#145](https://github.com/navikt/bidrag-ui-common/issues/145)) ([fe08b28](https://github.com/navikt/bidrag-ui-common/commit/fe08b28bf7324559a08b7d0fa6b90ccf07bb7d7c))
+
 ## [1.10.0](https://github.com/navikt/bidrag-ui-common/compare/v1.9.4...v1.10.0) (2023-10-30)
 
 
