@@ -47,7 +47,7 @@
     "@babel/preset-typescript": "^7.23.2",
     "@navikt/ds-react": "5.8.0",
     "@navikt/ds-react-internal": "3.4.3",
-        "@storybook/addon-essentials": "^7.5.2",
+    "@storybook/addon-essentials": "^7.5.2",
     "@storybook/addon-interactions": "^7.5.2",
     "@storybook/addon-links": "^7.5.2",
     "@storybook/addon-styling": "^2.0.0",
@@ -92,7 +92,7 @@
   "module": "./esm/index.js",
   "typings": "./esm/index.d.ts",
   "release": {
-    "branches": [ 
+    "branches": [
       "main"
     ]
   }
