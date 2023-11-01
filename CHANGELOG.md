@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/navikt/bidrag-ui-common/compare/v1.10.1...v1.10.2) (2023-11-01)
+
+
+### Bug Fixes
+
+* Remove DS css dependency ([#147](https://github.com/navikt/bidrag-ui-common/issues/147)) ([6a0d258](https://github.com/navikt/bidrag-ui-common/commit/6a0d2581a7fe359c05c58ed5df01ce147d872870))
+
 ## [1.10.1](https://github.com/navikt/bidrag-ui-common/compare/v1.10.0...v1.10.1) (2023-10-31)
 
 
