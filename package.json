@@ -92,7 +92,7 @@
   "module": "./esm/index.js",
   "typings": "./esm/index.d.ts",
   "release": {
-    "branches": [
+    "branches": [ 
       "main"
     ]
   }
