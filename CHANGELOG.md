@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.3](https://github.com/navikt/bidrag-ui-common/compare/v1.10.2...v1.10.3) (2023-11-15)
+
+
+### Bug Fixes
+
+* Rename and export hook useMutationState ([#154](https://github.com/navikt/bidrag-ui-common/issues/154)) ([c6020c7](https://github.com/navikt/bidrag-ui-common/commit/c6020c71d88ae181214535f4dd58129efc0645ea))
+
 ## [1.10.2](https://github.com/navikt/bidrag-ui-common/compare/v1.10.1...v1.10.2) (2023-11-01)
 
 
