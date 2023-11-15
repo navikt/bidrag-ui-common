@@ -1,7 +1,7 @@
 import { MutationStatus, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
-export default function useMutationState(compareToKey: string | string[]) {
+export function useRQMutationState(compareToKey: string | string[]) {
     const [saveState, setSaveState] = useState<MutationStatus | undefined>();
     const queryClient = useQueryClient();
 
