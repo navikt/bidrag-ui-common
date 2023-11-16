@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.4](https://github.com/navikt/bidrag-ui-common/compare/v1.10.3...v1.10.4) (2023-11-16)
+
+
+### Bug Fixes
+
+* Bugfix useRQMutationState and add SaveStatusIndicator component ([#156](https://github.com/navikt/bidrag-ui-common/issues/156)) ([e75c1c3](https://github.com/navikt/bidrag-ui-common/commit/e75c1c3ea446e95ca0c82c3f18a94cce243d6d52))
+
 ## [1.10.3](https://github.com/navikt/bidrag-ui-common/compare/v1.10.2...v1.10.3) (2023-11-15)
 
 
