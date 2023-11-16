@@ -2,9 +2,9 @@ import { CheckmarkCircleIcon, XMarkOctagonIcon } from "@navikt/aksel-icons";
 import { BodyShort, Loader } from "@navikt/ds-react";
 import { MutationStatus, QueryClient } from "@tanstack/react-query";
 
-import { useRQMutationState } from "./hooks";
+import { MutationKey, useRQMutationState } from "./hooks";
 type SaveStatusIndicatorProps = {
-    mutationKey?: any[] | any;
+    mutationKey?: MutationKey | MutationKey[];
     state?: MutationStatus;
     queryClient?: QueryClient;
 };
