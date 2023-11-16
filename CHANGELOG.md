@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.5](https://github.com/navikt/bidrag-ui-common/compare/v1.10.4...v1.10.5) (2023-11-16)
+
+
+### Bug Fixes
+
+* Support multiple keys on useRQMutationState ([#158](https://github.com/navikt/bidrag-ui-common/issues/158)) ([25c0596](https://github.com/navikt/bidrag-ui-common/commit/25c05961bac3989393caf127699c908f062d3e8e))
+
 ## [1.10.4](https://github.com/navikt/bidrag-ui-common/compare/v1.10.3...v1.10.4) (2023-11-16)
 
 
