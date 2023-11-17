@@ -3,6 +3,7 @@ import { BodyShort, Loader } from "@navikt/ds-react";
 import { MutationStatus, QueryClient } from "@tanstack/react-query";
 
 import { MutationKey, useRQMutationState } from "./hooks";
+
 type SaveStatusIndicatorProps = {
     mutationKey?: MutationKey | MutationKey[];
     state?: MutationStatus;
@@ -15,6 +16,11 @@ export default function SaveStatusIndicator({
 }: SaveStatusIndicatorProps) {
     const saveState = useRQMutationState(mutationKey, _queryClient);
     const state = stateInput ?? saveState;
+
+    if (state === "idle") {
+        return null;
+    }
+
     function renderContent() {
         if (state == "error") {
             return (
@@ -50,5 +56,6 @@ export default function SaveStatusIndicator({
         }
         return `transition-[width] ease-in-out border-border-success duration-300 w-[65px]`;
     }
-    return <div className={`${getStyles()} self-center`}>{renderContent()}</div>;
+
+    return <div className={`${getStyles()} flex self-center`}>{renderContent()}</div>;
 }
