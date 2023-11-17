@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.6](https://github.com/navikt/bidrag-ui-common/compare/v1.10.5...v1.10.6) (2023-11-17)
+
+
+### Bug Fixes
+
+* return null on idle, add flex to wrapping div to align vertically ([#160](https://github.com/navikt/bidrag-ui-common/issues/160)) ([e3ea962](https://github.com/navikt/bidrag-ui-common/commit/e3ea9622ec5703491881f5a80d0dd108ae51cfa1))
+
 ## [1.10.5](https://github.com/navikt/bidrag-ui-common/compare/v1.10.4...v1.10.5) (2023-11-16)
 
 
