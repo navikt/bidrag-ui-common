@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.7](https://github.com/navikt/bidrag-ui-common/compare/v1.10.6...v1.10.7) (2023-11-28)
+
+
+### Bug Fixes
+
+* Styling sak header ([#168](https://github.com/navikt/bidrag-ui-common/issues/168)) ([4359a40](https://github.com/navikt/bidrag-ui-common/commit/4359a40d31003125e36c1a659cb712190a018a04))
+
 ## [1.10.6](https://github.com/navikt/bidrag-ui-common/compare/v1.10.5...v1.10.6) (2023-11-17)
 
 
