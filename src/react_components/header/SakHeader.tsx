@@ -26,7 +26,7 @@ export default function SakHeader({ saksnummer, roller, skjermbilde }: ISakHeade
             </div>
             <BidragGrid
                 className={
-                    "max-w-5xl grid-flow-row grid-rows-none md:grid-flow-col sm:grid-rows-4 md:grid-rows-4 lg:grid-rows-3 xl:grid-rows-3 2xl:grid-rows-2 !gap-1 grid-cols-[max-content]"
+                    "max-w-fit grid-flow-row grid-rows-none md:grid-flow-col sm:grid-rows-4 md:grid-rows-4 lg:grid-rows-3 xl:grid-rows-3 2xl:grid-rows-2 !gap-1 grid-cols-[max-content]"
                 }
             >
                 {roller
