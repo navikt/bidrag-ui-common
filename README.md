@@ -16,7 +16,6 @@ registry=https://registry.npmjs.org/
 @navikt:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
 ```
-
 # Lage og publisere ny release
 Push til alle andre brancher enn `main` vil bare kjøre lint og bygg. Pass på at bygget kjører grønt før det merges til main.
 
