@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.8](https://github.com/navikt/bidrag-ui-common/compare/v1.10.7...v1.10.8) (2023-12-11)
+
+
+### Bug Fixes
+
+* capitalize method ([dfaea44](https://github.com/navikt/bidrag-ui-common/commit/dfaea4412767464c0592af541c2fc520d8ed0e33))
+
 ## [1.10.7](https://github.com/navikt/bidrag-ui-common/compare/v1.10.6...v1.10.7) (2023-11-28)
 
 
