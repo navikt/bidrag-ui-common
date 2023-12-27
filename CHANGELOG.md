@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.9](https://github.com/navikt/bidrag-ui-common/compare/v1.10.8...v1.10.9) (2023-12-27)
+
+
+### Bug Fixes
+
+* Oppgrader avhengigheter ([#180](https://github.com/navikt/bidrag-ui-common/issues/180)) ([0e75260](https://github.com/navikt/bidrag-ui-common/commit/0e75260fd567425df88ea39794ad5b6a205f2223))
+
 ## [1.10.8](https://github.com/navikt/bidrag-ui-common/compare/v1.10.7...v1.10.8) (2023-12-11)
 
 
