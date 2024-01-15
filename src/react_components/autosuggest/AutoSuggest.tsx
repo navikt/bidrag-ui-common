@@ -25,6 +25,7 @@ interface AutoSuggestProps {
     placeholder?: string;
     description?: string;
     error?: string;
+    sortOptions?: boolean;
 }
 
 export default function AutoSuggest(props: AutoSuggestProps) {
@@ -44,14 +45,16 @@ export default function AutoSuggest(props: AutoSuggestProps) {
 
     function searchSuggestions(options: string[], searchTerm: string) {
         const searchTermTrimmed = searchTerm.trim();
-        return options
-            .filter(
-                (currentOptionString) =>
-                    toUppercaseForEveryFirstLetter(currentOptionString).search(
-                        getRegExForSearchedFirstLetterTerms(searchTermTrimmed)
-                    ) > -1
-            )
-            .sort(sortByLengthOfString);
+        const filteredOptions = options.filter(
+            (currentOptionString) =>
+                toUppercaseForEveryFirstLetter(currentOptionString).search(
+                    getRegExForSearchedFirstLetterTerms(searchTermTrimmed)
+                ) > -1
+        );
+        if (props.sortOptions != false) {
+            return filteredOptions.sort(sortByLengthOfString);
+        }
+        return filteredOptions;
     }
 
     function getRegExForSearchedFirstLetterTerms(stringToRemoveWhiteSpacesFrom: string) {
