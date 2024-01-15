@@ -57,7 +57,7 @@
     "@types/echarts": "^4.9.22",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.10.5",
-    "@types/react": "18.2.45",
+    "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
     "@types/react-modal": "3.16.3",
     "@types/uuid": "^9.0.7",
