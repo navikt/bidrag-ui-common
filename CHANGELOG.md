@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.10](https://github.com/navikt/bidrag-ui-common/compare/v1.10.9...v1.10.10) (2024-01-15)
+
+
+### Bug Fixes
+
+* Optional sorting on autosuggest ([#192](https://github.com/navikt/bidrag-ui-common/issues/192)) ([1e84b80](https://github.com/navikt/bidrag-ui-common/commit/1e84b80a96fbc2d19adfcc9b114caa224a762d41))
+
 ## [1.10.9](https://github.com/navikt/bidrag-ui-common/compare/v1.10.8...v1.10.9) (2023-12-27)
 
 
