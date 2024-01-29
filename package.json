@@ -40,7 +40,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
     "@navikt/aksel-icons": "5.12.2",
