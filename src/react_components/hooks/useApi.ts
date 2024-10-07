@@ -21,19 +21,22 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
         const errorInfo = AxiosErrorHandler.mapErrorResponseToApiError(error);
         const errorMessage = `${error.message} - ${requestInfo}`;
 
-        await LoggerService.error(errorMessage, errorInfo);
+        const warnOrError = error?.response?.status === 400 ? "warn" : "error";
+
+        await LoggerService[warnOrError](errorMessage, errorInfo);
 
         const requestBody = config?.data;
         if (requestBody) {
-            await SecureLoggerService.error(errorMessage, {
+            await SecureLoggerService[warnOrError](errorMessage, {
                 ...errorInfo,
                 stack_trace: `Requesten som førte til feilen inneholdt melding ${requestBody}`,
             });
         }
     }
+
     api.instance.interceptors.request.use(
         async (config: InternalAxiosRequestConfig) => {
-            const secHeaders = await createDefaultHeaders(app, cluster);
+            const secHeaders = await createDefaultHeaders(app, cluster, config.baseURL);
             Object.assign(config.headers, secHeaders);
 
             return config;
@@ -57,12 +60,13 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 
     return api;
 }
-const createDefaultHeaders = async (app: string, cluster: string) => {
-    const idToken = await SecuritySessionUtils.getSecurityTokenForApp(app, cluster);
+
+const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: string) => {
+    const appName = baseUrl?.includes("syntetisk") ? app + "-syntetisk" : app;
+    const idToken = await SecuritySessionUtils.getSecurityTokenForApp(appName, cluster);
     const correlationId = SecuritySessionUtils.getCorrelationId();
     return {
         Authorization: "Bearer " + idToken,
-        "Content-type": "application/json; charset=UTF-8",
         "X-Correlation-ID": correlationId,
         "Nav-Call-Id": correlationId,
         "Nav-Consumer-Id": SecuritySessionUtils.getAppName(),

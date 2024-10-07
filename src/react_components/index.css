@@ -1,5 +1,4 @@
-@import "@navikt/ds-css";
-@import "@navikt/ds-css-internal";
+@import "./autosuggest/autosuggest.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

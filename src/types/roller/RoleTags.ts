@@ -1,22 +1,30 @@
-import { RolleType } from "./RolleType";
+import { RolleTypeAbbreviation, RolleTypeDeprecated, RolleTypeFullName } from "./RolleType";
 
 export const ROLE_TAGS = {
-    [RolleType.BM]: "success",
-    [RolleType.BP]: "warning",
-    [RolleType.BA]: "alt1",
-    [RolleType.RM]: "alt3",
-    [RolleType.FR]: "error",
+    [RolleTypeAbbreviation.BM]: "success",
+    [RolleTypeAbbreviation.BP]: "warning",
+    [RolleTypeAbbreviation.BA]: "alt1",
+    [RolleTypeAbbreviation.RM]: "alt3",
+    [RolleTypeAbbreviation.FR]: "error",
 
-    [RolleType.BIDRAGS_MOTTAKER]: "success",
-    [RolleType.BIDRAGS_PLIKTIG]: "warning",
-    [RolleType.BARN]: "alt1",
-    [RolleType.REELL_MOTTAKER]: "alt3",
-    [RolleType.FEILREGISTRERT]: "error",
+    [RolleTypeFullName.BIDRAGSMOTTAKER]: "success",
+    [RolleTypeFullName.BIDRAGSPLIKTIG]: "warning",
+    [RolleTypeFullName.BARN]: "alt1",
+    [RolleTypeFullName.REELMOTTAKER]: "alt3",
+    [RolleTypeFullName.FEILREGISTRERT]: "error",
+
+    [RolleTypeDeprecated.BIDRAGS_MOTTAKER]: "success",
+    [RolleTypeDeprecated.BIDRAGS_PLIKTIG]: "warning",
+    [RolleTypeDeprecated.REELL_MOTTAKER]: "alt3",
 } as const;
 export const ROLE_FORKORTELSER = {
-    [RolleType.BIDRAGS_MOTTAKER]: "BM",
-    [RolleType.BIDRAGS_PLIKTIG]: "BP",
-    [RolleType.BARN]: "BA",
-    [RolleType.REELL_MOTTAKER]: "RM",
-    [RolleType.FEILREGISTRERT]: "FR",
+    [RolleTypeFullName.BIDRAGSMOTTAKER]: "BM",
+    [RolleTypeFullName.BIDRAGSPLIKTIG]: "BP",
+    [RolleTypeFullName.BARN]: "BA",
+    [RolleTypeFullName.REELMOTTAKER]: "RM",
+    [RolleTypeFullName.FEILREGISTRERT]: "FR",
+
+    [RolleTypeDeprecated.BIDRAGS_MOTTAKER]: "BM",
+    [RolleTypeDeprecated.BIDRAGS_PLIKTIG]: "BP",
+    [RolleTypeDeprecated.REELL_MOTTAKER]: "RM",
 } as const;

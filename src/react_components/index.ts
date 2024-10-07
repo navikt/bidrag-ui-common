@@ -1,3 +1,4 @@
+export { default as AutoSuggest } from "./autosuggest/AutoSuggest";
 export { default as BisysLink } from "./bisys/BisysLink";
 export { default as BidragCell } from "./grid/BidragCell";
 export { default as BidragContainer } from "./grid/BidragContainer";
@@ -7,3 +8,4 @@ export * from "./hooks";
 export { default as PersonSokButton } from "./person/PersonSokButton";
 export { default as RolleDetaljer } from "./roller/RolleDetaljer";
 export { default as RolleTag } from "./roller/RolleTag";
+export { default as SaveStatusIndicator } from "./SaveStatusIndicator";

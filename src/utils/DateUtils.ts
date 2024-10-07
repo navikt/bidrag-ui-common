@@ -2,6 +2,13 @@ export const dateToDDMMYYYYString = (date: Date) =>
     date.toLocaleDateString("nb-NO", { year: "numeric", month: "2-digit", day: "2-digit" });
 export const toISODateString = (date: Date): string =>
     date.toLocaleDateString("sv-SV", { year: "numeric", month: "2-digit", day: "2-digit" });
+export const toISODateTimeString = (date?: Date): string | null =>
+    date == undefined
+        ? null
+        : date?.toLocaleDateString("sv-SV", { year: "numeric", month: "2-digit", day: "2-digit" }) +
+          "T" +
+          date?.toLocaleTimeString() +
+          "Z";
 export const addDays = (date: Date, days: number) => {
     const newDate = new Date(date);
     newDate.setDate(newDate.getDate() + days);

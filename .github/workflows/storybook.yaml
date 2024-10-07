@@ -2,10 +2,16 @@ name: Build and Deploy
 on:
   push:
     paths: [ "src/stories/**" ] # Trigger the action only when files change in the folders defined here
+    branches:
+      - main
 env:
   NPM_TOKEN: ${{ secrets.READER_TOKEN }}
 jobs:
   build-and-deploy:
+    permissions:
+      contents: "write"
+      id-token: "write"
+      pages: "write"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

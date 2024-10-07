@@ -46,6 +46,7 @@ module.exports = {
         "sort-imports": "off",
         "@typescript-eslint/no-namespace": "off",
         "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-explicit-any": "off",
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
         "no-unused-vars": "off",

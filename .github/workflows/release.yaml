@@ -7,17 +7,23 @@ env:
   NPM_TOKEN: ${{ secrets.READER_TOKEN }}
 jobs:
   release-please:
+    permissions:
+      contents: "write"
+      id-token: "write"
+      packages: "write"
+      pull-requests: "write"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '18.x'
           registry-url: 'https://npm.pkg.github.com'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build
         run: yarn build
+      - run: yarn lint
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:

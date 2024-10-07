@@ -1,5 +1,215 @@
 # Changelog
 
+## [1.10.11](https://github.com/navikt/bidrag-ui-common/compare/v1.10.10...v1.10.11) (2024-10-07)
+
+
+### Bug Fixes
+
+* useApi log warning for 400 bad request ([#235](https://github.com/navikt/bidrag-ui-common/issues/235)) ([a8369e9](https://github.com/navikt/bidrag-ui-common/commit/a8369e99e2d36af104a931ce1238f41cbf6a6723))
+
+## [1.10.10](https://github.com/navikt/bidrag-ui-common/compare/v1.10.9...v1.10.10) (2024-01-15)
+
+
+### Bug Fixes
+
+* Optional sorting on autosuggest ([#192](https://github.com/navikt/bidrag-ui-common/issues/192)) ([1e84b80](https://github.com/navikt/bidrag-ui-common/commit/1e84b80a96fbc2d19adfcc9b114caa224a762d41))
+
+## [1.10.9](https://github.com/navikt/bidrag-ui-common/compare/v1.10.8...v1.10.9) (2023-12-27)
+
+
+### Bug Fixes
+
+* Oppgrader avhengigheter ([#180](https://github.com/navikt/bidrag-ui-common/issues/180)) ([0e75260](https://github.com/navikt/bidrag-ui-common/commit/0e75260fd567425df88ea39794ad5b6a205f2223))
+
+## [1.10.8](https://github.com/navikt/bidrag-ui-common/compare/v1.10.7...v1.10.8) (2023-12-11)
+
+
+### Bug Fixes
+
+* capitalize method ([dfaea44](https://github.com/navikt/bidrag-ui-common/commit/dfaea4412767464c0592af541c2fc520d8ed0e33))
+
+## [1.10.7](https://github.com/navikt/bidrag-ui-common/compare/v1.10.6...v1.10.7) (2023-11-28)
+
+
+### Bug Fixes
+
+* Styling sak header ([#168](https://github.com/navikt/bidrag-ui-common/issues/168)) ([4359a40](https://github.com/navikt/bidrag-ui-common/commit/4359a40d31003125e36c1a659cb712190a018a04))
+
+## [1.10.6](https://github.com/navikt/bidrag-ui-common/compare/v1.10.5...v1.10.6) (2023-11-17)
+
+
+### Bug Fixes
+
+* return null on idle, add flex to wrapping div to align vertically ([#160](https://github.com/navikt/bidrag-ui-common/issues/160)) ([e3ea962](https://github.com/navikt/bidrag-ui-common/commit/e3ea9622ec5703491881f5a80d0dd108ae51cfa1))
+
+## [1.10.5](https://github.com/navikt/bidrag-ui-common/compare/v1.10.4...v1.10.5) (2023-11-16)
+
+
+### Bug Fixes
+
+* Support multiple keys on useRQMutationState ([#158](https://github.com/navikt/bidrag-ui-common/issues/158)) ([25c0596](https://github.com/navikt/bidrag-ui-common/commit/25c05961bac3989393caf127699c908f062d3e8e))
+
+## [1.10.4](https://github.com/navikt/bidrag-ui-common/compare/v1.10.3...v1.10.4) (2023-11-16)
+
+
+### Bug Fixes
+
+* Bugfix useRQMutationState and add SaveStatusIndicator component ([#156](https://github.com/navikt/bidrag-ui-common/issues/156)) ([e75c1c3](https://github.com/navikt/bidrag-ui-common/commit/e75c1c3ea446e95ca0c82c3f18a94cce243d6d52))
+
+## [1.10.3](https://github.com/navikt/bidrag-ui-common/compare/v1.10.2...v1.10.3) (2023-11-15)
+
+
+### Bug Fixes
+
+* Rename and export hook useMutationState ([#154](https://github.com/navikt/bidrag-ui-common/issues/154)) ([c6020c7](https://github.com/navikt/bidrag-ui-common/commit/c6020c71d88ae181214535f4dd58129efc0645ea))
+
+## [1.10.2](https://github.com/navikt/bidrag-ui-common/compare/v1.10.1...v1.10.2) (2023-11-01)
+
+
+### Bug Fixes
+
+* Remove DS css dependency ([#147](https://github.com/navikt/bidrag-ui-common/issues/147)) ([6a0d258](https://github.com/navikt/bidrag-ui-common/commit/6a0d2581a7fe359c05c58ed5df01ce147d872870))
+
+## [1.10.1](https://github.com/navikt/bidrag-ui-common/compare/v1.10.0...v1.10.1) (2023-10-31)
+
+
+### Bug Fixes
+
+* Upgrade axios and add useMutationState hook ([#145](https://github.com/navikt/bidrag-ui-common/issues/145)) ([fe08b28](https://github.com/navikt/bidrag-ui-common/commit/fe08b28bf7324559a08b7d0fa6b90ccf07bb7d7c))
+
+## [1.10.0](https://github.com/navikt/bidrag-ui-common/compare/v1.9.4...v1.10.0) (2023-10-30)
+
+
+### Features
+
+* Upgrade ds-react ([#143](https://github.com/navikt/bidrag-ui-common/issues/143)) ([8f79e22](https://github.com/navikt/bidrag-ui-common/commit/8f79e22c2f7ea48da3654f2981c0a7a5687b5d31))
+
+## [1.9.4](https://github.com/navikt/bidrag-ui-common/compare/v1.9.3...v1.9.4) (2023-10-23)
+
+
+### Bug Fixes
+
+* dummy commit to trigger release ([#141](https://github.com/navikt/bidrag-ui-common/issues/141)) ([07857fb](https://github.com/navikt/bidrag-ui-common/commit/07857fb8bdb4a95536401a36909f8b34695dd9e6))
+
+## [1.9.3](https://github.com/navikt/bidrag-ui-common/compare/v1.9.2...v1.9.3) (2023-09-26)
+
+
+### Bug Fixes
+
+* Autosuggest styling no options ([#138](https://github.com/navikt/bidrag-ui-common/issues/138)) ([67eff94](https://github.com/navikt/bidrag-ui-common/commit/67eff945d2df9cd8312d3d1662ee66a5bff88b11))
+
+## [1.9.2](https://github.com/navikt/bidrag-ui-common/compare/v1.9.1...v1.9.2) (2023-09-26)
+
+
+### Bug Fixes
+
+* Create new release ([0cefdd0](https://github.com/navikt/bidrag-ui-common/commit/0cefdd0bb3c4d41e1ece7f24b0babc9d7f873aba))
+
+## [1.9.1](https://github.com/navikt/bidrag-ui-common/compare/v1.9.0...v1.9.1) (2023-09-26)
+
+
+### Bug Fixes
+
+* Autosuggest styling ([#135](https://github.com/navikt/bidrag-ui-common/issues/135)) ([3b06dca](https://github.com/navikt/bidrag-ui-common/commit/3b06dca8c21c756cdf1b848ee4d032ea7fb53e1e))
+
+## [1.9.0](https://github.com/navikt/bidrag-ui-common/compare/v1.8.12...v1.9.0) (2023-09-25)
+
+
+### Features
+
+* Ny autosuggest komponent ([274e269](https://github.com/navikt/bidrag-ui-common/commit/274e269b88c8dc37a09259d1ddaee7a4d7a14174))
+
+## [1.8.12](https://github.com/navikt/bidrag-ui-common/compare/v1.8.11...v1.8.12) (2023-09-21)
+
+
+### Bug Fixes
+
+* Add metric types ([bd2ea9d](https://github.com/navikt/bidrag-ui-common/commit/bd2ea9df96e75296412869b9cb83d26293b6c0d5))
+
+## [1.8.11](https://github.com/navikt/bidrag-ui-common/compare/v1.8.10...v1.8.11) (2023-09-18)
+
+
+### Bug Fixes
+
+* Oppdater open document utils ([cd93525](https://github.com/navikt/bidrag-ui-common/commit/cd935254c790a115115e8f0ff828782fa2b4db34))
+
+## [1.8.10](https://github.com/navikt/bidrag-ui-common/compare/v1.8.9...v1.8.10) (2023-09-13)
+
+
+### Bug Fixes
+
+* RolleTyper typescript warnings ([#129](https://github.com/navikt/bidrag-ui-common/issues/129)) ([c16aa90](https://github.com/navikt/bidrag-ui-common/commit/c16aa90910d7b7f81ffc9f475ca328e6242a46f0))
+
+## [1.8.9](https://github.com/navikt/bidrag-ui-common/compare/v1.8.8...v1.8.9) (2023-09-05)
+
+
+### Bug Fixes
+
+* Rolletyper enum ([#127](https://github.com/navikt/bidrag-ui-common/issues/127)) ([2c5195c](https://github.com/navikt/bidrag-ui-common/commit/2c5195cb71258980cc67c9f6f9442ca1a106726b))
+
+## [1.8.8](https://github.com/navikt/bidrag-ui-common/compare/v1.8.7...v1.8.8) (2023-08-24)
+
+
+### Bug Fixes
+
+* SakHeader rekkefølge på BM og BP ([#125](https://github.com/navikt/bidrag-ui-common/issues/125)) ([9e7d0cf](https://github.com/navikt/bidrag-ui-common/commit/9e7d0cf1b200d1848e3edc1d854328a6c5744821))
+
+## [1.8.7](https://github.com/navikt/bidrag-ui-common/compare/v1.8.6...v1.8.7) (2023-08-18)
+
+
+### Bug Fixes
+
+* Add RedirectUtils ([#122](https://github.com/navikt/bidrag-ui-common/issues/122)) ([d5e43eb](https://github.com/navikt/bidrag-ui-common/commit/d5e43ebd1e31871a164b112a992f41d9c454ce55))
+
+## [1.8.6](https://github.com/navikt/bidrag-ui-common/compare/v1.8.5...v1.8.6) (2023-08-18)
+
+
+### Bug Fixes
+
+* Support for syntetisk app name([#120](https://github.com/navikt/bidrag-ui-common/issues/120)) ([52bb824](https://github.com/navikt/bidrag-ui-common/commit/52bb82492ee083199d1f5f01361e6663f863bb0a))
+
+## [1.8.5](https://github.com/navikt/bidrag-ui-common/compare/v1.8.4...v1.8.5) (2023-08-04)
+
+
+### Bug Fixes
+
+* Sakheader grid styling ([e1c862b](https://github.com/navikt/bidrag-ui-common/commit/e1c862b02364cd0c2264d16632264832da496d05))
+
+## [1.8.4](https://github.com/navikt/bidrag-ui-common/compare/v1.8.3...v1.8.4) (2023-08-03)
+
+
+### Bug Fixes
+
+* Opendocument with optimizeForPrint option ([75c9187](https://github.com/navikt/bidrag-ui-common/commit/75c9187aecb5f79fc7ec5599c06d99824c5f1241))
+
+## [1.8.3](https://github.com/navikt/bidrag-ui-common/compare/v1.8.2...v1.8.3) (2023-08-03)
+
+
+### Bug Fixes
+
+* OpendocumentUtils add support for optimize print ([6efe88a](https://github.com/navikt/bidrag-ui-common/commit/6efe88a4fd5e4660bb8929356b6736e3a4d1c4bb))
+
+## [1.8.2](https://github.com/navikt/bidrag-ui-common/compare/v1.8.1...v1.8.2) (2023-07-31)
+
+
+### Bug Fixes
+
+* Sakheader roller gap ([2215876](https://github.com/navikt/bidrag-ui-common/commit/2215876d08a7a4f135e03a2730989d8ef6e8c672))
+
+## [1.8.1](https://github.com/navikt/bidrag-ui-common/compare/v1.8.0...v1.8.1) (2023-07-31)
+
+
+### Bug Fixes
+
+* Upgrade dependencies and remove content-type from useApi ([#110](https://github.com/navikt/bidrag-ui-common/issues/110)) ([de86154](https://github.com/navikt/bidrag-ui-common/commit/de86154a1b7c4ed3df0d1463a3a4d355cece2dea))
+
+## [1.8.0](https://github.com/navikt/bidrag-ui-common/compare/v1.7.0...v1.8.0) (2023-07-17)
+
+
+### Features
+
+* Add echart ([#104](https://github.com/navikt/bidrag-ui-common/issues/104)) ([dd7626a](https://github.com/navikt/bidrag-ui-common/commit/dd7626a12779a785cdfe1cd79b23f020d3d53826))
+
 ## [1.7.0](https://github.com/navikt/bidrag-ui-common/compare/v1.6.11...v1.7.0) (2023-07-06)
 
 

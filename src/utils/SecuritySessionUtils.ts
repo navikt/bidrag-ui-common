@@ -11,7 +11,7 @@ export class SecuritySessionUtils {
     static async isLoggedIn(): Promise<boolean> {
         return fetch("/me", { method: "GET" })
             .then((res) => res.status == 200)
-            .catch((ex) => false);
+            .catch(() => false);
     }
 
     static async getSecurityTokenForApp(app: string, cluster?: string) {
@@ -45,7 +45,11 @@ export class SecuritySessionUtils {
         };
     }
 
-    static async hentSaksbehandlerId() {
+    static async hentSaksbehandlerNavn(): Promise<string | undefined> {
+        const tokenReq = await fetch("/me", { method: "GET" });
+        return (await tokenReq.json()).displayName;
+    }
+    static async hentSaksbehandlerId(): Promise<string | undefined> {
         const tokenReq = await fetch("/me", { method: "GET" });
         return (await tokenReq.json()).navIdent;
     }

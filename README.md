@@ -16,7 +16,6 @@ registry=https://registry.npmjs.org/
 @navikt:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
 ```
-
 # Lage og publisere ny release
 Push til alle andre brancher enn `main` vil bare kjøre lint og bygg. Pass på at bygget kjører grønt før det merges til main.
 
@@ -35,9 +34,10 @@ Release please vil opprette en PR som oppdaterer CHANGELOG.md filen med commit m
 # Bruke React componenter
 ### Styling
 React componentene bruker tailwindcss for styling. Når du skal bruke React componentene må derfor også en felles css fil fra bidrag-ui-common importeres for at stylingen skal fungere.
-Det kan gjøres ved å legge inn følgende import
+Det kan gjøres ved å legge inn følgende importd
 
 
 ```React
 import "@navikt/bidrag-ui-common/styles/index.css";
 ```
+

@@ -1,0 +1,76 @@
+.autosuggest {
+  width: inherit;
+}
+
+.autosuggest-input {
+    position: relative;
+    display: inline-block;
+}
+.autosuggest-input:not(.empty-list)::before {
+  position: absolute;
+  content: " \2039";
+  transform: rotate(270deg) scale(1.8);
+  top: 0px;
+  right: 6px;
+  height: 20px;
+  width: 20px;
+  opacity: 0.5;
+}
+
+.autosuggest .autosuggest-input {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: -16px;
+}
+
+.autosuggest .autosuggest-input input {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: inherit;
+}
+
+
+.autosuggest ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 8px;
+  background: white;
+  z-index: 50;
+  max-height: 500px;
+  overflow: hidden;
+  overflow-y: auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.autosuggest .options li {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: inherit;
+  padding: 0.5em;
+  border-bottom: lightgrey 1px solid;
+}
+
+.autosuggest .options li:hover {
+  padding: 0.5em;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: var(--a-surface-active);
+  color: black;
+}
+
+.autosuggest .options li.option-active {
+  font-weight: bold;
+  background-color: var(--a-surface-active);
+  color: black;
+}
+
+.autosuggest .options li.option-no-content:hover {
+  cursor: initial;
+  font-weight: initial;
+}
