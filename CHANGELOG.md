@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.11](https://github.com/navikt/bidrag-ui-common/compare/v1.10.10...v1.10.11) (2024-10-07)
+
+
+### Bug Fixes
+
+* useApi log warning for 400 bad request ([#235](https://github.com/navikt/bidrag-ui-common/issues/235)) ([a8369e9](https://github.com/navikt/bidrag-ui-common/commit/a8369e99e2d36af104a931ce1238f41cbf6a6723))
+
 ## [1.10.10](https://github.com/navikt/bidrag-ui-common/compare/v1.10.9...v1.10.10) (2024-01-15)
 
 
