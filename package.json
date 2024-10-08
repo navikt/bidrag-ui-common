@@ -67,7 +67,7 @@
     "concurrently": "^8.2.2",
     "core-js": "3.38.1",
     "eslint": "8.56.0",
-    "eslint-config-eslint": "9.0.0",
+    "eslint-config-eslint": "11.0.0",
     "eslint-config-google": "0.14.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-json-format": "2.0.1",
