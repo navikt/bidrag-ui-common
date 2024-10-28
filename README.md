@@ -7,7 +7,7 @@ På github -> Settings -> Developer Settings -> Generate New Token
 Select scopes `repo` og `read:packages`
 
 eksporter miljøvariabel NPM_TOKEN, f.eks ved å legge til
-`export NPM_TOKEN=<ditt token>` i ~/.zshrc
+`export NPM_TOKEN=<ditt token>` i ~/.zshrc2
 
 Deretter må du legge til følgende kode i `.npmrc` under frontend appen som skal bruke avhengigheten
 
