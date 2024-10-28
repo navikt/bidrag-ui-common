@@ -60,9 +60,15 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 
     return api;
 }
+const regexDevEnvironment = /-q\d+/; // Regular expression to match 'q' followed by one or more digits at the end of the string
 
 const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: string) => {
-    const appName = baseUrl?.includes("syntetisk") ? app + "-syntetisk" : app;
+    let appName = app;
+    const environmentMatch = baseUrl?.match(regexDevEnvironment);
+    if (environmentMatch) {
+        appName = `${app}${environmentMatch[0]}`;
+    }
+
     const idToken = await SecuritySessionUtils.getSecurityTokenForApp(appName, cluster);
     const correlationId = SecuritySessionUtils.getCorrelationId();
     return {
