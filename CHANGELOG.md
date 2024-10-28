@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.12](https://github.com/navikt/bidrag-ui-common/compare/v1.10.11...v1.10.12) (2024-10-28)
+
+
+### Bug Fixes
+
+* Dummy commit ([4578f9a](https://github.com/navikt/bidrag-ui-common/commit/4578f9aee3a9c87be002b6b8a12d0678dfd867e5))
+
 ## [1.10.11](https://github.com/navikt/bidrag-ui-common/compare/v1.10.10...v1.10.11) (2024-10-07)
 
 
