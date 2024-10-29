@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.13](https://github.com/navikt/bidrag-ui-common/compare/v1.10.12...v1.10.13) (2024-10-29)
+
+
+### Bug Fixes
+
+* Option to add env on useApi ([4558470](https://github.com/navikt/bidrag-ui-common/commit/4558470a7de63e39f2296b30ad8fbd086cb3b777))
+
 ## [1.10.12](https://github.com/navikt/bidrag-ui-common/compare/v1.10.11...v1.10.12) (2024-10-28)
 
 
