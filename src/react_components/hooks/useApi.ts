@@ -8,7 +8,7 @@ interface AxiosClient {
     instance: AxiosInstance;
 }
 
-export function useApi<T extends AxiosClient>(api: T, app: string, cluster: string): T {
+export function useApi<T extends AxiosClient>(api: T, app: string, cluster: string, env?: string): T {
     const requestStart = performance.now();
 
     async function logError(error: AxiosError) {
@@ -36,7 +36,7 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 
     api.instance.interceptors.request.use(
         async (config: InternalAxiosRequestConfig) => {
-            const secHeaders = await createDefaultHeaders(app, cluster, config.baseURL);
+            const secHeaders = await createDefaultHeaders(app, cluster, config.baseURL, env);
             Object.assign(config.headers, secHeaders);
 
             return config;
@@ -62,8 +62,8 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 }
 const regexDevEnvironment = /-q\d+/; // Regular expression to match 'q' followed by one or more digits at the end of the string
 
-const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: string) => {
-    let appName = app;
+const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: string, env?: string) => {
+    let appName = env ? `${app}-${env}` : app;
     const environmentMatch = baseUrl?.match(regexDevEnvironment);
     if (environmentMatch) {
         appName = `${app}${environmentMatch[0]}`;
