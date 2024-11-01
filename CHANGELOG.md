@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.14](https://github.com/navikt/bidrag-ui-common/compare/v1.10.13...v1.10.14) (2024-11-01)
+
+
+### Bug Fixes
+
+* DefaultRestService add env support ([8ca33cc](https://github.com/navikt/bidrag-ui-common/commit/8ca33cca16d594cbf2e6c846e65728e18e834070))
+
 ## [1.10.13](https://github.com/navikt/bidrag-ui-common/compare/v1.10.12...v1.10.13) (2024-10-29)
 
 
