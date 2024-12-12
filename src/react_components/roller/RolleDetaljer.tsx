@@ -17,9 +17,9 @@ const RolleDetaljer = ({ rolle, withBorder = true }: IRolledetaljerProps) => {
             } flex items-center`}
         >
             <RolleTag rolleType={rolle.rolleType} />
-            <span>{rolle.navn}</span>
+            <span className="personnavn">{rolle.navn}</span>
             <span className="mx-1">/</span>
-            <span>{rolle.ident}</span>
+            <span className="personident">{rolle.ident}</span>
             <CopyButton size="small" copyText={rolle.ident} />
         </BodyShort>
     );
