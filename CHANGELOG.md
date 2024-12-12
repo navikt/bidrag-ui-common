@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.15](https://github.com/navikt/bidrag-ui-common/compare/v1.10.14...v1.10.15) (2024-12-12)
+
+
+### Bug Fixes
+
+* Legge til klassenavn sakheader ([#283](https://github.com/navikt/bidrag-ui-common/issues/283)) ([9e73a55](https://github.com/navikt/bidrag-ui-common/commit/9e73a550874525d3addb7785ea24492364253c4b))
+
 ## [1.10.14](https://github.com/navikt/bidrag-ui-common/compare/v1.10.13...v1.10.14) (2024-11-01)
 
 
