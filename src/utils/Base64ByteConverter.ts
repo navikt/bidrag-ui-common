@@ -48,6 +48,7 @@ export class Base64ByteConverter {
             arr[curByte++] = tmp & 0xff;
         }
 
+        //@ts-ignore
         return arr;
     }
 
