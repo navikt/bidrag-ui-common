@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/navikt/bidrag-ui-common/compare/v1.10.15...v1.11.0) (2025-01-07)
+
+
+### Features
+
+* React 19 ([6aba13a](https://github.com/navikt/bidrag-ui-common/commit/6aba13a8baa5b0b6049f96bf6c4d88583d75381e))
+
 ## [1.10.15](https://github.com/navikt/bidrag-ui-common/compare/v1.10.14...v1.10.15) (2024-12-12)
 
 
