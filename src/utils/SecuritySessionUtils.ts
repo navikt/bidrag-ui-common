@@ -24,7 +24,7 @@ export class SecuritySessionUtils {
     }
 
     static getCorrelationId(): string {
-        return SessionStorage.getOrDefault("correlationId", `${this.getAppName()}/${uuidV4()}`);
+        return SessionStorage.getOrDefault("traceparent", `${this.getAppName()}/${uuidV4()}`);
     }
 
     static getAppModuleName() {

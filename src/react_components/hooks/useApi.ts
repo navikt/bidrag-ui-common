@@ -70,11 +70,12 @@ const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: stri
     }
 
     const idToken = await SecuritySessionUtils.getSecurityTokenForApp(appName, cluster);
-    const correlationId = SecuritySessionUtils.getCorrelationId();
+    const traceparent = SecuritySessionUtils.getCorrelationId();
     return {
         Authorization: "Bearer " + idToken,
-        "X-Correlation-ID": correlationId,
-        "Nav-Call-Id": correlationId,
+        "X-Correlation-ID": traceparent,
+        "Nav-Call-Id": traceparent,
         "Nav-Consumer-Id": SecuritySessionUtils.getAppName(),
+        // traceparent: traceparent,
     };
 };
