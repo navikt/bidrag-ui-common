@@ -32,7 +32,7 @@ export class AxiosErrorHandler {
     static mapErrorResponseToApiError(error: AxiosError): ErrorInfo {
         const response = error.response;
         const stack = error.stack;
-        const corrId = error.config?.headers["X-Correlation-ID"];
+        const corrId = error.config?.headers["traceparent"] ?? error.config?.headers["X-Correlation-ID"];
         const errorInfo = {
             cause: error.code,
             correlationId: corrId ?? SecuritySessionUtils.getCorrelationId(),
@@ -44,7 +44,8 @@ export class AxiosErrorHandler {
         if (response) {
             const headers = response.headers ?? error.request.headers;
             const errorParsed = AxiosErrorHandler.parseResponseBody(response);
-            const correlationId = headers["x-correlation-id"] ?? SecuritySessionUtils.getCorrelationId();
+            const correlationId =
+                headers["traceparent"] ?? headers["x-correlation-id"] ?? SecuritySessionUtils.getCorrelationId();
             const warningMessage = headers["Warning"];
             const stackTrace = AxiosErrorHandler.getStackFromErrorBody(errorParsed);
             const errorMessageFromResponse = `${error.message} - ${warningMessage ?? "ukjent feil"}`;
