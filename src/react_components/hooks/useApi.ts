@@ -8,7 +8,7 @@ interface AxiosClient {
     instance: AxiosInstance;
 }
 
-export function useApi<T extends AxiosClient>(api: T, app: string, cluster: string): T {
+export function useApi<T extends AxiosClient>(api: T, app: string, cluster: string, env?: string): T {
     const requestStart = performance.now();
 
     async function logError(error: AxiosError) {
@@ -36,7 +36,7 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 
     api.instance.interceptors.request.use(
         async (config: InternalAxiosRequestConfig) => {
-            const secHeaders = await createDefaultHeaders(app, cluster, config.baseURL);
+            const secHeaders = await createDefaultHeaders(app, cluster, config.baseURL, env);
             Object.assign(config.headers, secHeaders);
 
             return config;
@@ -60,15 +60,22 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 
     return api;
 }
+const regexDevEnvironment = /-q\d+/; // Regular expression to match 'q' followed by one or more digits at the end of the string
 
-const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: string) => {
-    const appName = baseUrl?.includes("syntetisk") ? app + "-syntetisk" : app;
+const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: string, env?: string) => {
+    let appName = env ? `${app}-${env}` : app;
+    const environmentMatch = baseUrl?.match(regexDevEnvironment);
+    if (environmentMatch) {
+        appName = `${app}${environmentMatch[0]}`;
+    }
+
     const idToken = await SecuritySessionUtils.getSecurityTokenForApp(appName, cluster);
-    const correlationId = SecuritySessionUtils.getCorrelationId();
+    const traceparent = SecuritySessionUtils.getCorrelationId();
     return {
         Authorization: "Bearer " + idToken,
-        "X-Correlation-ID": correlationId,
-        "Nav-Call-Id": correlationId,
+        "X-Correlation-ID": traceparent,
+        "Nav-Call-Id": traceparent,
         "Nav-Consumer-Id": SecuritySessionUtils.getAppName(),
+        // traceparent: traceparent,
     };
 };

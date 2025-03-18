@@ -1,5 +1,40 @@
 # Changelog
 
+## [1.11.0](https://github.com/navikt/bidrag-ui-common/compare/v1.10.15...v1.11.0) (2025-01-07)
+
+
+### Features
+
+* React 19 ([6aba13a](https://github.com/navikt/bidrag-ui-common/commit/6aba13a8baa5b0b6049f96bf6c4d88583d75381e))
+
+## [1.10.15](https://github.com/navikt/bidrag-ui-common/compare/v1.10.14...v1.10.15) (2024-12-12)
+
+
+### Bug Fixes
+
+* Legge til klassenavn sakheader ([#283](https://github.com/navikt/bidrag-ui-common/issues/283)) ([9e73a55](https://github.com/navikt/bidrag-ui-common/commit/9e73a550874525d3addb7785ea24492364253c4b))
+
+## [1.10.14](https://github.com/navikt/bidrag-ui-common/compare/v1.10.13...v1.10.14) (2024-11-01)
+
+
+### Bug Fixes
+
+* DefaultRestService add env support ([8ca33cc](https://github.com/navikt/bidrag-ui-common/commit/8ca33cca16d594cbf2e6c846e65728e18e834070))
+
+## [1.10.13](https://github.com/navikt/bidrag-ui-common/compare/v1.10.12...v1.10.13) (2024-10-29)
+
+
+### Bug Fixes
+
+* Option to add env on useApi ([4558470](https://github.com/navikt/bidrag-ui-common/commit/4558470a7de63e39f2296b30ad8fbd086cb3b777))
+
+## [1.10.12](https://github.com/navikt/bidrag-ui-common/compare/v1.10.11...v1.10.12) (2024-10-28)
+
+
+### Bug Fixes
+
+* Dummy commit ([4578f9a](https://github.com/navikt/bidrag-ui-common/commit/4578f9aee3a9c87be002b6b8a12d0678dfd867e5))
+
 ## [1.10.11](https://github.com/navikt/bidrag-ui-common/compare/v1.10.10...v1.10.11) (2024-10-07)
 
 
