@@ -17,9 +17,11 @@ export class DefaultRestService {
     private readonly app: string;
     private readonly cluster: string;
     private readonly baseUrl: string = "";
+    private readonly env?: string;
 
-    constructor(app: string, baseUrl?: string, gcpApp?: boolean) {
+    constructor(app: string, baseUrl?: string, gcpApp?: boolean, env?: string) {
         this.app = app;
+        this.env = env;
         this.cluster = gcpApp ? "gcp" : "fss";
         if (baseUrl) {
             this.baseUrl = baseUrl.endsWith("/") ? baseUrl.substring(0, baseUrl.length - 1) : baseUrl;
@@ -122,9 +124,16 @@ export class DefaultRestService {
     }
 
     private async createDefaultHeaders() {
+        const regexDevEnvironment = /-q\d+/;
+        let appName = this.env ? `${this.app}-${this.env}` : this.app;
+        const environmentMatch = this.baseUrl?.match(regexDevEnvironment);
+        if (environmentMatch) {
+            appName = `${this.app}${environmentMatch[0]}`;
+        }
+
         const idToken =
             this.app && this.app !== "self"
-                ? await SecuritySessionUtils.getSecurityTokenForApp(this.app, this.cluster)
+                ? await SecuritySessionUtils.getSecurityTokenForApp(appName, this.cluster)
                 : "";
         const correlationId = SecuritySessionUtils.getCorrelationId();
         return {
