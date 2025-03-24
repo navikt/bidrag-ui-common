@@ -64,7 +64,7 @@
     "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^8.26.1",
     "autoprefixer": "^10.4.16",
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.1.2",
     "core-js": "3.38.1",
     "eslint": "8.56.0",
     "eslint-config-eslint": "11.0.0",
