@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/navikt/bidrag-ui-common/compare/v1.11.0...v1.12.0) (2025-04-10)
+
+
+### Features
+
+* Legg til X-enhet i api request ([1537b7b](https://github.com/navikt/bidrag-ui-common/commit/1537b7bd953f90a5d43ad8b7897112285f4bfa83))
+
 ## [1.11.0](https://github.com/navikt/bidrag-ui-common/compare/v1.10.15...v1.11.0) (2025-01-07)
 
 
