@@ -62,6 +62,14 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 }
 const regexDevEnvironment = /-q\d+/; // Regular expression to match 'q' followed by one or more digits at the end of the string
 
+const getEnhet = () => {
+    try {
+        return new URLSearchParams(window.location.search).get("enhet");
+    } catch (error) {
+        console.error("Error parsing URL parameters:", error);
+        return null;
+    }
+};
 const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: string, env?: string) => {
     let appName = env ? `${app}-${env}` : app;
     const environmentMatch = baseUrl?.match(regexDevEnvironment);
@@ -73,6 +81,7 @@ const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: stri
     const traceparent = SecuritySessionUtils.getCorrelationId();
     return {
         Authorization: "Bearer " + idToken,
+        "X-Enhet": getEnhet(),
         "X-Correlation-ID": traceparent,
         "Nav-Call-Id": traceparent,
         "Nav-Consumer-Id": SecuritySessionUtils.getAppName(),
