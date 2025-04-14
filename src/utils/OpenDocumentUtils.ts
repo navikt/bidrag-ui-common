@@ -37,13 +37,17 @@ export class OpenDocumentUtils {
     static openDocumentEditorWithDocuments(dokumenter: string[], editDocumentConfig?: EditDocumentConfig, id?: string) {
         LoggerService.info(`Åpner dokumenter ${dokumenter} på nettleser`);
         const dokumenterPath = dokumenter.map((dokument) => `dokument=${dokument}`).join("&");
-        id && editDocumentConfig && EditorConfigStorage.save(id, editDocumentConfig);
+        if (id && editDocumentConfig) {
+            EditorConfigStorage.save(id, editDocumentConfig);
+        }
         window.open(`/rediger/?${dokumenterPath}&id=${id}`);
     }
 
     static openDocumentEditor(journalpostId: string, editDocumentConfig?: EditDocumentConfig, id?: string) {
         LoggerService.info(`Åpner dokument ${journalpostId} på nettleser`);
-        id && editDocumentConfig && EditorConfigStorage.save(id, editDocumentConfig);
+        if (id && editDocumentConfig) {
+            EditorConfigStorage.save(id, editDocumentConfig);
+        }
         window.open(`/rediger/${journalpostId}?id=${id}`);
     }
 
@@ -56,7 +60,9 @@ export class OpenDocumentUtils {
         LoggerService.info(
             `Åpner redigering av forsendelse ${forsendelseId} og dokument ${dokumentreferanse} på nettleser`
         );
-        id && editedDocument && EditorConfigStorage.save(id, editedDocument?.config);
+        if (id && editedDocument) {
+            EditorConfigStorage.save(id, editedDocument?.config);
+        }
         window.open(`/rediger/masker/${forsendelseId}/${dokumentreferanse}?id=${id}`);
     }
 }

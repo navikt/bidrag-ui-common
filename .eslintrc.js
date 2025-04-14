@@ -53,7 +53,6 @@ module.exports = {
         "unused-imports/no-unused-imports": "error",
         "@typescript-eslint/no-var-requires": "warn",
         "@typescript-eslint/no-empty-function": "warn",
-        "@typescript-eslint/ban-types": "warn",
         "unused-imports/no-unused-vars": [
             "warn",
             {
