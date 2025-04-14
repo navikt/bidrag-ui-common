@@ -114,11 +114,13 @@ export class DefaultRestService {
                     LoggerService.error(errorMessage, error);
                 }
 
-                body &&
+                if (body) {
                     SecureLoggerService.error(
                         errorMessage,
                         new SimpleError(`Requesten som førte til feilen inneholdt melding ${body}`)
                     );
+                }
+
                 throw error;
             });
     }
@@ -186,6 +188,7 @@ export class DefaultRestService {
     private static isDocument(response: Response) {
         return response.headers.get("content-type")?.includes("application/pdf");
     }
+
     private static async parseResponseBody(response: Response): Promise<any | string> {
         if (DefaultRestService.isDocument(response)) {
             return await response.blob();
@@ -193,7 +196,7 @@ export class DefaultRestService {
         const responseText = await response.text();
         try {
             return JSON.parse(responseText);
-        } catch (e) {
+        } catch {
             return responseText;
         }
     }
