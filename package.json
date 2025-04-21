@@ -72,7 +72,7 @@
     "eslint-config-prettier": "10.1.2",
     "eslint-plugin-json-format": "2.0.1",
     "eslint-plugin-prettier": "5.1.2",
-    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-react": "7.37.5",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-unused-imports": "^4.1.4",
