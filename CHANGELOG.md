@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/navikt/bidrag-ui-common/compare/v1.12.0...v1.13.0) (2025-05-11)
+
+
+### Features
+
+* Samhandler søk button ([#318](https://github.com/navikt/bidrag-ui-common/issues/318)) ([861d473](https://github.com/navikt/bidrag-ui-common/commit/861d47320693ec4921615c007fb534667b6a7c37))
+
 ## [1.12.0](https://github.com/navikt/bidrag-ui-common/compare/v1.11.0...v1.12.0) (2025-04-10)
 
 
