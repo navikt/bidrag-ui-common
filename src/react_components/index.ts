@@ -8,5 +8,5 @@ export * from "./hooks";
 export { default as PersonSokButton } from "./person/PersonSokButton";
 export { default as RolleDetaljer } from "./roller/RolleDetaljer";
 export { default as RolleTag } from "./roller/RolleTag";
-export { default as SaveStatusIndicator } from "./SaveStatusIndicator";
 export { default as SamhandlerSokButton } from "./samhandler/SamhandlerSokButton";
+export { default as SaveStatusIndicator } from "./SaveStatusIndicator";
