@@ -28,7 +28,7 @@ export default function SamhandlerSokButton({
     function openSamhandlerSearch() {
         openModal();
         searchCanceled.current = false;
-        window.open(
+        const openedWindow = window.open(
             "/samhandler/søk",
             "_blank",
             `location=yes,height=${height},width=${width},scrollbars=yes,status=yes`
@@ -42,7 +42,7 @@ export default function SamhandlerSokButton({
                 return;
             }
             onResult(res);
-            window.close();
+            openedWindow?.close();
         });
     }
 
