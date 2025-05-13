@@ -2,6 +2,7 @@ export interface BroadcastError {
     message: string;
     stack?: string;
 }
+
 export interface BroadcastMessage<T> {
     ok?: boolean; // deprecated
     status?: number; // deprecated
@@ -41,6 +42,7 @@ export class Broadcast {
                     bc.close();
                 }
             }
+
             const bc = new BroadcastChannel(name);
             bc.onmessage = onResult;
             bc.onmessageerror = (ev: MessageEvent) => reject(ev);
@@ -51,4 +53,5 @@ export class Broadcast {
 export enum BroadcastNames {
     EDIT_DOCUMENT_RESULT = "EDIT_DOCUMENT_RESULT",
     EDIT_DOCUMENT_CONFIG = "EDIT_DOCUMENT_CONFIG",
+    SAMHANDLERSOK_RESULT_EVENT = "SAMHANDLERSOK_RESULT_EVENT",
 }
