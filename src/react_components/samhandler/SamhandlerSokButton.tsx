@@ -1,18 +1,22 @@
 import { Button, ButtonProps, Modal } from "@navikt/ds-react";
 import { ReactNode, useRef } from "react";
 
-import { BroadcastError, SamhandlerBroadcastMessage } from "../../types";
+import { Broadcast, BroadcastMessage, BroadcastNames, SamhandlerBroadcastMessage } from "../../types";
 
 type SamhandlerSokProps = {
-    onResult: (data: SamhandlerBroadcastMessage | null) => void;
+    onResult: (data: BroadcastMessage<SamhandlerBroadcastMessage> | null) => void;
     onError?: (errorMessage: string) => void;
 };
+const width = Math.min(1500, screen.width);
+const height = Math.min(1200, screen.height);
+
 export default function SamhandlerSokButton({
     onResult,
     onError,
     ...buttonProps
 }: SamhandlerSokProps & Exclude<ButtonProps, "children">): ReactNode {
     const ref = useRef<HTMLDialogElement>(null);
+    const windowId = crypto.randomUUID();
 
     const closeModal = () => {
         searchCanceled.current = true;
@@ -24,28 +28,22 @@ export default function SamhandlerSokButton({
     function openSamhandlerSearch() {
         openModal();
         searchCanceled.current = false;
-        const openedWindow = window.openSamhandlersok();
-        window
-            .waitForSamhandlerSokResult()
-            .then((data) => {
-                if (searchCanceled.current) {
-                    return;
-                }
-                if (!data.ok && data.error) {
-                    console.error(
-                        "Det skjedde en feil ved henting av samhandlerinfo",
-                        (data.error as BroadcastError)?.stack
-                    );
-                    return;
-                }
-                onResult(data.payload);
-            })
-            .catch(onError)
-            .finally(() => {
-                closeModal();
-                window.focus();
-                openedWindow?.close();
-            });
+        window.open(
+            "/samhandler/søk",
+            "_blank",
+            `location=yes,height=${height},width=${width},scrollbars=yes,status=yes`
+        );
+
+        Broadcast.waitForBroadcast<SamhandlerBroadcastMessage>(
+            BroadcastNames.SAMHANDLERSOK_RESULT_EVENT,
+            windowId
+        ).then((res) => {
+            if (searchCanceled.current) {
+                return;
+            }
+            onResult(res);
+            window.close();
+        });
     }
 
     return (
