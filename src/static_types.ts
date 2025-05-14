@@ -1,4 +1,4 @@
-import { BroadcastMessage, PersonBroadcastMessage, SamhandlerBroadcastMessage } from "./types";
+import { BroadcastMessage, PersonBroadcastMessage } from "./types";
 import { LogErrorType } from "./types";
 
 declare global {
@@ -8,9 +8,7 @@ declare global {
         moduleName: string;
         showErrorPage: (error: LogErrorType) => void;
         openPersonsok: () => Window | null;
-        openSamhandlersok: () => Window | null;
         waitForPersonSokResult: () => Promise<BroadcastMessage<PersonBroadcastMessage>>;
-        waitForSamhandlerSokResult: () => Promise<BroadcastMessage<SamhandlerBroadcastMessage>>;
         countMetric: (name: string, value: string) => void;
         logToServer: {
             info: (message: string) => void;

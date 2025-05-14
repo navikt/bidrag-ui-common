@@ -1,10 +1,10 @@
 import { Button, ButtonProps, Modal } from "@navikt/ds-react";
 import { ReactNode, useRef } from "react";
 
-import { Broadcast, BroadcastMessage, BroadcastNames, SamhandlerBroadcastMessage } from "../../types";
+import { Broadcast, BroadcastNames, SamhandlerBroadcastMessage } from "../../types";
 
 type SamhandlerSokProps = {
-    onResult: (data: BroadcastMessage<SamhandlerBroadcastMessage> | null) => void;
+    onResult: (data: SamhandlerBroadcastMessage | null) => void;
     onError?: (errorMessage: string) => void;
 };
 const width = Math.min(1500, screen.width);
@@ -29,21 +29,24 @@ export default function SamhandlerSokButton({
         openModal();
         searchCanceled.current = false;
         const openedWindow = window.open(
-            "/samhandler/søk",
+            `/samhandler/søk/?windowId=${windowId}`,
             "_blank",
             `location=yes,height=${height},width=${width},scrollbars=yes,status=yes`
         );
 
-        Broadcast.waitForBroadcast<SamhandlerBroadcastMessage>(
-            BroadcastNames.SAMHANDLERSOK_RESULT_EVENT,
-            windowId
-        ).then((res) => {
-            if (searchCanceled.current) {
-                return;
-            }
-            onResult(res);
-            openedWindow?.close();
-        });
+        Broadcast.waitForBroadcast<SamhandlerBroadcastMessage>(BroadcastNames.SAMHANDLERSOK_RESULT_EVENT, windowId)
+            .then((res) => {
+                if (searchCanceled.current) {
+                    return;
+                }
+                onResult(res.payload);
+            })
+            .catch(onError)
+            .finally(() => {
+                closeModal();
+                window.focus();
+                openedWindow?.close();
+            });
     }
 
     return (
