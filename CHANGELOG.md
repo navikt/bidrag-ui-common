@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.2](https://github.com/navikt/bidrag-ui-common/compare/v1.13.1...v1.13.2) (2025-05-14)
+
+
+### Bug Fixes
+
+* SamhandlerSokButton refactor ([#324](https://github.com/navikt/bidrag-ui-common/issues/324)) ([b91ae44](https://github.com/navikt/bidrag-ui-common/commit/b91ae44f13266df80343b4bc910de52853a7cc97))
+
 ## [1.13.1](https://github.com/navikt/bidrag-ui-common/compare/v1.13.0...v1.13.1) (2025-05-13)
 
 
