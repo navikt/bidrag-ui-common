@@ -1,5 +1,11 @@
 export const dateToDDMMYYYYString = (date: Date) =>
     date.toLocaleDateString("nb-NO", { year: "numeric", month: "2-digit", day: "2-digit" });
+export const ISODateTimeStringToDDMMYYYYString = (isoDateTimeString?: string) => {
+    if (!isoDateTimeString) return "";
+    const date = new Date(isoDateTimeString);
+    return isValidDate(date) ? dateToDDMMYYYYString(date) : "";
+};
+
 export const toISODateString = (date: Date): string =>
     date.toLocaleDateString("sv-SV", { year: "numeric", month: "2-digit", day: "2-digit" });
 export const toISODateTimeString = (date?: Date): string | null =>
