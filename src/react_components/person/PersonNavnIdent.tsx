@@ -9,21 +9,33 @@ type PersonNavnIdentProps = {
     navn?: string;
     ident?: string;
     fødselsdato?: string;
-    erDød: boolean;
-    harDisreksjon: boolean;
     variant?: "compact" | "default";
 };
 export default function PersonNavnIdent({ navn, ident, fødselsdato, variant = "default" }: PersonNavnIdentProps) {
     const { data: personData } = useHentPersonData(ident);
 
+    const erDød = personData.dødsdato || true;
+    const diskresjonskode = personData.diskresjonskode || false;
+    const personnavn = navn ?? personData.visningsnavn;
     const genererTittel = () => {
-        if (personData.diskresjonskode) {
-            return "Personen har diskresjonskode";
+        let tittel = "";
+        if (diskresjonskode) {
+            tittel += "Personen har diskresjonskode";
         }
-        if (personData.dødsdato) {
-            return "Personen er død";
+        if (erDød) {
+            tittel += tittel ? ", " : "";
+            tittel += "Personen er død";
         }
-        return "";
+        return tittel;
+    };
+
+    const Ikoner = () => {
+        return (
+            <div className="mr-1">
+                {diskresjonskode && <span>*</span>}
+                {erDød && <span>&dagger;</span>}
+            </div>
+        );
     };
 
     if (variant === "default") {
@@ -32,17 +44,14 @@ export default function PersonNavnIdent({ navn, ident, fødselsdato, variant = "
                 as="span"
                 size="small"
                 title={genererTittel()}
-                className={`flex items-center gap-4 ${personData?.diskresjonskode ? "skjermet" : ""}`}
+                className={`flex items-center gap-4 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             >
-                <PersonNavn bold navn={navn} ident={ident} />
-                <div className="inline">
-                    {ident ? (
-                        <PersonIdent ident={ident} />
-                    ) : (
-                        <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
-                    )}
-                    {personData?.diskresjonskode && <span className="disk">*</span>}
+                <div className="inline-flex">
+                    <Ikoner />
+                    <PersonNavn bold navn={personnavn} ident={ident} />
                 </div>
+
+                {ident ? <PersonIdent ident={ident} /> : <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>}
             </BodyShort>
         );
     }
@@ -50,14 +59,15 @@ export default function PersonNavnIdent({ navn, ident, fødselsdato, variant = "
         <BodyShort
             as="span"
             size="small"
-            className={`gap-2 ${personData?.diskresjonskode ? "skjermet" : ""}`}
+            className={`flex gap-1 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             title={genererTittel()}
         >
-            <PersonNavn navn={navn} /> /{" "}
-            <div className="inline">
-                {ident ? <PersonIdent ident={ident} /> : <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>}
-                {personData?.diskresjonskode && <span className="disk">*</span>}
+            <div className="inline-flex">
+                <Ikoner />
+                <PersonNavn navn={personnavn} />
             </div>
+            <div>/</div>
+            {ident ? <PersonIdent ident={ident} /> : <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>}
         </BodyShort>
     );
 }

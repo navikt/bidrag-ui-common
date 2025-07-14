@@ -1,6 +1,7 @@
 import { BodyShort, CopyButton } from "@navikt/ds-react";
 
 import { IRolleDetaljer } from "../../types/roller/IRolleDetaljer";
+import PersonNavnIdent from "../person/PersonNavnIdent";
 import RolleTag from "./RolleTag";
 
 interface IRolledetaljerProps {
@@ -12,14 +13,11 @@ const RolleDetaljer = ({ rolle, withBorder = true }: IRolledetaljerProps) => {
     return (
         <BodyShort
             size="small"
-            className={`px-6 py-1 w-max ${
-                withBorder && "border-[var(--a-border-divider)] border-solid border-b"
-            } flex items-center`}
+            className={`px-6 py-1 w-max ${withBorder && "border-[var(--a-border-divider)] border-solid border-b"
+                } flex items-center`}
         >
             <RolleTag rolleType={rolle.rolleType} />
-            <span className="personnavn">{rolle.navn}</span>
-            <span className="mx-1">/</span>
-            <span className="personident">{rolle.ident}</span>
+            <PersonNavnIdent ident={rolle.ident} variant="compact" />
             <CopyButton size="small" copyText={rolle.ident} />
         </BodyShort>
     );
