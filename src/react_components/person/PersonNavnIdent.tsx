@@ -12,7 +12,7 @@ type PersonNavnIdentProps = {
     ident?: string;
     fødselsdato?: string;
     rolle?: RolleType;
-    visNavn?: boolean;
+    skjulNavn?: boolean;
     variant?: "compact" | "default";
 };
 export default function PersonNavnIdent({
@@ -21,7 +21,7 @@ export default function PersonNavnIdent({
     fødselsdato,
     variant = "default",
     rolle,
-    visNavn = true,
+    skjulNavn = false,
 }: PersonNavnIdentProps) {
     const { useHentPersonData } = useBidragCommons();
     const { data: personData } = useHentPersonData(ident);
@@ -60,7 +60,7 @@ export default function PersonNavnIdent({
             >
                 {rolle && <RolleTag rolleType={rolle} />}
 
-                {visNavn ? (
+                {!skjulNavn ? (
                     <>
                         <div className="inline-flex">
                             <Ikoner />
@@ -94,7 +94,7 @@ export default function PersonNavnIdent({
             className={`flex gap-1 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             title={genererTittel()}
         >
-            {visNavn ? (
+            {!skjulNavn ? (
                 <>
                     {rolle && <RolleTag rolleType={rolle} />}
                     <div className="inline-flex">
