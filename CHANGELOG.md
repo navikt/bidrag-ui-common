@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.2](https://github.com/navikt/bidrag-ui-common/compare/v1.14.1...v1.14.2) (2025-07-15)
+
+
+### Bug Fixes
+
+* Visning av navn og ident ([#348](https://github.com/navikt/bidrag-ui-common/issues/348)) ([48e4f8b](https://github.com/navikt/bidrag-ui-common/commit/48e4f8b7d0ec5461540457e3eedfcb88a0337e14))
+
 ## [1.14.1](https://github.com/navikt/bidrag-ui-common/compare/v1.14.0...v1.14.1) (2025-07-15)
 
 
