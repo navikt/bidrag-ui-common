@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.1](https://github.com/navikt/bidrag-ui-common/compare/v1.14.0...v1.14.1) (2025-07-15)
+
+
+### Bug Fixes
+
+* Personnavn død ([#346](https://github.com/navikt/bidrag-ui-common/issues/346)) ([d583b5f](https://github.com/navikt/bidrag-ui-common/commit/d583b5fefb026e155c06e29b4760b54046f00d67))
+
 ## [1.14.0](https://github.com/navikt/bidrag-ui-common/compare/v1.13.2...v1.14.0) (2025-07-15)
 
 
