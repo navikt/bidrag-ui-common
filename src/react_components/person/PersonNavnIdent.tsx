@@ -1,7 +1,7 @@
 import { BodyShort } from "@navikt/ds-react";
 import React from "react";
 
-import { useHentPersonData } from "../../api/useApiData";
+import { useBidragCommons } from "../../api/BidragCommonsContext";
 import { RolleType } from "../../types";
 import { ISODateTimeStringToDDMMYYYYString } from "../../utils";
 import RolleTag from "../roller/RolleTag";
@@ -27,6 +27,7 @@ export default function PersonNavnIdent({
 }
 
 function PersonNavnIdentInternal({ navn, ident, fødselsdato, variant = "default", rolle }: PersonNavnIdentProps) {
+    const { useHentPersonData } = useBidragCommons();
     const { data: personData } = useHentPersonData(ident);
 
     const erDød = personData.dødsdato || true;
