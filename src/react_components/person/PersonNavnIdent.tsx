@@ -12,6 +12,7 @@ type PersonNavnIdentProps = {
     ident?: string;
     fødselsdato?: string;
     rolle?: RolleType;
+    visNavn?: boolean;
     variant?: "compact" | "default";
 };
 export default function PersonNavnIdent({
@@ -20,13 +21,8 @@ export default function PersonNavnIdent({
     fødselsdato,
     variant = "default",
     rolle,
+    visNavn = true,
 }: PersonNavnIdentProps) {
-    return (
-        <PersonNavnIdentInternal navn={navn} ident={ident} fødselsdato={fødselsdato} variant={variant} rolle={rolle} />
-    );
-}
-
-function PersonNavnIdentInternal({ navn, ident, fødselsdato, variant = "default", rolle }: PersonNavnIdentProps) {
     const { useHentPersonData } = useBidragCommons();
     const { data: personData } = useHentPersonData(ident);
 
@@ -64,12 +60,30 @@ function PersonNavnIdentInternal({ navn, ident, fødselsdato, variant = "default
             >
                 {rolle && <RolleTag rolleType={rolle} />}
 
-                <div className="inline-flex">
-                    <Ikoner />
-                    <PersonNavn bold navn={personnavn} ident={ident} />
-                </div>
+                {visNavn ? (
+                    <>
+                        <div className="inline-flex">
+                            <Ikoner />
+                            <PersonNavn bold navn={personnavn} ident={ident} />
+                        </div>
 
-                {ident ? <PersonIdent ident={ident} /> : <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>}
+                        {ident ? (
+                            <PersonIdent ident={ident} />
+                        ) : (
+                            <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
+                        )}
+                    </>
+                ) : (
+                    <div className="inline-flex">
+                        <Ikoner />
+
+                        {ident ? (
+                            <PersonIdent ident={ident} />
+                        ) : (
+                            <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
+                        )}
+                    </div>
+                )}
             </BodyShort>
         );
     }
@@ -80,13 +94,31 @@ function PersonNavnIdentInternal({ navn, ident, fødselsdato, variant = "default
             className={`flex gap-1 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             title={genererTittel()}
         >
-            {rolle && <RolleTag rolleType={rolle} />}
-            <div className="inline-flex">
-                <Ikoner />
-                <PersonNavn navn={personnavn} />
-            </div>
-            <div>/</div>
-            {ident ? <PersonIdent ident={ident} /> : <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>}
+            {visNavn ? (
+                <>
+                    {rolle && <RolleTag rolleType={rolle} />}
+                    <div className="inline-flex">
+                        <Ikoner />
+                        <PersonNavn navn={personnavn} />
+                    </div>
+                    <div>/</div>
+                    {ident ? (
+                        <PersonIdent ident={ident} />
+                    ) : (
+                        <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
+                    )}
+                </>
+            ) : (
+                <div className="inline-flex">
+                    <Ikoner />
+
+                    {ident ? (
+                        <PersonIdent ident={ident} />
+                    ) : (
+                        <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
+                    )}
+                </div>
+            )}
         </BodyShort>
     );
 }
