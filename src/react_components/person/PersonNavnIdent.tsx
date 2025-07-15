@@ -30,7 +30,7 @@ function PersonNavnIdentInternal({ navn, ident, fødselsdato, variant = "default
     const { useHentPersonData } = useBidragCommons();
     const { data: personData } = useHentPersonData(ident);
 
-    const erDød = personData.dødsdato || true;
+    const erDød = personData.dødsdato || false;
     const diskresjonskode = personData.diskresjonskode || false;
     const personnavn = navn ?? personData.visningsnavn;
     const genererTittel = () => {
