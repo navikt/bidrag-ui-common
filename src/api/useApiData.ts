@@ -1,26 +1,23 @@
-import { QueryClient, useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 import { PERSON_API } from "./api";
+import { useBidragCommons } from "./BidragCommonsContext";
 import { PersonDto } from "./PersonApi";
-const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            refetchOnWindowFocus: false,
-            retry: 3,
-            retryDelay: 2000,
-        },
-    },
-});
-export const useHentPersonData = (ident?: string) =>
-    useSuspenseQuery(
+
+const getKey = (ident: string) => ["persons2", ident ?? "ukjent"];
+
+export const useHentPersonData = (ident?: string) => {
+    const { queryClient } = useBidragCommons();
+    return useSuspenseQuery(
         {
-            queryKey: ["persons", ident],
+            queryKey: getKey(ident ?? ""),
             queryFn: async (): Promise<PersonDto> => {
+                console.log("Fetch", ident);
                 if (!ident) return { ident: "", visningsnavn: "Ukjent" };
                 const { data } = await PERSON_API.informasjon.hentPersonPost({ ident: ident });
                 return data;
             },
-            staleTime: Infinity,
         },
         queryClient
     );
+};

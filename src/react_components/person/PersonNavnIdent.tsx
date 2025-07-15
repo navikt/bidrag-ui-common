@@ -1,17 +1,32 @@
 import { BodyShort } from "@navikt/ds-react";
+import React from "react";
 
 import { useHentPersonData } from "../../api/useApiData";
+import { RolleType } from "../../types";
 import { ISODateTimeStringToDDMMYYYYString } from "../../utils";
+import RolleTag from "../roller/RolleTag";
 import PersonIdent from "./PersonIdent";
 import PersonNavn from "./PersonNavn";
-
 type PersonNavnIdentProps = {
     navn?: string;
     ident?: string;
     fødselsdato?: string;
+    rolle?: RolleType;
     variant?: "compact" | "default";
 };
-export default function PersonNavnIdent({ navn, ident, fødselsdato, variant = "default" }: PersonNavnIdentProps) {
+export default function PersonNavnIdent({
+    navn,
+    ident,
+    fødselsdato,
+    variant = "default",
+    rolle,
+}: PersonNavnIdentProps) {
+    return (
+        <PersonNavnIdentInternal navn={navn} ident={ident} fødselsdato={fødselsdato} variant={variant} rolle={rolle} />
+    );
+}
+
+function PersonNavnIdentInternal({ navn, ident, fødselsdato, variant = "default", rolle }: PersonNavnIdentProps) {
     const { data: personData } = useHentPersonData(ident);
 
     const erDød = personData.dødsdato || true;
@@ -46,6 +61,8 @@ export default function PersonNavnIdent({ navn, ident, fødselsdato, variant = "
                 title={genererTittel()}
                 className={`flex items-center gap-4 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             >
+                {rolle && <RolleTag rolleType={rolle} />}
+
                 <div className="inline-flex">
                     <Ikoner />
                     <PersonNavn bold navn={personnavn} ident={ident} />
@@ -62,6 +79,7 @@ export default function PersonNavnIdent({ navn, ident, fødselsdato, variant = "
             className={`flex gap-1 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             title={genererTittel()}
         >
+            {rolle && <RolleTag rolleType={rolle} />}
             <div className="inline-flex">
                 <Ikoner />
                 <PersonNavn navn={personnavn} />

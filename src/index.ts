@@ -1,3 +1,4 @@
+export { default as BidragCommonsProvider } from "./api/BidragCommonsContext";
 export * from "./docs";
 export * from "./logging";
 export * from "./react_components";
