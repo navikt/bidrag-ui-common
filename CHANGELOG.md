@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/navikt/bidrag-ui-common/compare/v1.13.2...v1.14.0) (2025-07-15)
+
+
+### Features
+
+* Personnavn komponent ([6b9637f](https://github.com/navikt/bidrag-ui-common/commit/6b9637f294794fe45bc4d36f479422b60c92bdbf))
+
 ## [1.13.2](https://github.com/navikt/bidrag-ui-common/compare/v1.13.1...v1.13.2) (2025-05-14)
 
 
