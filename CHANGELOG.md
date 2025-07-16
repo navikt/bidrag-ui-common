@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.3](https://github.com/navikt/bidrag-ui-common/compare/v1.14.2...v1.14.3) (2025-07-16)
+
+
+### Bug Fixes
+
+* Dummy release commit ([#351](https://github.com/navikt/bidrag-ui-common/issues/351)) ([d0215c2](https://github.com/navikt/bidrag-ui-common/commit/d0215c2fabed7ef9e1397e2ed1d36cfdbb7bf96d))
+
 ## [1.14.2](https://github.com/navikt/bidrag-ui-common/compare/v1.14.1...v1.14.2) (2025-07-15)
 
 
