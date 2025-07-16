@@ -13,6 +13,7 @@ type PersonNavnIdentProps = {
     fødselsdato?: string;
     rolle?: RolleType;
     skjulNavn?: boolean;
+    showCopyButton?: boolean;
     variant?: "compact" | "default";
 };
 export default function PersonNavnIdent({
@@ -22,6 +23,7 @@ export default function PersonNavnIdent({
     variant = "default",
     rolle,
     skjulNavn = false,
+    showCopyButton = false,
 }: PersonNavnIdentProps) {
     const { useHentPersonData } = useBidragCommons();
     const { data: personData } = useHentPersonData(ident);
@@ -56,7 +58,7 @@ export default function PersonNavnIdent({
                 as="span"
                 size="small"
                 title={genererTittel()}
-                className={`flex items-center gap-4 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
+                className={`flex items-center gap-2 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             >
                 {rolle && <RolleTag rolleType={rolle} />}
 
@@ -68,7 +70,7 @@ export default function PersonNavnIdent({
                         </div>
 
                         {ident ? (
-                            <PersonIdent ident={ident} />
+                            <PersonIdent ident={ident} showCopyButton={showCopyButton} />
                         ) : (
                             <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
                         )}
@@ -78,7 +80,7 @@ export default function PersonNavnIdent({
                         <Ikoner />
 
                         {ident ? (
-                            <PersonIdent ident={ident} />
+                            <PersonIdent ident={ident} showCopyButton={showCopyButton} />
                         ) : (
                             <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
                         )}
@@ -103,7 +105,7 @@ export default function PersonNavnIdent({
                     </div>
                     <div>/</div>
                     {ident ? (
-                        <PersonIdent ident={ident} />
+                        <PersonIdent ident={ident} showCopyButton={showCopyButton} />
                     ) : (
                         <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
                     )}
@@ -113,7 +115,7 @@ export default function PersonNavnIdent({
                     <Ikoner />
 
                     {ident ? (
-                        <PersonIdent ident={ident} />
+                        <PersonIdent ident={ident} showCopyButton={showCopyButton} />
                     ) : (
                         <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
                     )}
