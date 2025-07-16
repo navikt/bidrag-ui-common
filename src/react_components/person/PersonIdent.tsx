@@ -1,5 +1,13 @@
+import { CopyButton } from "@navikt/ds-react";
 import React from "react";
 
-export default function PersonIdent({ ident }: { ident: string }) {
-    return <span className="personident">{ident}</span>;
-}
+const PersonIdent = ({ ident, showCopyButton = false }: { ident: string; showCopyButton: boolean }) => {
+    return (
+        <>
+            <span className="personident">{ident}</span>
+            {showCopyButton && <CopyButton copyText={ident} />}
+        </>
+    );
+};
+
+export default PersonIdent;
