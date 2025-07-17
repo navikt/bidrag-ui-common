@@ -52,6 +52,17 @@ export default function PersonNavnIdent({
         );
     };
 
+    const Ident = () => {
+        return (
+            <>
+                {ident ? (
+                    <PersonIdent ident={ident} showCopyButton={showCopyButton} />
+                ) : (
+                    <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
+                )}
+            </>
+        );
+    };
     if (variant === "default") {
         return (
             <BodyShort
@@ -69,21 +80,13 @@ export default function PersonNavnIdent({
                             <PersonNavn bold navn={personnavn} ident={ident} />
                         </div>
 
-                        {ident ? (
-                            <PersonIdent ident={ident} showCopyButton={showCopyButton} />
-                        ) : (
-                            <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
-                        )}
+                        <Ident />
                     </>
                 ) : (
                     <div className="inline-flex">
                         <Ikoner />
 
-                        {ident ? (
-                            <PersonIdent ident={ident} showCopyButton={showCopyButton} />
-                        ) : (
-                            <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
-                        )}
+                        <Ident />
                     </div>
                 )}
             </BodyShort>
@@ -104,21 +107,13 @@ export default function PersonNavnIdent({
                         <PersonNavn navn={personnavn} />
                     </div>
                     <div>/</div>
-                    {ident ? (
-                        <PersonIdent ident={ident} showCopyButton={showCopyButton} />
-                    ) : (
-                        <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
-                    )}
+                    <Ident />
                 </>
             ) : (
                 <div className="inline-flex">
                     <Ikoner />
 
-                    {ident ? (
-                        <PersonIdent ident={ident} showCopyButton={showCopyButton} />
-                    ) : (
-                        <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
-                    )}
+                    <Ident />
                 </div>
             )}
         </BodyShort>
