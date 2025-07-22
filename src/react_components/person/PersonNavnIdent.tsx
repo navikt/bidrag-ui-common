@@ -85,7 +85,6 @@ export default function PersonNavnIdent({
                 ) : (
                     <div className="inline-flex">
                         <Ikoner />
-
                         <Ident />
                     </div>
                 )}
@@ -99,9 +98,9 @@ export default function PersonNavnIdent({
             className={`flex gap-1 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             title={genererTittel()}
         >
+            {rolle && <RolleTag rolleType={rolle} />}
             {!skjulNavn ? (
                 <>
-                    {rolle && <RolleTag rolleType={rolle} />}
                     <div className="inline-flex">
                         <Ikoner />
                         <PersonNavn navn={personnavn} />
