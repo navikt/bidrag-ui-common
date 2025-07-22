@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.6](https://github.com/navikt/bidrag-ui-common/compare/v1.14.5...v1.14.6) (2025-07-22)
+
+
+### Bug Fixes
+
+* Legg til traceheadere for logging ([#362](https://github.com/navikt/bidrag-ui-common/issues/362)) ([6eec19f](https://github.com/navikt/bidrag-ui-common/commit/6eec19f44969d8f1847d48a8c8c79f760667346d))
+
 ## [1.14.5](https://github.com/navikt/bidrag-ui-common/compare/v1.14.4...v1.14.5) (2025-07-22)
 
 
