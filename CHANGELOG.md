@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.7](https://github.com/navikt/bidrag-ui-common/compare/v1.14.6...v1.14.7) (2025-07-22)
+
+
+### Bug Fixes
+
+* Refactor personnavnident ([#364](https://github.com/navikt/bidrag-ui-common/issues/364)) ([04a516b](https://github.com/navikt/bidrag-ui-common/commit/04a516bc54bb0415bdac30470dcd59b35e4c3180))
+
 ## [1.14.6](https://github.com/navikt/bidrag-ui-common/compare/v1.14.5...v1.14.6) (2025-07-22)
 
 
