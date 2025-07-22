@@ -1,3 +1,5 @@
+import { propagation } from "@opentelemetry/api";
+
 import { CustomError } from "../types";
 import { ErrorInfo, LogErrorType, LogInfo, LogLevel, LogResponse } from "../types";
 import { SecuritySessionUtils } from "../utils";
@@ -32,11 +34,16 @@ export abstract class AbstractLoggerService {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    protected static log(_logInfo: LogInfo): Promise<LogResponse> {
+    protected static log(_logInfo: LogInfo, headers?: Record<string, string>): Promise<LogResponse> {
         throw new Error("Not implemented");
     }
 
     protected static mapAndLog(message: string, level: LogLevel, error?: LogErrorType | ErrorInfo) {
+        // @ts-ignore
+        const parentCtx = window.__otelSessionContext || context.active();
+        const carrier: Record<string, string> = {};
+
+        propagation.inject(parentCtx, carrier);
         const logInfo: LogInfo = {
             message,
             level,
@@ -63,7 +70,7 @@ export abstract class AbstractLoggerService {
         } else {
             console.log(logInfo.message, logInfo);
         }
-        return this.log(logInfo);
+        return this.log(logInfo, carrier);
     }
 
     protected static mapError(error?: LogErrorType): ErrorInfo | undefined {
