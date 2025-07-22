@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.5](https://github.com/navikt/bidrag-ui-common/compare/v1.14.4...v1.14.5) (2025-07-22)
+
+
+### Bug Fixes
+
+* Legg til tracing på api ([#359](https://github.com/navikt/bidrag-ui-common/issues/359)) ([44864f9](https://github.com/navikt/bidrag-ui-common/commit/44864f95ef3eea6d1424e92b708f049224747a42))
+
 ## [1.14.4](https://github.com/navikt/bidrag-ui-common/compare/v1.14.3...v1.14.4) (2025-07-17)
 
 
