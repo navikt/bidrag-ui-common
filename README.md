@@ -4,7 +4,7 @@ Inneholder felles types brukt tvers av mikrofrontend apper i Bidrag
 
 ## Hvordan bruke bidrag-ui-commons i din applikasjon
 
-### Logg in på https://npm.pkg.github.com2
+### Logg in på https://npm.pkg.github.com
 
 På github -> Settings -> Developer Settings -> Generate New Token
 Select scopes `repo` og `read:packages`
