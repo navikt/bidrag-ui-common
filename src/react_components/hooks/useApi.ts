@@ -1,8 +1,10 @@
+import { context, propagation, trace } from "@opentelemetry/api";
 import { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from "axios";
 
 import { LoggerService, SecureLoggerService } from "../../logging";
 import { AxiosErrorHandler } from "../../types/error/ErrorHandler";
 import { SecuritySessionUtils } from "../../utils";
+import { tracename } from "./useStartTracing";
 
 interface AxiosClient {
     instance: AxiosInstance;
@@ -13,7 +15,7 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 
     async function logError(error: AxiosError) {
         const config = error.config!;
-        const requestUrl = config.baseURL ?? "" + config?.url ?? "";
+        const requestUrl = config?.baseURL ?? "" + config?.url ?? "";
         const method = config?.method?.toUpperCase();
         const requestEnd = performance.now();
         const requestTime = requestEnd - requestStart;
@@ -36,9 +38,23 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 
     api.instance.interceptors.request.use(
         async (config: InternalAxiosRequestConfig) => {
+            const tracer = trace.getTracer(tracename);
+            // @ts-ignore
+            const parentCtx = window.__otelSessionContext || context.active();
+            const apiSpan = tracer.startSpan(config?.baseURL ?? "ukjent", undefined, parentCtx);
             const secHeaders = await createDefaultHeaders(app, cluster, config.baseURL, env);
-            Object.assign(config.headers, secHeaders);
+            const carrier: Record<string, string> = {};
+            const sessionContext = trace.setSpan(parentCtx, apiSpan);
 
+            propagation.inject(sessionContext, carrier);
+
+            // Add trace headers to the request
+            Object.entries({ ...carrier, ...secHeaders }).forEach(([key, value]) => {
+                if (value !== undefined && value !== null) {
+                    config.headers[key] = value;
+                }
+            });
+            apiSpan.end();
             return config;
         },
         async function (error: AxiosError) {
@@ -85,6 +101,5 @@ const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: stri
         "X-Correlation-ID": traceparent,
         "Nav-Call-Id": traceparent,
         "Nav-Consumer-Id": SecuritySessionUtils.getAppName(),
-        // traceparent: traceparent,
     };
 };
