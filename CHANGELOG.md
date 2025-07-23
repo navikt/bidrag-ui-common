@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.8](https://github.com/navikt/bidrag-ui-common/compare/v1.14.7...v1.14.8) (2025-07-23)
+
+
+### Bug Fixes
+
+* Personnavnident spacing ([#366](https://github.com/navikt/bidrag-ui-common/issues/366)) ([f05353e](https://github.com/navikt/bidrag-ui-common/commit/f05353e8847a7d901b7f48c9bccbc3ef9f95930a))
+
 ## [1.14.7](https://github.com/navikt/bidrag-ui-common/compare/v1.14.6...v1.14.7) (2025-07-22)
 
 
