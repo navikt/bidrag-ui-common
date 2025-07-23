@@ -105,7 +105,7 @@ export default function PersonNavnIdent({
                         <Ikoner />
                         <PersonNavn navn={personnavn} />
                     </div>
-                    <div>/</div>
+                    <div>{" "}/{" "}</div>
                     <Ident />
                 </>
             ) : (
