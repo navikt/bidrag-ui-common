@@ -15,7 +15,7 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 
     async function logError(error: AxiosError) {
         const config = error.config!;
-        const requestUrl = config?.baseURL ?? "" + config?.url ?? "";
+        const requestUrl = (config?.baseURL ?? "") + (config?.url ?? "");
         const method = config?.method?.toUpperCase();
         const requestEnd = performance.now();
         const requestTime = requestEnd - requestStart;
@@ -23,13 +23,14 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
         const errorInfo = AxiosErrorHandler.mapErrorResponseToApiError(error);
         const errorMessage = `${error.message} - ${requestInfo}`;
 
-        const warnOrError = error?.response?.status === 400 ? "warn" : "error";
+        const status = error?.response?.status ?? 0;
+        const warnOrError = status >= 400 && status < 500 ? "warn" : "error";
 
         await LoggerService[warnOrError](errorMessage, errorInfo);
 
         const requestBody = config?.data;
         if (requestBody) {
-            await SecureLoggerService[warnOrError](errorMessage, {
+            await SecureLoggerService[warnOrError](`${errorMessage} med melding ${requestBody}`, {
                 ...errorInfo,
                 stack_trace: `Requesten som førte til feilen inneholdt melding ${requestBody}`,
             });
