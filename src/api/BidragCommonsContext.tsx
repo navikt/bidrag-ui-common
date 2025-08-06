@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider, UseSuspenseQueryResult } from "@tanstack/react-query";
-import React, { createContext, ReactNode, useContext, useRef } from "react";
+import React, { createContext, ReactNode, useContext, useEffect, useRef } from "react";
 
 import { PersonDto } from "./PersonApi";
 import { useHentPersonData } from "./useApiData";
@@ -38,6 +38,24 @@ export const BidragCommonsProvider: React.FC<BidragCommonsProviderProps> = ({
     useHentPersonData: useHentPersonDataInput,
 }) => {
     const queryClient = useRef(client ?? createClient());
+    const id = useRef(Math.random());
+    useEffect(() => {
+        window.localStorage.setItem("blur-sensitive-info-master", id.current.toString());
+        const eventListener = (e: KeyboardEvent) => {
+            const masterId = window.localStorage.getItem("blur-sensitive-info-master");
+            if (masterId !== id.current.toString()) return;
+            if (e.ctrlKey && (e.key === "ø" || e.key === "|")) {
+                document.body.classList.toggle("blur-sensitive-info");
+                window.localStorage.setItem(
+                    "blur-sensitive-info",
+                    document.body.classList.contains("blur-sensitive-info").toString()
+                );
+            }
+        };
+        document.addEventListener("keydown", eventListener);
+        return () => document.removeEventListener("keydown", eventListener);
+    }, []);
+
     return (
         <BidragCommonsContext.Provider
             value={{ queryClient: queryClient.current, useHentPersonData: useHentPersonDataInput ?? useHentPersonData }}
