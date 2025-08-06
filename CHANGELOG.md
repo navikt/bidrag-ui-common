@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.10](https://github.com/navikt/bidrag-ui-common/compare/v1.14.9...v1.14.10) (2025-08-06)
+
+
+### Bug Fixes
+
+* Styling personnavnident ([#372](https://github.com/navikt/bidrag-ui-common/issues/372)) ([bc439c3](https://github.com/navikt/bidrag-ui-common/commit/bc439c39c6f48011e54ee03b6bbd477fc7757b2b))
+
 ## [1.14.9](https://github.com/navikt/bidrag-ui-common/compare/v1.14.8...v1.14.9) (2025-07-29)
 
 
