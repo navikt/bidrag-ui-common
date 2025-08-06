@@ -10,3 +10,22 @@
 .doed:not(.skjermet) {
     color: #225e06;
 }
+
+.blur-sensitive-info .personnavn,
+.blur-sensitive-info .personinfo,
+.blur-sensitive-info .personident {
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+}
+
+.blur-sensitive-info:hover {
+    filter: none;
+}
+.blur-sensitive-info {
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+}
+
+.blur-sensitive-info:hover {
+    filter: none;
+}

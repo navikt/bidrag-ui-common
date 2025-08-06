@@ -95,17 +95,18 @@ export default function PersonNavnIdent({
         <BodyShort
             as="span"
             size="small"
-            className={`flex gap-1 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
+            className={`flex gap-1 self-center items-center ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""
+                }`}
             title={genererTittel()}
         >
-            {rolle && <RolleTag rolleType={rolle} />}
+            {rolle && <RolleTag rolleType={rolle} className="h-max" />}
             {!skjulNavn ? (
                 <>
                     <div className="inline-flex">
                         <Ikoner />
                         <PersonNavn navn={personnavn} />
                     </div>
-                    <div>{" "}/{" "}</div>
+                    <div> / </div>
                     <Ident />
                 </>
             ) : (
