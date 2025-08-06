@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.11](https://github.com/navikt/bidrag-ui-common/compare/v1.14.10...v1.14.11) (2025-08-06)
+
+
+### Bug Fixes
+
+* Mask sensitiv info listener ([#374](https://github.com/navikt/bidrag-ui-common/issues/374)) ([75d47cd](https://github.com/navikt/bidrag-ui-common/commit/75d47cd19e61da1cc629705f6c82d5241d8d2ebf))
+
 ## [1.14.10](https://github.com/navikt/bidrag-ui-common/compare/v1.14.9...v1.14.10) (2025-08-06)
 
 
