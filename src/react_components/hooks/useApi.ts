@@ -10,7 +10,15 @@ interface AxiosClient {
     instance: AxiosInstance;
 }
 
-export function useApi<T extends AxiosClient>(api: T, app: string, cluster: string, env?: string, scope?: string): T {
+interface UseApiOptions {
+    app: string;
+    cluster: string;
+    env?: string;
+    scope?: string;
+}
+
+export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T {
+    const { app, cluster, env, scope } = options;
     const requestStart = performance.now();
 
     async function logError(error: AxiosError) {
