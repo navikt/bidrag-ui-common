@@ -14,10 +14,10 @@ export class SecuritySessionUtils {
             .catch(() => false);
     }
 
-    static async getSecurityTokenForApp(app: string, cluster?: string) {
+    static async getSecurityTokenForApp(app: string, cluster?: string, scope?: string) {
         const tokenReq = await fetch("/token", {
             method: "POST",
-            body: JSON.stringify({ app, cluster }),
+            body: JSON.stringify({ app, cluster, scope }),
             headers: { "Content-type": "application/json; charset=UTF-8" },
         });
         return await tokenReq.text();
@@ -49,6 +49,7 @@ export class SecuritySessionUtils {
         const tokenReq = await fetch("/me", { method: "GET" });
         return (await tokenReq.json()).displayName;
     }
+
     static async hentSaksbehandlerId(): Promise<string | undefined> {
         const tokenReq = await fetch("/me", { method: "GET" });
         return (await tokenReq.json()).navIdent;
