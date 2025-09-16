@@ -51,7 +51,7 @@ export default function PersonNavnIdent({
     const Ikoner = () => {
         return (
             <div className="mr-1">
-                {skjermet && <span>*</span>}
+                {/* {skjermet && <span>*</span>} */}
                 {erKode67 && <span>*</span>}
                 {erDød && <span>&dagger;</span>}
             </div>
