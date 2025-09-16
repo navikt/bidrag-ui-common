@@ -1,13 +1,14 @@
 import { QueryClient, QueryClientProvider, UseSuspenseQueryResult } from "@tanstack/react-query";
 import React, { createContext, ReactNode, useContext, useEffect, useRef } from "react";
 
-import { PersonDto } from "./PersonApi";
-import { useHentPersonData } from "./useApiData";
+import { Graderingsinfo, PersonDto } from "./PersonApi";
+import { useHentPersonData, useHentPersonSkjermingInfo } from "./useApiData";
 
 // Define context type
 interface BidragCommonsContextType {
     queryClient: QueryClient;
     useHentPersonData: (ident?: string) => UseSuspenseQueryResult<PersonDto, any>;
+    useHentPersonSkjermingInfo: (ident?: string) => UseSuspenseQueryResult<Graderingsinfo, any>;
 }
 
 // Create context with undefined default value
@@ -58,7 +59,11 @@ export const BidragCommonsProvider: React.FC<BidragCommonsProviderProps> = ({
 
     return (
         <BidragCommonsContext.Provider
-            value={{ queryClient: queryClient.current, useHentPersonData: useHentPersonDataInput ?? useHentPersonData }}
+            value={{
+                queryClient: queryClient.current,
+                useHentPersonData: useHentPersonDataInput ?? useHentPersonData,
+                useHentPersonSkjermingInfo: useHentPersonSkjermingInfo,
+            }}
         >
             <QueryClientProvider client={queryClient.current}>{children}</QueryClientProvider>
         </BidragCommonsContext.Provider>

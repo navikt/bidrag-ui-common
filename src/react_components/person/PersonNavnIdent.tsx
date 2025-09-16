@@ -26,14 +26,19 @@ export default function PersonNavnIdent({
     showCopyButton = false,
 }: PersonNavnIdentProps) {
     const { useHentPersonData } = useBidragCommons();
+    // const { data: graderingsinfo } = useHentPersonSkjermingInfo(ident);
     const { data: personData } = useHentPersonData(ident);
 
     const erDød = personData.dødsdato || false;
-    const diskresjonskode = personData.diskresjonskode || false;
+    const erKode67 = personData.diskresjonskode === "SPSF" || personData.diskresjonskode === "SPFO";
+    // const skjermet = false; //ident ? graderingsinfo.identerTilSkjerming[ident] : false;
     const personnavn = navn ?? personData.visningsnavn;
     const genererTittel = () => {
         let tittel = "";
-        if (diskresjonskode) {
+        // if (skjermet) {
+        //     tittel += "Personen er skjermet";
+        // }
+        if (erKode67) {
             tittel += "Personen har diskresjonskode";
         }
         if (erDød) {
@@ -46,7 +51,8 @@ export default function PersonNavnIdent({
     const Ikoner = () => {
         return (
             <div className="mr-1">
-                {diskresjonskode && <span>*</span>}
+                {skjermet && <span>*</span>}
+                {erKode67 && <span>*</span>}
                 {erDød && <span>&dagger;</span>}
             </div>
         );
@@ -69,7 +75,7 @@ export default function PersonNavnIdent({
                 as="span"
                 size="small"
                 title={genererTittel()}
-                className={`flex items-center gap-2 ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
+                className={`flex items-center gap-2 ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             >
                 {rolle && <RolleTag rolleType={rolle} />}
 
@@ -95,8 +101,7 @@ export default function PersonNavnIdent({
         <BodyShort
             as="span"
             size="small"
-            className={`flex gap-1 self-center items-center ${diskresjonskode ? "skjermet" : ""} ${erDød ? "doed" : ""
-                }`}
+            className={`flex gap-1 self-center items-center ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             title={genererTittel()}
         >
             {rolle && <RolleTag rolleType={rolle} className="h-max" />}
