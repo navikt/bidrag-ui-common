@@ -10,7 +10,15 @@ interface AxiosClient {
     instance: AxiosInstance;
 }
 
-export function useApi<T extends AxiosClient>(api: T, app: string, cluster: string, env?: string): T {
+interface UseApiOptions {
+    app: string;
+    cluster: string;
+    env?: string;
+    scope?: string;
+}
+
+export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T {
+    const { app, cluster, env, scope } = options;
     const requestStart = performance.now();
 
     async function logError(error: AxiosError) {
@@ -43,7 +51,7 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
             // @ts-ignore
             const parentCtx = window.__otelSessionContext || context.active();
             const apiSpan = tracer.startSpan(config?.baseURL ?? "ukjent", undefined, parentCtx);
-            const secHeaders = await createDefaultHeaders(app, cluster, config.baseURL, env);
+            const secHeaders = await createDefaultHeaders(app, cluster, config.baseURL, env, scope);
             const carrier: Record<string, string> = {};
             const sessionContext = trace.setSpan(parentCtx, apiSpan);
 
@@ -77,6 +85,7 @@ export function useApi<T extends AxiosClient>(api: T, app: string, cluster: stri
 
     return api;
 }
+
 const regexDevEnvironment = /-q\d+/; // Regular expression to match 'q' followed by one or more digits at the end of the string
 
 const getEnhet = () => {
@@ -87,14 +96,14 @@ const getEnhet = () => {
         return null;
     }
 };
-const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: string, env?: string) => {
+const createDefaultHeaders = async (app: string, cluster: string, baseUrl?: string, env?: string, scope?: string) => {
     let appName = env ? `${app}-${env}` : app;
     const environmentMatch = baseUrl?.match(regexDevEnvironment);
     if (environmentMatch) {
         appName = `${app}${environmentMatch[0]}`;
     }
 
-    const idToken = await SecuritySessionUtils.getSecurityTokenForApp(appName, cluster);
+    const idToken = await SecuritySessionUtils.getSecurityTokenForApp(appName, cluster, scope);
     const traceparent = SecuritySessionUtils.getCorrelationId();
     return {
         Authorization: "Bearer " + idToken,
