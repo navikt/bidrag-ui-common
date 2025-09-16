@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.12](https://github.com/navikt/bidrag-ui-common/compare/v1.14.11...v1.14.12) (2025-09-16)
+
+
+### Bug Fixes
+
+* Feilfiks diskresjonskode ([#384](https://github.com/navikt/bidrag-ui-common/issues/384)) ([aa30ecf](https://github.com/navikt/bidrag-ui-common/commit/aa30ecfe74091f6a242615a55ba8b3931f42b161))
+
 ## [1.14.11](https://github.com/navikt/bidrag-ui-common/compare/v1.14.10...v1.14.11) (2025-08-06)
 
 
