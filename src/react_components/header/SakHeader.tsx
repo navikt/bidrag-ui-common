@@ -57,7 +57,9 @@ function SkjermbildeDetaljer({ saksnummer, skjermbilde }: { saksnummer: string; 
     return (
         <div className="flex flex-row">
             <span className="text-base flex items-center font-normal">
-                <BodyShort size={"small"}>Saksnr. {saksnummer}</BodyShort>
+                <BodyShort size={"small"} className="saksnr">
+                    Saksnr. {saksnummer}
+                </BodyShort>
                 <CopyButton size="small" copyText={saksnummer} activeText="Kopierte saksnummer" />
             </span>
             {skjermbilde && (
