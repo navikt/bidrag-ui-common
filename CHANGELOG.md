@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/navikt/bidrag-ui-common/compare/v1.14.12...v2.0.0) (2025-09-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* add scope param to useApi hook ([#386](https://github.com/navikt/bidrag-ui-common/issues/386))
+
+### Features
+
+* add scope param to useApi hook ([#386](https://github.com/navikt/bidrag-ui-common/issues/386)) ([66a1054](https://github.com/navikt/bidrag-ui-common/commit/66a1054b7511269d539f376883459bdf3c28e6fc))
+
 ## [1.14.12](https://github.com/navikt/bidrag-ui-common/compare/v1.14.11...v1.14.12) (2025-09-16)
 
 
