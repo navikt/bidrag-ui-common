@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/navikt/bidrag-ui-common/compare/v2.0.0...v2.0.1) (2025-09-17)
+
+
+### Bug Fixes
+
+* Maskere saksnr ([b5d21b6](https://github.com/navikt/bidrag-ui-common/commit/b5d21b622fc082ef7f035ba7a2f3f06cd4e66b9e))
+
 ## [2.0.0](https://github.com/navikt/bidrag-ui-common/compare/v1.14.12...v2.0.0) (2025-09-17)
 
 
