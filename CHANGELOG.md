@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/navikt/bidrag-ui-common/compare/v2.0.1...v2.0.2) (2025-09-20)
+
+
+### Bug Fixes
+
+* Skjerming strengt fortrolig ([3ebb86a](https://github.com/navikt/bidrag-ui-common/commit/3ebb86af9fd9d0e3af1cc467713c9ebfa443d1f4))
+
 ## [2.0.1](https://github.com/navikt/bidrag-ui-common/compare/v2.0.0...v2.0.1) (2025-09-17)
 
 
