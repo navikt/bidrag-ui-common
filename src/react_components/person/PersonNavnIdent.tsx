@@ -30,7 +30,10 @@ export default function PersonNavnIdent({
     const { data: personData } = useHentPersonData(ident);
 
     const erDød = personData.dødsdato || false;
-    const erKode67 = personData.diskresjonskode === "SPSF" || personData.diskresjonskode === "SPFO";
+    const erKode67 =
+        personData.diskresjonskode === "SPSF" ||
+        personData.diskresjonskode === "SPFO" ||
+        personData.diskresjonskode === "P19";
     // const skjermet = false; //ident ? graderingsinfo.identerTilSkjerming[ident] : false;
     const personnavn = navn ?? personData.visningsnavn;
     const genererTittel = () => {
