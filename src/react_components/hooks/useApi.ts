@@ -17,6 +17,11 @@ interface UseApiOptions {
     scope?: string;
 }
 
+// Add helper function to detect if network call is blocked by Chrome
+function isNetworkCallBlockedByChrome(error: AxiosError): boolean {
+    return error.code === "ERR_NETWORK" || (!!error.message && error.message.toLowerCase().includes("blocked"));
+}
+
 export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T {
     const { app, cluster, env, scope } = options;
     const requestStart = performance.now();
@@ -34,7 +39,15 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
         const status = error?.response?.status ?? 0;
         const warnOrError = status >= 400 && status < 500 ? "warn" : "error";
 
-        await LoggerService[warnOrError](errorMessage, errorInfo);
+        // Check if blocked by Chrome and log accordingly
+        if (isNetworkCallBlockedByChrome(error)) {
+            await LoggerService["error"](
+                `Nettverk kall blokkert av Chrome/Edge. Det kan hende saksbehandler må gi tillatelser i nettleseren: ${errorMessage}`,
+                errorInfo
+            );
+        } else {
+            await LoggerService[warnOrError](errorMessage, errorInfo);
+        }
 
         const requestBody = config?.data;
         if (requestBody) {
