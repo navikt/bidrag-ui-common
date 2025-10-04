@@ -15,6 +15,7 @@ interface UseApiOptions {
     cluster: string;
     env?: string;
     scope?: string;
+    showAlertOnNetworkError?: boolean;
 }
 
 // Add helper function to detect if network call is blocked by Chrome
@@ -45,6 +46,12 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
                 `Nettverk kall blokkert av Chrome/Edge. Det kan hende saksbehandler må gi tillatelser i nettleseren: ${errorMessage}`,
                 errorInfo
             );
+            // Show alert to user
+            if (options.showAlertOnNetworkError) {
+                alert(
+                    "En feil oppstod ved henting av data. Vennligst godta de nødvendige tillatelsene som nettleseren ber om."
+                );
+            }
         } else {
             await LoggerService[warnOrError](errorMessage, errorInfo);
         }
