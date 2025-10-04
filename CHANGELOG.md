@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/navikt/bidrag-ui-common/compare/v2.0.2...v2.0.3) (2025-10-04)
+
+
+### Bug Fixes
+
+* Vis varsel ved nettverksfeil ([7db0fac](https://github.com/navikt/bidrag-ui-common/commit/7db0fac9024f877cc187afd9b845d3708404514a))
+
 ## [2.0.2](https://github.com/navikt/bidrag-ui-common/compare/v2.0.1...v2.0.2) (2025-09-20)
 
 
