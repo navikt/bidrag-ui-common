@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/navikt/bidrag-ui-common/compare/v2.0.3...v2.1.0) (2025-11-19)
+
+
+### Features
+
+* Rolletag revurderingsbarn ([#397](https://github.com/navikt/bidrag-ui-common/issues/397)) ([3a679d2](https://github.com/navikt/bidrag-ui-common/commit/3a679d2ef5fe9f40bc260b7e78d5546de7a87eff))
+
 ## [2.0.3](https://github.com/navikt/bidrag-ui-common/compare/v2.0.2...v2.0.3) (2025-10-04)
 
 
