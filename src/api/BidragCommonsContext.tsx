@@ -8,6 +8,7 @@ import { useHentPersonData, useHentPersonSkjermingInfo } from "./useApiData";
 interface BidragCommonsContextType {
     queryClient: QueryClient;
     useHentPersonData: (ident?: string) => UseSuspenseQueryResult<PersonDto, any>;
+    useHentRevurderingsbarn?: (ident?: string) => boolean;
     useHentPersonSkjermingInfo: (ident?: string) => UseSuspenseQueryResult<Graderingsinfo, any>;
 }
 
@@ -19,6 +20,7 @@ interface BidragCommonsProviderProps {
     children: ReactNode;
     client?: QueryClient;
     useHentPersonData?: (ident?: string) => UseSuspenseQueryResult<PersonDto, any>;
+    useHentRevurderingsbarn?: (ident?: string) => boolean;
 }
 
 const createClient = () => {
@@ -37,6 +39,7 @@ export const BidragCommonsProvider: React.FC<BidragCommonsProviderProps> = ({
     children,
     client,
     useHentPersonData: useHentPersonDataInput,
+    useHentRevurderingsbarn,
 }) => {
     const queryClient = useRef(client ?? createClient());
     const id = useRef(Math.random());
@@ -62,6 +65,7 @@ export const BidragCommonsProvider: React.FC<BidragCommonsProviderProps> = ({
             value={{
                 queryClient: queryClient.current,
                 useHentPersonData: useHentPersonDataInput ?? useHentPersonData,
+                useHentRevurderingsbarn: useHentRevurderingsbarn,
                 useHentPersonSkjermingInfo: useHentPersonSkjermingInfo,
             }}
         >

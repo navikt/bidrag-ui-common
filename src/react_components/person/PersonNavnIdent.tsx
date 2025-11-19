@@ -80,7 +80,7 @@ export default function PersonNavnIdent({
                 title={genererTittel()}
                 className={`flex items-center gap-2 ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             >
-                {rolle && <RolleTag rolleType={rolle} />}
+                {rolle && <RolleTag rolleType={rolle} ident={ident} />}
 
                 {!skjulNavn ? (
                     <>
@@ -107,7 +107,7 @@ export default function PersonNavnIdent({
             className={`flex gap-1 self-center items-center ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             title={genererTittel()}
         >
-            {rolle && <RolleTag rolleType={rolle} className="h-max" />}
+            {rolle && <RolleTag rolleType={rolle} className="h-max" ident={ident} />}
             {!skjulNavn ? (
                 <>
                     <div className="inline-flex">
