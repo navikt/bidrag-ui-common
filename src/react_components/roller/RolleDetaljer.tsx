@@ -13,10 +13,11 @@ const RolleDetaljer = ({ rolle, withBorder = true }: IRolledetaljerProps) => {
     return (
         <BodyShort
             size="small"
-            className={`px-6 py-1 w-max ${withBorder && "border-[var(--a-border-divider)] border-solid border-b"
-                } flex items-center`}
+            className={`px-6 py-1 w-max ${
+                withBorder && "border-[var(--a-border-divider)] border-solid border-b"
+            } flex items-center`}
         >
-            <RolleTag rolleType={rolle.rolleType} />
+            <RolleTag rolleType={rolle.rolleType} ident={rolle.ident} />
             <PersonNavnIdent ident={rolle.ident} variant="compact" />
             <CopyButton size="small" copyText={rolle.ident} />
         </BodyShort>
