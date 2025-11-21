@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.2](https://github.com/navikt/bidrag-ui-common/compare/v2.3.1...v2.3.2) (2025-11-21)
+
+
+### Bug Fixes
+
+* remove MaskerSensitivInfo export from index ([e6ebd92](https://github.com/navikt/bidrag-ui-common/commit/e6ebd9227c59ed135f542befe8ea76502861931c))
+
 ## [2.3.1](https://github.com/navikt/bidrag-ui-common/compare/v2.3.0...v2.3.1) (2025-11-21)
 
 
