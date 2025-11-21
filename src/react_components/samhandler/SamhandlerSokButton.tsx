@@ -24,46 +24,24 @@ export default function SamhandlerSokButton({
     };
     const openModal = () => ref.current?.showModal();
     const searchCanceled = useRef<boolean>(false);
-    const resultReceivedRef = useRef<boolean>(false);
 
     function openSamhandlerSearch() {
         openModal();
         searchCanceled.current = false;
-        resultReceivedRef.current = false;
-
         const openedWindow = window.open(
             `/samhandler/søk/?windowId=${windowId}`,
             "_blank",
             `location=yes,height=${height},width=${width},scrollbars=yes,status=yes`
         );
 
-        const checkWindowClosed = setInterval(() => {
-            if (openedWindow?.closed && !resultReceivedRef.current && !searchCanceled.current) {
-                clearInterval(checkWindowClosed);
-                console.log("Samhandler-vindu ble lukket uten valg");
-                searchCanceled.current = true;
-                closeModal();
-                onResult(null);
-            }
-        }, 500);
-
         Broadcast.waitForBroadcast<SamhandlerBroadcastMessage>(BroadcastNames.SAMHANDLERSOK_RESULT_EVENT, windowId)
             .then((res) => {
-                clearInterval(checkWindowClosed);
-                resultReceivedRef.current = true;
-
                 if (searchCanceled.current) {
-                    onResult(null);
                     return;
                 }
                 onResult(res.payload);
             })
-            .catch((error) => {
-                clearInterval(checkWindowClosed);
-                resultReceivedRef.current = true;
-                onError?.(error);
-                onResult(null);
-            })
+            .catch(onError)
             .finally(() => {
                 closeModal();
                 window.focus();
@@ -87,15 +65,7 @@ export default function SamhandlerSokButton({
                 }}
             >
                 <Modal.Footer>
-                    <Button
-                        size="medium"
-                        type={"button"}
-                        title="Avbryt"
-                        onClick={() => {
-                            closeModal();
-                            onResult(null); // Kall onResult med null når Avbryt trykkes
-                        }}
-                    >
+                    <Button size="medium" type={"button"} title="Avbryt" onClick={closeModal}>
                         Avbryt
                     </Button>
                 </Modal.Footer>
