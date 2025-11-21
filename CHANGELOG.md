@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.1](https://github.com/navikt/bidrag-ui-common/compare/v2.3.0...v2.3.1) (2025-11-21)
+
+
+### Bug Fixes
+
+* add missing components to index export ([7426bc1](https://github.com/navikt/bidrag-ui-common/commit/7426bc1906c19a03acffd4bb605bb2a96e0ad5e8))
+
 ## [2.3.0](https://github.com/navikt/bidrag-ui-common/compare/v2.2.0...v2.3.0) (2025-11-21)
 
 
