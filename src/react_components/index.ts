@@ -5,7 +5,6 @@ export { default as BidragContainer } from "./grid/BidragContainer";
 export { default as BidragGrid } from "./grid/BidragGrid";
 export { default as SakHeader } from "./header/SakHeader";
 export * from "./hooks";
-export { default as MaskerSensitivInfo } from "./MaskerSensitivInfo";
 export { default as PersonIdent } from "./person/PersonIdent";
 export { default as PersonNavn } from "./person/PersonNavn";
 export { default as PersonNavnIdent } from "./person/PersonNavnIdent";
