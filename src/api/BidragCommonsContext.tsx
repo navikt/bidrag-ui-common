@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider, UseSuspenseQueryResult } from "@tanstack/react-query";
-import React, { createContext, ReactNode, useContext, useEffect, useRef } from "react";
+import React, { createContext, ReactNode, useContext, useEffect, useRef, useState } from "react";
 
 import { Graderingsinfo, PersonDto } from "./PersonApi";
 import { useHentPersonData, useHentPersonSkjermingInfo } from "./useApiData";
@@ -10,6 +10,7 @@ interface BidragCommonsContextType {
     useHentPersonData: (ident?: string) => UseSuspenseQueryResult<PersonDto, any>;
     useHentRevurderingsbarn?: (ident?: string) => boolean;
     useHentPersonSkjermingInfo: (ident?: string) => UseSuspenseQueryResult<Graderingsinfo, any>;
+    erMaskert: boolean; // NYTT
 }
 
 // Create context with undefined default value
@@ -34,6 +35,7 @@ const createClient = () => {
         },
     });
 };
+
 // Create provider component
 export const BidragCommonsProvider: React.FC<BidragCommonsProviderProps> = ({
     children,
@@ -43,19 +45,31 @@ export const BidragCommonsProvider: React.FC<BidragCommonsProviderProps> = ({
 }) => {
     const queryClient = useRef(client ?? createClient());
     const id = useRef(Math.random());
+    const [erMaskert, setErMaskert] = useState<boolean>(false);
+
     useEffect(() => {
         window.localStorage.setItem("blur-sensitive-info-master", id.current.toString());
+
+        // Fjern gammel maskerings-tilstand
+        window.localStorage.removeItem("blur-sensitive-info");
+
         const eventListener = (e: KeyboardEvent) => {
             const masterId = window.localStorage.getItem("blur-sensitive-info-master");
             if (masterId !== id.current.toString()) return;
+
             if (e.ctrlKey && (e.key === "ø" || e.key === "|")) {
+                e.preventDefault();
+
                 document.body.classList.toggle("blur-sensitive-info");
                 window.localStorage.setItem(
                     "blur-sensitive-info",
                     document.body.classList.contains("blur-sensitive-info").toString()
                 );
+
+                setErMaskert((forrige) => !forrige);
             }
         };
+
         document.addEventListener("keydown", eventListener);
         return () => document.removeEventListener("keydown", eventListener);
     }, []);
@@ -67,6 +81,7 @@ export const BidragCommonsProvider: React.FC<BidragCommonsProviderProps> = ({
                 useHentPersonData: useHentPersonDataInput ?? useHentPersonData,
                 useHentRevurderingsbarn: useHentRevurderingsbarn,
                 useHentPersonSkjermingInfo: useHentPersonSkjermingInfo,
+                erMaskert,
             }}
         >
             <QueryClientProvider client={queryClient.current}>{children}</QueryClientProvider>
@@ -74,7 +89,6 @@ export const BidragCommonsProvider: React.FC<BidragCommonsProviderProps> = ({
     );
 };
 
-// Create hook for consuming the context
 export const useBidragCommons = () => {
     const context = useContext(BidragCommonsContext);
     if (context === undefined) {
