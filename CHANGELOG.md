@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/navikt/bidrag-ui-common/compare/v2.1.0...v2.1.1) (2025-11-21)
+
+
+### Bug Fixes
+
+* handle window close event and cancel search properly ([c84f6a5](https://github.com/navikt/bidrag-ui-common/commit/c84f6a5991ec7b100dd6dfe5092f265a6d816cd0))
+
 ## [2.1.0](https://github.com/navikt/bidrag-ui-common/compare/v2.0.3...v2.1.0) (2025-11-19)
 
 
