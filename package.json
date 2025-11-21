@@ -1,6 +1,6 @@
 {
   "name": "@navikt/bidrag-ui-common",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "author": "NAVIKT",
   "private": false,
   "description": "Bidrag ui common packages",
