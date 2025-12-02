@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/navikt/bidrag-ui-common/compare/v2.4.0...v2.5.0) (2025-12-02)
+
+
+### Features
+
+* fix exporting for IdentUtils ([#418](https://github.com/navikt/bidrag-ui-common/issues/418)) ([1bc8844](https://github.com/navikt/bidrag-ui-common/commit/1bc8844b5d1358818ab510446483036d24758ae6))
+
 ## [2.4.0](https://github.com/navikt/bidrag-ui-common/compare/v2.3.2...v2.4.0) (2025-12-02)
 
 
