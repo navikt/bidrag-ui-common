@@ -15,6 +15,15 @@ export abstract class AbstractLoggerService {
         }
     }
 
+    static feedback(msg: string): Promise<LogResponse> {
+        try {
+            return this.mapAndLog(msg, LogLevel.FEEDBACK);
+        } catch (e) {
+            console.log(e);
+            return Promise.resolve({ exceptionCode: "unkown", errorCode: "unkown" });
+        }
+    }
+
     static warn(msg: string, error?: LogErrorType | ErrorInfo): Promise<LogResponse> {
         try {
             return this.mapAndLog(msg, LogLevel.WARNING, error);

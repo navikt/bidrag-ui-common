@@ -3,6 +3,7 @@ import { CustomError, SimpleError } from "../error";
 export enum LogLevel {
     INFO = "INFO",
     WARNING = "WARNING",
+    FEEDBACK = "FEEDBACK",
     ERROR = "ERROR",
     DEBUG = "DEBUG",
 }
