@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.1](https://github.com/navikt/bidrag-ui-common/compare/v2.5.0...v2.5.1) (2026-01-14)
+
+
+### Bug Fixes
+
+* Loglevel feedback ([#420](https://github.com/navikt/bidrag-ui-common/issues/420)) ([361f65c](https://github.com/navikt/bidrag-ui-common/commit/361f65c0664a12a48b5b5644ec900aee467b7c3e))
+
 ## [2.5.0](https://github.com/navikt/bidrag-ui-common/compare/v2.4.0...v2.5.0) (2025-12-02)
 
 
