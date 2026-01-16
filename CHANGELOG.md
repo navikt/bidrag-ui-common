@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.2](https://github.com/navikt/bidrag-ui-common/compare/v2.5.1...v2.5.2) (2026-01-16)
+
+
+### Bug Fixes
+
+* Støtte for rolletag bidrag 18 år ([#422](https://github.com/navikt/bidrag-ui-common/issues/422)) ([98e1f79](https://github.com/navikt/bidrag-ui-common/commit/98e1f797c066bc64d45457ff60178bb968d80e70))
+
 ## [2.5.1](https://github.com/navikt/bidrag-ui-common/compare/v2.5.0...v2.5.1) (2026-01-14)
 
 
