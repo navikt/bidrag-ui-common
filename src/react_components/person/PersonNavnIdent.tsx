@@ -12,6 +12,7 @@ type PersonNavnIdentProps = {
     ident?: string;
     fødselsdato?: string;
     rolle?: RolleType;
+    stønad18År?: boolean;
     skjulNavn?: boolean;
     showCopyButton?: boolean;
     variant?: "compact" | "default";
@@ -24,6 +25,7 @@ export default function PersonNavnIdent({
     rolle,
     skjulNavn = false,
     showCopyButton = false,
+    stønad18År = false,
 }: PersonNavnIdentProps) {
     const { useHentPersonData } = useBidragCommons();
     // const { data: graderingsinfo } = useHentPersonSkjermingInfo(ident);
@@ -107,7 +109,7 @@ export default function PersonNavnIdent({
             className={`flex gap-1 self-center items-center ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
             title={genererTittel()}
         >
-            {rolle && <RolleTag rolleType={rolle} className="h-max" ident={ident} />}
+            {rolle && <RolleTag rolleType={rolle} className="h-max" ident={ident} stønad18År={stønad18År} />}
             {!skjulNavn ? (
                 <>
                     <div className="inline-flex">
