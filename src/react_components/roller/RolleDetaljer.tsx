@@ -8,8 +8,9 @@ interface IRolledetaljerProps {
     label?: string;
     rolle: IRolleDetaljer;
     withBorder?: boolean;
+    stønad18År?: boolean;
 }
-const RolleDetaljer = ({ rolle, withBorder = true }: IRolledetaljerProps) => {
+const RolleDetaljer = ({ rolle, withBorder = true, stønad18År = false }: IRolledetaljerProps) => {
     return (
         <BodyShort
             size="small"
@@ -17,7 +18,7 @@ const RolleDetaljer = ({ rolle, withBorder = true }: IRolledetaljerProps) => {
                 withBorder && "border-[var(--a-border-divider)] border-solid border-b"
             } flex items-center`}
         >
-            <RolleTag rolleType={rolle.rolleType} ident={rolle.ident} />
+            <RolleTag rolleType={rolle.rolleType} ident={rolle.ident} stønad18År={stønad18År} />
             <PersonNavnIdent ident={rolle.ident} variant="compact" />
             <CopyButton size="small" copyText={rolle.ident} />
         </BodyShort>

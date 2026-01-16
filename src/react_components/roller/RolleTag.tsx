@@ -4,9 +4,21 @@ import { useBidragCommons } from "../../api/BidragCommonsContext";
 import { ROLE_FORKORTELSER, ROLE_TAGS, ROLE_TAGS_REVURDERING } from "../../types/roller/RoleTags";
 import { RolleType } from "../../types/roller/RolleType";
 
-const RolleTag = ({ rolleType, className, ident }: { rolleType: RolleType; className?: string; ident?: string }) => {
+const RolleTag = ({
+    rolleType,
+    className,
+    ident,
+    stønad18År,
+}: {
+    rolleType: RolleType;
+    className?: string;
+    ident?: string;
+    stønad18År?: boolean;
+}) => {
     const { useHentRevurderingsbarn } = useBidragCommons();
 
+    //@ts-ignore
+    const renderRolletype = ROLE_FORKORTELSER[rolleType] ?? rolleType;
     const erRevurdering = useHentRevurderingsbarn && ident ? useHentRevurderingsbarn(ident) : false;
     return (
         // @ts-ignore
@@ -16,8 +28,7 @@ const RolleTag = ({ rolleType, className, ident }: { rolleType: RolleType; class
             size="small"
             className={`w-8 mr-2 rounded select-none rolleTag ${rolleType} ${className}`}
         >
-            {/** @ts-ignore */}
-            {ROLE_FORKORTELSER[rolleType] ?? rolleType}
+            {stønad18År ? `${renderRolletype}¹⁸` : renderRolletype}
         </Tag>
     );
 };

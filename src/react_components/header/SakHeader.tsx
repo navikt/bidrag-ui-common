@@ -38,14 +38,14 @@ export default function SakHeader({ saksnummer, roller, skjermbilde }: ISakHeade
                     )
                     .map((rolle, i) => (
                         <BidragCell key={rolle.ident + i} xs={12} md={7} lg={7}>
-                            <RolleDetaljer rolle={rolle} withBorder={false} />
+                            <RolleDetaljer rolle={rolle} withBorder={false} stønad18År={rolle.stønad18År} />
                         </BidragCell>
                     ))}
                 {roller
                     ?.filter((r) => r.rolleType == RolleTypeAbbreviation.BA || r.rolleType == RolleTypeFullName.BARN)
                     .map((rolle, i) => (
                         <BidragCell key={rolle.ident + i} xs={12} md={7} lg={7}>
-                            <RolleDetaljer rolle={rolle} withBorder={false} />
+                            <RolleDetaljer rolle={rolle} withBorder={false} stønad18År={rolle.stønad18År} />
                         </BidragCell>
                     ))}
             </BidragGrid>
