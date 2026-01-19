@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.3](https://github.com/navikt/bidrag-ui-common/compare/v2.5.2...v2.5.3) (2026-01-19)
+
+
+### Bug Fixes
+
+* Hent persondata sjekk for tom ident ([#424](https://github.com/navikt/bidrag-ui-common/issues/424)) ([2b002ce](https://github.com/navikt/bidrag-ui-common/commit/2b002ce4208bd26aca054c9027ceaa3b657f3b37))
+
 ## [2.5.2](https://github.com/navikt/bidrag-ui-common/compare/v2.5.1...v2.5.2) (2026-01-16)
 
 
