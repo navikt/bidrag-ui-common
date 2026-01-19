@@ -1,5 +1,6 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 
+import { StringUtils } from "../utils";
 import { PERSON_API } from "./api";
 import { Graderingsinfo, PersonDto } from "./PersonApi";
 
@@ -9,7 +10,7 @@ export const useHentPersonData = (ident?: string) => {
     return useSuspenseQuery({
         queryKey: getKey(ident),
         queryFn: async (): Promise<PersonDto> => {
-            if (!ident) return { ident: "", visningsnavn: "Ukjent" };
+            if (!ident || StringUtils.isEmpty(ident)) return { ident: "", visningsnavn: "Ukjent" };
             const { data } = await PERSON_API.informasjon.hentPersonPost({ ident: ident });
             return data;
         },
