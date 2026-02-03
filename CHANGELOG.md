@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.4](https://github.com/navikt/bidrag-ui-common/compare/v2.5.3...v2.5.4) (2026-02-03)
+
+
+### Bug Fixes
+
+* SakHeader html structure ([#427](https://github.com/navikt/bidrag-ui-common/issues/427)) ([059fc95](https://github.com/navikt/bidrag-ui-common/commit/059fc953662b7898790f2a51b2fddf50e571aa99))
+
 ## [2.5.3](https://github.com/navikt/bidrag-ui-common/compare/v2.5.2...v2.5.3) (2026-01-19)
 
 
