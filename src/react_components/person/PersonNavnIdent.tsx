@@ -7,6 +7,7 @@ import { ISODateTimeStringToDDMMYYYYString } from "../../utils";
 import RolleTag from "../roller/RolleTag";
 import PersonIdent from "./PersonIdent";
 import PersonNavn from "./PersonNavn";
+
 type PersonNavnIdentProps = {
     navn?: string;
     ident?: string;
@@ -55,11 +56,11 @@ export default function PersonNavnIdent({
 
     const Ikoner = () => {
         return (
-            <div className="mr-1">
+            <span className="mr-1">
                 {/* {skjermet && <span>*</span>} */}
                 {erKode67 && <span>*</span>}
                 {erDød && <span>&dagger;</span>}
-            </div>
+            </span>
         );
     };
 
@@ -86,18 +87,18 @@ export default function PersonNavnIdent({
 
                 {!skjulNavn ? (
                     <>
-                        <div className="inline-flex">
+                        <span className="inline-flex">
                             <Ikoner />
                             <PersonNavn bold navn={personnavn} ident={ident} />
-                        </div>
+                        </span>
 
                         <Ident />
                     </>
                 ) : (
-                    <div className="inline-flex">
+                    <span className="inline-flex">
                         <Ikoner />
                         <Ident />
-                    </div>
+                    </span>
                 )}
             </BodyShort>
         );
@@ -112,19 +113,19 @@ export default function PersonNavnIdent({
             {rolle && <RolleTag rolleType={rolle} className="h-max" ident={ident} stønad18År={stønad18År} />}
             {!skjulNavn ? (
                 <>
-                    <div className="inline-flex">
+                    <span className="inline-flex">
                         <Ikoner />
                         <PersonNavn navn={personnavn} />
-                    </div>
-                    <div> / </div>
+                    </span>
+                    <span> /</span>
                     <Ident />
                 </>
             ) : (
-                <div className="inline-flex">
+                <span className="inline-flex">
                     <Ikoner />
 
                     <Ident />
-                </div>
+                </span>
             )}
         </BodyShort>
     );
