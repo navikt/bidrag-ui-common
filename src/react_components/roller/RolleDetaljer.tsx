@@ -10,9 +10,11 @@ interface IRolledetaljerProps {
     withBorder?: boolean;
     stønad18År?: boolean;
 }
+
 const RolleDetaljer = ({ rolle, withBorder = true, stønad18År = false }: IRolledetaljerProps) => {
     return (
         <BodyShort
+            as="div"
             size="small"
             className={`px-6 py-1 w-max ${
                 withBorder && "border-[var(--a-border-divider)] border-solid border-b"
