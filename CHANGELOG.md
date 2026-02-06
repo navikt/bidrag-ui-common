@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.5](https://github.com/navikt/bidrag-ui-common/compare/v2.5.4...v2.5.5) (2026-02-06)
+
+
+### Bug Fixes
+
+* Styling person navn ident ([#429](https://github.com/navikt/bidrag-ui-common/issues/429)) ([d0aac9e](https://github.com/navikt/bidrag-ui-common/commit/d0aac9e192b37f86981ce6483aee8c1bd3fb7638))
+
 ## [2.5.4](https://github.com/navikt/bidrag-ui-common/compare/v2.5.3...v2.5.4) (2026-02-03)
 
 
