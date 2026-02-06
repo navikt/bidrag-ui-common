@@ -16,7 +16,8 @@ type PersonNavnIdentProps = {
     stønad18År?: boolean;
     skjulNavn?: boolean;
     showCopyButton?: boolean;
-    variant?: "compact" | "default";
+    bareFornavn?: boolean;
+    variant?: "compact" | "default" | "navnIdent";
 };
 export default function PersonNavnIdent({
     navn,
@@ -25,6 +26,7 @@ export default function PersonNavnIdent({
     variant = "default",
     rolle,
     skjulNavn = false,
+    bareFornavn = false,
     showCopyButton = false,
     stønad18År = false,
 }: PersonNavnIdentProps) {
@@ -38,7 +40,7 @@ export default function PersonNavnIdent({
         personData.diskresjonskode === "SPFO" ||
         personData.diskresjonskode === "P19";
     // const skjermet = false; //ident ? graderingsinfo.identerTilSkjerming[ident] : false;
-    const personnavn = navn ?? personData.visningsnavn;
+    const personnavn = navn ?? (bareFornavn ? personData.fornavn : personData.visningsnavn);
     const genererTittel = () => {
         let tittel = "";
         // if (skjermet) {
@@ -56,7 +58,7 @@ export default function PersonNavnIdent({
 
     const Ikoner = () => {
         return (
-            <span className="mr-1">
+            <span>
                 {/* {skjermet && <span>*</span>} */}
                 {erKode67 && <span>*</span>}
                 {erDød && <span>&dagger;</span>}
@@ -89,7 +91,7 @@ export default function PersonNavnIdent({
                     <>
                         <span className="inline-flex">
                             <Ikoner />
-                            <PersonNavn bold navn={personnavn} ident={ident} />
+                            <PersonNavn bold navn={personnavn} ident={ident} bareFornavn={bareFornavn} />
                         </span>
 
                         <Ident />
@@ -100,6 +102,36 @@ export default function PersonNavnIdent({
                         <Ident />
                     </span>
                 )}
+            </BodyShort>
+        );
+    }
+    if (variant === "navnIdent") {
+        return (
+            <BodyShort
+                as="span"
+                size="small"
+                title={genererTittel()}
+                className={`flex flex-row items-center gap-2 ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
+            >
+                {rolle && <RolleTag rolleType={rolle} ident={ident} />}
+
+                <div className="flex flex-col items-start">
+                    {!skjulNavn ? (
+                        <>
+                            <span className="inline-flex whitespace-nowrap">
+                                <Ikoner />
+                                <PersonNavn bold navn={personnavn} ident={ident} bareFornavn={bareFornavn} />
+                            </span>
+
+                            <Ident />
+                        </>
+                    ) : (
+                        <span className="inline-flex">
+                            <Ikoner />
+                            <Ident />
+                        </span>
+                    )}
+                </div>
             </BodyShort>
         );
     }
@@ -115,7 +147,7 @@ export default function PersonNavnIdent({
                 <>
                     <span className="inline-flex">
                         <Ikoner />
-                        <PersonNavn navn={personnavn} />
+                        <PersonNavn navn={personnavn} bareFornavn={bareFornavn} />
                     </span>
                     <span> /</span>
                     <Ident />
