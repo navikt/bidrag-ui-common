@@ -16,6 +16,13 @@ export const RedirectTo = {
         }
     },
 
+    nySoknad(saksnr: string, bisysurl: string) {
+        window.location.href = `${bisysurl}Soknad.do?saksnr=${saksnr}&${getSessionStateFromParam()}`;
+    },
+    soknad(saksnr: string, søknadsid: string, bisysurl: string) {
+        window.location.href = `${bisysurl}Soknad.do?saksnr=${saksnr}&hentSoknadsnr=${søknadsid}&${getSessionStateFromParam()}`;
+    },
+
     sakshistorikk: (saksnr: string, bisysurl: string) => {
         window.location.href = `${bisysurl}Sakshistorikk.do?saksnr=${saksnr}&${getSessionStateFromParam()}`;
     },
