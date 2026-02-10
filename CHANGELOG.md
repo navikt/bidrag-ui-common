@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.6](https://github.com/navikt/bidrag-ui-common/compare/v2.5.5...v2.5.6) (2026-02-10)
+
+
+### Bug Fixes
+
+* Add redirect søknad ([#432](https://github.com/navikt/bidrag-ui-common/issues/432)) ([b36ab42](https://github.com/navikt/bidrag-ui-common/commit/b36ab4236b9570211b6fda7604521af855f55fca))
+
 ## [2.5.5](https://github.com/navikt/bidrag-ui-common/compare/v2.5.4...v2.5.5) (2026-02-06)
 
 
