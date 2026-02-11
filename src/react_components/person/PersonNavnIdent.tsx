@@ -3,7 +3,7 @@ import React from "react";
 
 import { useBidragCommons } from "../../api/BidragCommonsContext";
 import { RolleType } from "../../types";
-import { ISODateTimeStringToDDMMYYYYString } from "../../utils";
+import { dateOrNull, ISODateTimeStringToDDMMYYYYString } from "../../utils";
 import RolleTag from "../roller/RolleTag";
 import PersonIdent from "./PersonIdent";
 import PersonNavn from "./PersonNavn";
@@ -16,6 +16,7 @@ type PersonNavnIdentProps = {
     stønad18År?: boolean;
     skjulNavn?: boolean;
     showCopyButton?: boolean;
+    visAlder?: boolean;
     bareFornavn?: boolean;
     variant?: "compact" | "default" | "navnIdent";
 };
@@ -27,6 +28,7 @@ export default function PersonNavnIdent({
     rolle,
     skjulNavn = false,
     bareFornavn = false,
+    visAlder = false,
     showCopyButton = false,
     stønad18År = false,
 }: PersonNavnIdentProps) {
@@ -66,11 +68,16 @@ export default function PersonNavnIdent({
         );
     };
 
-    const Ident = () => {
+    const Ident = ({ visAlder = false }: { visAlder?: boolean }) => {
+        const birthdate = dateOrNull(fødselsdato ?? personData.fødselsdato);
+        const age = birthdate ? new Date().getFullYear() - birthdate.getFullYear() : null;
         return (
             <>
                 {ident ? (
-                    <PersonIdent ident={ident} showCopyButton={showCopyButton} />
+                    <div className="flex flex-row gap-1">
+                        <PersonIdent ident={ident} showCopyButton={showCopyButton} />
+                        {visAlder && age && <span>({age} år)</span>}
+                    </div>
                 ) : (
                     <span>{ISODateTimeStringToDDMMYYYYString(fødselsdato)}</span>
                 )}
@@ -94,12 +101,12 @@ export default function PersonNavnIdent({
                             <PersonNavn bold navn={personnavn} ident={ident} bareFornavn={bareFornavn} />
                         </span>
 
-                        <Ident />
+                        <Ident visAlder={visAlder} />
                     </>
                 ) : (
                     <span className="inline-flex">
                         <Ikoner />
-                        <Ident />
+                        <Ident visAlder={visAlder} />
                     </span>
                 )}
             </BodyShort>
@@ -123,12 +130,12 @@ export default function PersonNavnIdent({
                                 <PersonNavn bold navn={personnavn} ident={ident} bareFornavn={bareFornavn} />
                             </span>
 
-                            <Ident />
+                            <Ident visAlder={visAlder} />
                         </>
                     ) : (
                         <span className="inline-flex">
                             <Ikoner />
-                            <Ident />
+                            <Ident visAlder={visAlder} />
                         </span>
                     )}
                 </div>
@@ -150,13 +157,13 @@ export default function PersonNavnIdent({
                         <PersonNavn navn={personnavn} bareFornavn={bareFornavn} />
                     </span>
                     <span> /</span>
-                    <Ident />
+                    <Ident visAlder={visAlder} />
                 </>
             ) : (
                 <span className="inline-flex">
                     <Ikoner />
 
-                    <Ident />
+                    <Ident visAlder={visAlder} />
                 </span>
             )}
         </BodyShort>
