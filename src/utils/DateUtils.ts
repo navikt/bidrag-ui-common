@@ -37,3 +37,4 @@ export const isAfterDate = (date: string, maxValidate: string) => {
     return new Date(date) > new Date(maxValidate);
 };
 export const isFutureDate = (date: string) => isAfterDate(date, toISODateString(new Date()));
+export const dateOrNull = (dateString?: string): Date | null => (dateString ? new Date(dateString) : null);

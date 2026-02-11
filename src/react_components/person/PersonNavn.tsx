@@ -6,12 +6,12 @@ export default function PersonNavn({
     ident,
     navn,
     bold,
-    bareFornavn,
+    bareFornavn = false,
 }: {
     ident?: string;
     navn?: string;
     bold?: boolean;
-    bareFornavn: boolean;
+    bareFornavn?: boolean;
 }) {
     const { useHentPersonData } = useBidragCommons();
     const { data: personData } = useHentPersonData(navn ? undefined : ident);
