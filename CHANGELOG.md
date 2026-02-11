@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.7](https://github.com/navikt/bidrag-ui-common/compare/v2.5.6...v2.5.7) (2026-02-11)
+
+
+### Bug Fixes
+
+* Vis alder personident ([#435](https://github.com/navikt/bidrag-ui-common/issues/435)) ([247d1e9](https://github.com/navikt/bidrag-ui-common/commit/247d1e977ddb73ecd64846fad7ae1ccd567c4dbf))
+
 ## [2.5.6](https://github.com/navikt/bidrag-ui-common/compare/v2.5.5...v2.5.6) (2026-02-10)
 
 
