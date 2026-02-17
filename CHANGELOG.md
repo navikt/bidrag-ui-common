@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.8](https://github.com/navikt/bidrag-ui-common/compare/v2.5.7...v2.5.8) (2026-02-17)
+
+
+### Bug Fixes
+
+* Update PersonIdent to allow optional showCopyButton prop and enhance PersonNavn with loading state ([#437](https://github.com/navikt/bidrag-ui-common/issues/437)) ([12b889c](https://github.com/navikt/bidrag-ui-common/commit/12b889c7f335333125ab999b8b6e64c787e58340))
+
 ## [2.5.7](https://github.com/navikt/bidrag-ui-common/compare/v2.5.6...v2.5.7) (2026-02-11)
 
 
