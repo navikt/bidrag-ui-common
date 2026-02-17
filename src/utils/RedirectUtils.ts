@@ -26,6 +26,7 @@ export const RedirectTo = {
     sakshistorikk: (saksnr: string, bisysurl: string) => {
         window.location.href = `${bisysurl}Sakshistorikk.do?saksnr=${saksnr}&${getSessionStateFromParam()}`;
     },
+
     joarkJournalpostId: (journalpostId: string, joarkJournalpostId: string) => {
         const currentUrl = window.location.href.replace(journalpostId, joarkJournalpostId);
         window.location.href = currentUrl;
