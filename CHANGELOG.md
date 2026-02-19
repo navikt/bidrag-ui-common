@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.9](https://github.com/navikt/bidrag-ui-common/compare/v2.5.8...v2.5.9) (2026-02-19)
+
+
+### Bug Fixes
+
+* vis riktig alder i PersonNavnIdent ([#439](https://github.com/navikt/bidrag-ui-common/issues/439)) ([d9c02e4](https://github.com/navikt/bidrag-ui-common/commit/d9c02e42c998a5000202cb6248e9568ba5938d2f))
+
 ## [2.5.8](https://github.com/navikt/bidrag-ui-common/compare/v2.5.7...v2.5.8) (2026-02-17)
 
 
