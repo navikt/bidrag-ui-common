@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.10](https://github.com/navikt/bidrag-ui-common/compare/v2.5.9...v2.5.10) (2026-02-19)
+
+
+### Bug Fixes
+
+* Vis 18 år tag ([#441](https://github.com/navikt/bidrag-ui-common/issues/441)) ([b09326d](https://github.com/navikt/bidrag-ui-common/commit/b09326d300b605525cdfffcc82b0a9065da7970b))
+
 ## [2.5.9](https://github.com/navikt/bidrag-ui-common/compare/v2.5.8...v2.5.9) (2026-02-19)
 
 
