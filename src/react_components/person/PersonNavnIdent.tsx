@@ -70,7 +70,16 @@ export default function PersonNavnIdent({
 
     const Ident = ({ visAlder = false }: { visAlder?: boolean }) => {
         const birthdate = dateOrNull(fødselsdato ?? personData.fødselsdato);
-        const age = birthdate ? new Date().getFullYear() - birthdate.getFullYear() : null;
+        const calculateAge = (born: Date): number => {
+            const today = new Date();
+            let age = today.getFullYear() - born.getFullYear();
+            const monthDiff = today.getMonth() - born.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < born.getDate())) {
+                age--;
+            }
+            return age;
+        };
+        const age = birthdate ? calculateAge(birthdate) : null;
         return (
             <>
                 {ident ? (

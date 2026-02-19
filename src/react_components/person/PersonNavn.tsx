@@ -1,5 +1,5 @@
-import React, { Suspense } from "react";
 import { Loader } from "@navikt/ds-react";
+import React, { Suspense } from "react";
 
 import { useBidragCommons } from "../../api/BidragCommonsContext";
 
@@ -31,15 +31,7 @@ export default function PersonNavn({
     );
 }
 
-function PersonNavnContent({
-    ident,
-    bold,
-    bareFornavn,
-}: {
-    ident?: string;
-    bold?: boolean;
-    bareFornavn?: boolean;
-}) {
+function PersonNavnContent({ ident, bold, bareFornavn }: { ident?: string; bold?: boolean; bareFornavn?: boolean }) {
     const { useHentPersonData } = useBidragCommons();
     const { data: personData } = useHentPersonData(ident);
 
