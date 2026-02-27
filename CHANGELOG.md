@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.11](https://github.com/navikt/bidrag-ui-common/compare/v2.5.10...v2.5.11) (2026-02-27)
+
+
+### Bug Fixes
+
+* Fix useRQMutationState ([#443](https://github.com/navikt/bidrag-ui-common/issues/443)) ([6f34841](https://github.com/navikt/bidrag-ui-common/commit/6f34841e3800636ec94550347bc627ec8ed0108e))
+
 ## [2.5.10](https://github.com/navikt/bidrag-ui-common/compare/v2.5.9...v2.5.10) (2026-02-19)
 
 
