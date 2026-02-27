@@ -38,6 +38,7 @@ export default function PersonSokButton({
                     );
                     return;
                 }
+                console.log("Resultat mottatt fra personsøk:", data);
                 onResult(data.payload);
             })
             .catch(onError)

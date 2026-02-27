@@ -15,7 +15,7 @@ export default function SaveStatusIndicator({
     queryClient: _queryClient,
 }: SaveStatusIndicatorProps) {
     const saveState = useRQMutationState(mutationKey, _queryClient);
-    const state = stateInput ?? saveState;
+    const state = stateInput ?? saveState.status;
 
     if (state === "idle") {
         return null;
