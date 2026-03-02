@@ -5,7 +5,16 @@ const PersonIdent = ({ ident, showCopyButton = false }: { ident: string; showCop
     return (
         <>
             <span className="personident">{ident}</span>
-            {showCopyButton && <CopyButton copyText={ident} size="small" />}
+            {showCopyButton && (
+                <CopyButton
+                    copyText={ident}
+                    size="small"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }}
+                />
+            )}
         </>
     );
 };
