@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.12](https://github.com/navikt/bidrag-ui-common/compare/v2.5.11...v2.5.12) (2026-03-02)
+
+
+### Bug Fixes
+
+* PersonIdent copy button ([#445](https://github.com/navikt/bidrag-ui-common/issues/445)) ([24061fb](https://github.com/navikt/bidrag-ui-common/commit/24061fba9183b9780c714080eb5c8bbbdbcbebda))
+
 ## [2.5.11](https://github.com/navikt/bidrag-ui-common/compare/v2.5.10...v2.5.11) (2026-02-27)
 
 
