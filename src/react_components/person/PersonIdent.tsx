@@ -9,6 +9,7 @@ const PersonIdent = ({ ident, showCopyButton = false }: { ident: string; showCop
                 <CopyButton
                     copyText={ident}
                     size="small"
+                    style={{ zIndex: 10000 }}
                     onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
