@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.13](https://github.com/navikt/bidrag-ui-common/compare/v2.5.12...v2.5.13) (2026-03-08)
+
+
+### Bug Fixes
+
+* styling personident ([892ed09](https://github.com/navikt/bidrag-ui-common/commit/892ed094fd21ed7a83a96049893cfbbe7852c367))
+
 ## [2.5.12](https://github.com/navikt/bidrag-ui-common/compare/v2.5.11...v2.5.12) (2026-03-02)
 
 
