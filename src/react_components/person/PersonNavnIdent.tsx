@@ -18,7 +18,7 @@ type PersonNavnIdentProps = {
     showCopyButton?: boolean;
     visAlder?: boolean;
     bareFornavn?: boolean;
-    variant?: "compact" | "default" | "navnIdent";
+    variant?: "compact" | "default" | "navnIdent" | "ident";
 };
 export default function PersonNavnIdent({
     navn,
@@ -83,7 +83,7 @@ export default function PersonNavnIdent({
         return (
             <>
                 {ident ? (
-                    <div className="flex flex-row gap-1">
+                    <div className={`flex flex-row gap-1 ${variant === "ident" ? "items-center" : ""}`}>
                         <PersonIdent ident={ident} showCopyButton={showCopyButton} />
                         {visAlder && age && <span>({age} år)</span>}
                     </div>
@@ -93,6 +93,21 @@ export default function PersonNavnIdent({
             </>
         );
     };
+    if (variant === "ident") {
+        return (
+            <BodyShort
+                as="span"
+                size="small"
+                title={genererTittel()}
+                className={`flex items-center gap-2 ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
+            >
+                <span className="inline-flex items-center">
+                    <Ikoner />
+                    <Ident visAlder={visAlder} />
+                </span>
+            </BodyShort>
+        );
+    }
     if (variant === "default") {
         return (
             <BodyShort
