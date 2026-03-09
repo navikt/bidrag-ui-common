@@ -83,7 +83,7 @@ export default function PersonNavnIdent({
         return (
             <>
                 {ident ? (
-                    <div className={`flex flex-row gap-1 ${variant === "ident" ? "items-center" : "items-center"}`}>
+                    <div className={`flex flex-row gap-1 ${variant === "ident" ? "items-center" : ""}`}>
                         <PersonIdent ident={ident} showCopyButton={showCopyButton} />
                         {visAlder && age && <span>({age} år)</span>}
                     </div>
