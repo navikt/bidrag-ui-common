@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.15](https://github.com/navikt/bidrag-ui-common/compare/v2.5.14...v2.5.15) (2026-03-09)
+
+
+### Bug Fixes
+
+* Styling ident ([#451](https://github.com/navikt/bidrag-ui-common/issues/451)) ([2a782da](https://github.com/navikt/bidrag-ui-common/commit/2a782da86dfde47e9a7fe7bad7ba05452cae7abf))
+
 ## [2.5.14](https://github.com/navikt/bidrag-ui-common/compare/v2.5.13...v2.5.14) (2026-03-09)
 
 
