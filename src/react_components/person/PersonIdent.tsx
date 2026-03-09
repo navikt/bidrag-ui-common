@@ -4,6 +4,7 @@ import React from "react";
 const PersonIdent = ({ ident, showCopyButton = false }: { ident: string; showCopyButton?: boolean }) => {
     return (
         <div
+            className={`flex flex-row gap-1 items-center`}
             onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
