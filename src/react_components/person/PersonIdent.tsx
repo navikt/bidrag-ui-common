@@ -3,20 +3,15 @@ import React from "react";
 
 const PersonIdent = ({ ident, showCopyButton = false }: { ident: string; showCopyButton?: boolean }) => {
     return (
-        <>
+        <div
+            onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+            }}
+        >
             <span className="personident">{ident}</span>
-            {showCopyButton && (
-                <CopyButton
-                    copyText={ident}
-                    size="small"
-                    style={{ zIndex: 10000 }}
-                    onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }}
-                />
-            )}
-        </>
+            {showCopyButton && <CopyButton copyText={ident} size="small" style={{ zIndex: 10000 }} />}
+        </div>
     );
 };
 
