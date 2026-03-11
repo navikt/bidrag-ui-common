@@ -1,13 +1,23 @@
 import { CopyButton } from "@navikt/ds-react";
 import React from "react";
 
-const PersonIdent = ({ ident, showCopyButton = false }: { ident: string; showCopyButton?: boolean }) => {
+const PersonIdent = ({
+    ident,
+    showCopyButton = false,
+    ignoreClickOnIdent = false,
+}: {
+    ident: string;
+    showCopyButton?: boolean;
+    ignoreClickOnIdent?: boolean;
+}) => {
     return (
         <div
             className={`flex flex-row gap-1 items-center`}
             onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
+                if (ignoreClickOnIdent) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
             }}
         >
             <span className="personident">{ident}</span>

@@ -17,6 +17,7 @@ type PersonNavnIdentProps = {
     skjulNavn?: boolean;
     showCopyButton?: boolean;
     visAlder?: boolean;
+    ignoreClickOnIdent?: boolean;
     bareFornavn?: boolean;
     variant?: "compact" | "default" | "navnIdent" | "ident";
 };
@@ -31,6 +32,7 @@ export default function PersonNavnIdent({
     visAlder = false,
     showCopyButton = false,
     stønad18År = false,
+    ignoreClickOnIdent = false,
 }: PersonNavnIdentProps) {
     const { useHentPersonData } = useBidragCommons();
     // const { data: graderingsinfo } = useHentPersonSkjermingInfo(ident);
@@ -84,7 +86,11 @@ export default function PersonNavnIdent({
             <>
                 {ident ? (
                     <div className={`flex flex-row gap-1 ${variant === "ident" ? "items-center" : ""}`}>
-                        <PersonIdent ident={ident} showCopyButton={showCopyButton} />
+                        <PersonIdent
+                            ident={ident}
+                            showCopyButton={showCopyButton}
+                            ignoreClickOnIdent={ignoreClickOnIdent}
+                        />
                         {visAlder && age && <span>({age} år)</span>}
                     </div>
                 ) : (
