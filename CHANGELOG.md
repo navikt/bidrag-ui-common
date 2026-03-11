@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.17](https://github.com/navikt/bidrag-ui-common/compare/v2.5.16...v2.5.17) (2026-03-11)
+
+
+### Bug Fixes
+
+* ignorer click ident ([e076847](https://github.com/navikt/bidrag-ui-common/commit/e076847de3a887a9ffd6723f4f6fa9d993d97d30))
+
 ## [2.5.16](https://github.com/navikt/bidrag-ui-common/compare/v2.5.15...v2.5.16) (2026-03-10)
 
 
