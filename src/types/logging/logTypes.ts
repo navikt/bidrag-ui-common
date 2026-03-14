@@ -16,11 +16,43 @@ export interface LogInfo {
     message: string;
     error?: ErrorInfo;
 }
+/** Context shape logged when an Axios error occurs. */
+export interface IErrorContext {
+    url?: string;
+    method?: string | undefined;
+    status: number;
+    statusText?: string | undefined;
+    requestHeaders?: Record<string, unknown> | undefined;
+    responseData?: unknown;
+    responseHeaders?: Record<string, unknown> | undefined;
+    stack?: string | undefined;
+    stack_trace?: string;
+    stackTrace?: string;
+    componentStack?: string;
+    message: string;
+    correlationId: string | null;
+    name: string;
+    errorType?: string;
+    timestamp: string;
+}
 
+export interface AxiosErrorContext {
+    cause?: any;
+    correlationId?: string | null;
+    stack_trace?: string;
+    errorType: string;
+    message: string;
+    status?: number;
+    exceptionCode?: string;
+    errorCode?: string;
+}
 export interface ErrorInfo {
     cause?: any;
     correlationId?: string | null;
     stack_trace?: string;
+    stack?: string;
+    stackTrace?: string;
+    componentStack?: string;
     errorType: string;
     message: string;
     status?: number;

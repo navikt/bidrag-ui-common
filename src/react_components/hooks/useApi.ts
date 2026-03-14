@@ -2,6 +2,7 @@ import { context, propagation, trace } from "@opentelemetry/api";
 import { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from "axios";
 
 import { LoggerService, SecureLoggerService } from "../../logging";
+import { IErrorContext } from "../../types";
 import { AxiosErrorHandler } from "../../types/error/ErrorHandler";
 import { SecuritySessionUtils } from "../../utils";
 import { tracename } from "./useStartTracing";
@@ -64,7 +65,34 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
             });
         }
     }
+    api.instance.interceptors.response.use(
+        (response) => response,
+        async (error: AxiosError) => {
+            const errorContext: IErrorContext = {
+                url: error.config?.url,
+                method: error.config?.method?.toUpperCase(),
+                status: error.response?.status ?? 0,
+                statusText: error.response?.statusText,
+                requestHeaders: error.config?.headers,
+                responseData: error.response?.data,
+                responseHeaders: error.response?.headers,
+                stack: error.stack,
+                stack_trace: error.stack,
+                message: error.message ?? "",
+                correlationId: SecuritySessionUtils.getCorrelationId ? SecuritySessionUtils.getCorrelationId() : null,
+                name: error.name ?? "Error",
+                errorType: error.name ?? "Error",
+                timestamp: new Date().toISOString(),
+            };
 
+            await LoggerService.error(
+                `API Error: ${error.config?.method?.toUpperCase()} ${error.config?.url}`,
+                errorContext
+            );
+
+            return Promise.reject(error);
+        }
+    );
     api.instance.interceptors.request.use(
         async (config: InternalAxiosRequestConfig) => {
             const tracer = trace.getTracer(tracename);
