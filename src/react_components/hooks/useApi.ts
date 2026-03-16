@@ -2,7 +2,6 @@ import { context, propagation, trace } from "@opentelemetry/api";
 import { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from "axios";
 
 import { LoggerService, SecureLoggerService } from "../../logging";
-import { IErrorContext } from "../../types";
 import { AxiosErrorHandler } from "../../types/error/ErrorHandler";
 import { SecuritySessionUtils } from "../../utils";
 import { tracename } from "./useStartTracing";
@@ -80,42 +79,20 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
             });
         }
     }
-    api.instance.interceptors.response.use(
-        (response) => response,
-        async (error: AxiosError) => {
-            const errorContext: IErrorContext = {
-                url: error.config?.url,
-                method: error.config?.method?.toUpperCase(),
-                status: error.response?.status ?? 0,
-                statusText: error.response?.statusText,
-                requestHeaders: error.config?.headers,
-                responseData: error.response?.data,
-                responseHeaders: error.response?.headers,
-                stack: buildFullStack(error),
-                stack_trace: buildFullStack(error),
-                message: error.message ?? "",
-                correlationId: SecuritySessionUtils.getCorrelationId ? SecuritySessionUtils.getCorrelationId() : null,
-                name: error.name ?? "Error",
-                errorType: error.name ?? "Error",
-                timestamp: new Date().toISOString(),
-            };
-
-            await LoggerService.error(
-                `API Error: ${error.config?.method?.toUpperCase()} ${error.config?.url}`,
-                errorContext
-            );
-
-            return Promise.reject(error);
-        }
+    // Synchronous interceptor runs inline (before zone.js reschedules), so new Error().stack captures real application frames.
+    api.instance.interceptors.request.use(
+        (config: InternalAxiosRequestConfig) => {
+            (config as AxiosRequestConfigWithCallSite)._callSiteStack = new Error().stack
+                ?.split("\n")
+                .slice(2)
+                .join("\n");
+            return config;
+        },
+        undefined,
+        { synchronous: true }
     );
     api.instance.interceptors.request.use(
         async (config: InternalAxiosRequestConfig) => {
-            // Capture call-site stack synchronously before any async work so application frames are still on the stack.
-            (config as AxiosRequestConfigWithCallSite)._callSiteStack = new Error().stack
-                ?.split("\n")
-                .slice(2) // drop "Error" line and this interceptor frame
-                .join("\n");
-
             const tracer = trace.getTracer(tracename);
             // @ts-ignore
             const parentCtx = window.__otelSessionContext || context.active();
