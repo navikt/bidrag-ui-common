@@ -11,6 +11,10 @@ interface AxiosClient {
     instance: AxiosInstance;
 }
 
+interface AxiosRequestConfigWithCallSite extends InternalAxiosRequestConfig {
+    _callSiteStack?: string;
+}
+
 interface UseApiOptions {
     app: string;
     cluster: string;
@@ -27,6 +31,15 @@ function isNetworkCallBlockedByChrome(error: AxiosError): boolean {
 export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T {
     const { app, cluster, env, scope } = options;
     const requestStart = performance.now();
+
+    function buildFullStack(error: AxiosError): string {
+        const config = error.config as AxiosRequestConfigWithCallSite | undefined;
+        const parts = [
+            error.stack,
+            config?._callSiteStack ? `Call site (where request was initiated):\n${config._callSiteStack}` : undefined,
+        ];
+        return parts.filter(Boolean).join("\n");
+    }
 
     async function logError(error: AxiosError) {
         const config = error.config!;
@@ -54,14 +67,16 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
                 );
             }
         } else {
-            await LoggerService[warnOrError](errorMessage, errorInfo);
+            await LoggerService[warnOrError](errorMessage, { ...errorInfo, stack_trace: buildFullStack(error) });
         }
 
         const requestBody = config?.data;
         if (requestBody) {
             await SecureLoggerService[warnOrError](`${errorMessage} med melding ${requestBody}`, {
                 ...errorInfo,
-                stack_trace: `Requesten som førte til feilen inneholdt melding ${requestBody}`,
+                stack_trace: `Requesten som førte til feilen inneholdt melding ${requestBody}\n${buildFullStack(
+                    error
+                )}`,
             });
         }
     }
@@ -76,8 +91,8 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
                 requestHeaders: error.config?.headers,
                 responseData: error.response?.data,
                 responseHeaders: error.response?.headers,
-                stack: error.stack,
-                stack_trace: error.stack,
+                stack: buildFullStack(error),
+                stack_trace: buildFullStack(error),
                 message: error.message ?? "",
                 correlationId: SecuritySessionUtils.getCorrelationId ? SecuritySessionUtils.getCorrelationId() : null,
                 name: error.name ?? "Error",
@@ -95,6 +110,12 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
     );
     api.instance.interceptors.request.use(
         async (config: InternalAxiosRequestConfig) => {
+            // Capture call-site stack synchronously before any async work so application frames are still on the stack.
+            (config as AxiosRequestConfigWithCallSite)._callSiteStack = new Error().stack
+                ?.split("\n")
+                .slice(2) // drop "Error" line and this interceptor frame
+                .join("\n");
+
             const tracer = trace.getTracer(tracename);
             // @ts-ignore
             const parentCtx = window.__otelSessionContext || context.active();
