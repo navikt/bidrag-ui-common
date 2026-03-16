@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.19](https://github.com/navikt/bidrag-ui-common/compare/v2.5.18...v2.5.19) (2026-03-16)
+
+
+### Bug Fixes
+
+* Legg til stacktrace på useApi ([da77d09](https://github.com/navikt/bidrag-ui-common/commit/da77d097fc77a0e354ca3e0d7ba6d98d00af8caf))
+
 ## [2.5.18](https://github.com/navikt/bidrag-ui-common/compare/v2.5.17...v2.5.18) (2026-03-14)
 
 
