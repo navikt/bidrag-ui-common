@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.21](https://github.com/navikt/bidrag-ui-common/compare/v2.5.20...v2.5.21) (2026-03-18)
+
+
+### Bug Fixes
+
+* Visning rolletag ([5f2edcd](https://github.com/navikt/bidrag-ui-common/commit/5f2edcd83b164dae65303220f375d88c9a58ab7a))
+
 ## [2.5.20](https://github.com/navikt/bidrag-ui-common/compare/v2.5.19...v2.5.20) (2026-03-16)
 
 
