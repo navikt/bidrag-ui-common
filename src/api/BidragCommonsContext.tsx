@@ -8,7 +8,7 @@ import { useHentPersonData, useHentPersonSkjermingInfo } from "./useApiData";
 interface BidragCommonsContextType {
     queryClient: QueryClient;
     useHentPersonData: (ident?: string) => UseSuspenseQueryResult<PersonDto, any>;
-    useHentRevurderingsbarn?: (ident?: string) => boolean;
+    useHentRevurderingsbarn?: (ident?: string, stønad18År?: boolean) => boolean;
     useHentPersonSkjermingInfo: (ident?: string) => UseSuspenseQueryResult<Graderingsinfo, any>;
     erMaskert: boolean; // NYTT
 }
@@ -21,7 +21,7 @@ interface BidragCommonsProviderProps {
     children: ReactNode;
     client?: QueryClient;
     useHentPersonData?: (ident?: string) => UseSuspenseQueryResult<PersonDto, any>;
-    useHentRevurderingsbarn?: (ident?: string) => boolean;
+    useHentRevurderingsbarn?: (ident?: string, stønad18År?: boolean) => boolean;
 }
 
 const createClient = () => {

@@ -19,7 +19,7 @@ const RolleTag = ({
 
     //@ts-ignore
     const renderRolletype = ROLE_FORKORTELSER[rolleType] ?? rolleType;
-    const erRevurdering = useHentRevurderingsbarn && ident ? useHentRevurderingsbarn(ident) : false;
+    const erRevurdering = useHentRevurderingsbarn && ident ? useHentRevurderingsbarn(ident, stønad18År) : false;
     return (
         // @ts-ignore
         <Tag
