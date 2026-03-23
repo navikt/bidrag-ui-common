@@ -27,6 +27,14 @@ function isNetworkCallBlockedByChrome(error: AxiosError): boolean {
     return error.code === "ERR_NETWORK" || (!!error.message && error.message.toLowerCase().includes("blocked"));
 }
 
+function isCanceledRequest(error: AxiosError): boolean {
+    return (
+        error.code === "ERR_CANCELED" ||
+        error.name === "CanceledError" ||
+        (!!error.message && error.message.toLowerCase().includes("canceled"))
+    );
+}
+
 export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T {
     const { app, cluster, env, scope } = options;
     const requestStart = performance.now();
@@ -51,7 +59,7 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
         const errorMessage = `${error.message} - ${requestInfo}`;
 
         const status = error?.response?.status ?? 0;
-        const warnOrError = status >= 400 && status < 500 ? "warn" : "error";
+        const warnOrError = isCanceledRequest(error) ? "warn" : status >= 400 && status < 500 ? "warn" : "error";
 
         // Check if blocked by Chrome and log accordingly
         if (isNetworkCallBlockedByChrome(error)) {
