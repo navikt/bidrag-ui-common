@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.22](https://github.com/navikt/bidrag-ui-common/compare/v2.5.21...v2.5.22) (2026-03-23)
+
+
+### Bug Fixes
+
+* Reduser canceled error til warning ([e77cf3c](https://github.com/navikt/bidrag-ui-common/commit/e77cf3c6a8f67acbdc7a8b7b5a785b6e61411b11))
+
 ## [2.5.21](https://github.com/navikt/bidrag-ui-common/compare/v2.5.20...v2.5.21) (2026-03-18)
 
 
