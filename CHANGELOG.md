@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.23](https://github.com/navikt/bidrag-ui-common/compare/v2.5.22...v2.5.23) (2026-03-24)
+
+
+### Bug Fixes
+
+* Ignorer nettverksfeil ([62d2839](https://github.com/navikt/bidrag-ui-common/commit/62d28397664b84ad81acb3d985f4609174afed80))
+
 ## [2.5.22](https://github.com/navikt/bidrag-ui-common/compare/v2.5.21...v2.5.22) (2026-03-23)
 
 
