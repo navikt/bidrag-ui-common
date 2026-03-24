@@ -59,11 +59,12 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
         const errorMessage = `${error.message} - ${requestInfo}`;
 
         const status = error?.response?.status ?? 0;
-        const warnOrError = isCanceledRequest(error) ? "warn" : status >= 400 && status < 500 ? "warn" : "error";
+        const isNetworkError = isNetworkCallBlockedByChrome(error) || isCanceledRequest(error);
+        const warnOrError = isNetworkError ? "warn" : status >= 400 && status < 500 ? "warn" : "error";
 
         // Check if blocked by Chrome and log accordingly
         if (isNetworkCallBlockedByChrome(error)) {
-            await LoggerService["error"](
+            await LoggerService["warn"](
                 `Nettverk kall blokkert av Chrome/Edge. Det kan hende saksbehandler må gi tillatelser i nettleseren: ${errorMessage}`,
                 errorInfo
             );
