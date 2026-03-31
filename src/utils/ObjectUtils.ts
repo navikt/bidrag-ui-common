@@ -1,6 +1,6 @@
 import { StringUtils } from "./StringUtils";
 
-export default class ObjectUtils {
+export class ObjectUtils {
     static isEmpty(value?: any) {
         if (!value) {
             return true;
