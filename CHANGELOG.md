@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.24](https://github.com/navikt/bidrag-ui-common/compare/v2.5.23...v2.5.24) (2026-04-14)
+
+
+### Bug Fixes
+
+* Bump axios to newest version ([c3675df](https://github.com/navikt/bidrag-ui-common/commit/c3675df3dd89b3ad792e977ca6da41e31307adc2))
+
 ## [2.5.23](https://github.com/navikt/bidrag-ui-common/compare/v2.5.22...v2.5.23) (2026-03-24)
 
 
