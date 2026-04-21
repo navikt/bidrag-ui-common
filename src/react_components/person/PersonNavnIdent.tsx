@@ -15,6 +15,7 @@ type PersonNavnIdentProps = {
     rolle?: RolleType;
     stønad18År?: boolean;
     skjulNavn?: boolean;
+    skjulIdent?: boolean;
     showCopyButton?: boolean;
     visAlder?: boolean;
     ignoreClickOnIdent?: boolean;
@@ -28,6 +29,7 @@ export default function PersonNavnIdent({
     variant = "default",
     rolle,
     skjulNavn = false,
+    skjulIdent = false,
     bareFornavn = false,
     visAlder = false,
     showCopyButton = false,
@@ -44,7 +46,8 @@ export default function PersonNavnIdent({
         personData.diskresjonskode === "SPFO" ||
         personData.diskresjonskode === "P19";
     // const skjermet = false; //ident ? graderingsinfo.identerTilSkjerming[ident] : false;
-    const personnavn = navn ?? (bareFornavn ? personData.fornavn : personData.visningsnavn);
+    const navnFraData = bareFornavn ? personData.fornavn : personData.visningsnavn;
+    const personnavn = navn ?? navnFraData;
     const genererTittel = () => {
         let tittel = "";
         // if (skjermet) {
@@ -84,7 +87,7 @@ export default function PersonNavnIdent({
         const age = birthdate ? calculateAge(birthdate) : null;
         return (
             <>
-                {ident ? (
+                {ident && !skjulIdent ? (
                     <div className={`flex flex-row gap-1 ${variant === "ident" ? "items-center" : ""}`}>
                         <PersonIdent
                             ident={ident}
