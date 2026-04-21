@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.25](https://github.com/navikt/bidrag-ui-common/compare/v2.5.24...v2.5.25) (2026-04-21)
+
+
+### Bug Fixes
+
+* PersonNavnIdent skjul ident parameter ([f7f02c9](https://github.com/navikt/bidrag-ui-common/commit/f7f02c92d3509c502956d3a5788cd2292b4ef7ea))
+
 ## [2.5.24](https://github.com/navikt/bidrag-ui-common/compare/v2.5.23...v2.5.24) (2026-04-14)
 
 
