@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.26](https://github.com/navikt/bidrag-ui-common/compare/v2.5.25...v2.5.26) (2026-05-15)
+
+
+### Bug Fixes
+
+* Uthev person og ny rollekort ([3055063](https://github.com/navikt/bidrag-ui-common/commit/30550637cd9355b25c96e022709329ee209773f8))
+
 ## [2.5.25](https://github.com/navikt/bidrag-ui-common/compare/v2.5.24...v2.5.25) (2026-04-21)
 
 
