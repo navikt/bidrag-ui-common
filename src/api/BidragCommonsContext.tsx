@@ -10,6 +10,7 @@ interface BidragCommonsContextType {
     useHentPersonData: (ident?: string) => UseSuspenseQueryResult<PersonDto, any>;
     useHentRevurderingsbarn?: (ident?: string, stønad18År?: boolean) => boolean;
     useHentPersonSkjermingInfo: (ident?: string) => UseSuspenseQueryResult<Graderingsinfo, any>;
+    uthevPerson?: (ident?: string, stønad18År?: boolean) => boolean;
     erMaskert: boolean; // NYTT
 }
 
@@ -22,6 +23,7 @@ interface BidragCommonsProviderProps {
     client?: QueryClient;
     useHentPersonData?: (ident?: string) => UseSuspenseQueryResult<PersonDto, any>;
     useHentRevurderingsbarn?: (ident?: string, stønad18År?: boolean) => boolean;
+    uthevPerson?: (ident?: string, stønad18År?: boolean) => boolean;
 }
 
 const createClient = () => {
@@ -42,6 +44,7 @@ export const BidragCommonsProvider: React.FC<BidragCommonsProviderProps> = ({
     client,
     useHentPersonData: useHentPersonDataInput,
     useHentRevurderingsbarn,
+    uthevPerson,
 }) => {
     const queryClient = useRef(client ?? createClient());
     const id = useRef(Math.random());
@@ -81,6 +84,7 @@ export const BidragCommonsProvider: React.FC<BidragCommonsProviderProps> = ({
                 useHentPersonData: useHentPersonDataInput ?? useHentPersonData,
                 useHentRevurderingsbarn: useHentRevurderingsbarn,
                 useHentPersonSkjermingInfo: useHentPersonSkjermingInfo,
+                uthevPerson: uthevPerson,
                 erMaskert,
             }}
         >

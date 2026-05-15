@@ -9,6 +9,7 @@ export { default as PersonIdent } from "./person/PersonIdent";
 export { default as PersonNavn } from "./person/PersonNavn";
 export { default as PersonNavnIdent } from "./person/PersonNavnIdent";
 export { default as PersonSokButton } from "./person/PersonSokButton";
+export { default as RolleCard } from "./roller/RolleCard";
 export { default as RolleDetaljer } from "./roller/RolleDetaljer";
 export { default as RolleTag } from "./roller/RolleTag";
 export { default as SamhandlerSokButton } from "./samhandler/SamhandlerSokButton";

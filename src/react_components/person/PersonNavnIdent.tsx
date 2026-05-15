@@ -36,9 +36,11 @@ export default function PersonNavnIdent({
     stønad18År = false,
     ignoreClickOnIdent = false,
 }: PersonNavnIdentProps) {
-    const { useHentPersonData } = useBidragCommons();
+    const { useHentPersonData, uthevPerson } = useBidragCommons();
     // const { data: graderingsinfo } = useHentPersonSkjermingInfo(ident);
     const { data: personData } = useHentPersonData(ident);
+    const highlight = uthevPerson?.(ident, stønad18År) === true;
+    console.log("uthevPerson", ident, stønad18År, uthevPerson?.(ident, stønad18År));
 
     const erDød = personData.dødsdato || false;
     const erKode67 =
@@ -48,6 +50,8 @@ export default function PersonNavnIdent({
     // const skjermet = false; //ident ? graderingsinfo.identerTilSkjerming[ident] : false;
     const navnFraData = bareFornavn ? personData.fornavn : personData.visningsnavn;
     const personnavn = navn ?? navnFraData;
+    const highlightClassName = highlight ? "bg-[color-mix(in_srgb,var(--a-surface-selected)_80%,transparent)]" : "";
+    const paddingClassname = "px-[5px]";
     const genererTittel = () => {
         let tittel = "";
         // if (skjermet) {
@@ -88,7 +92,15 @@ export default function PersonNavnIdent({
         return (
             <>
                 {ident && !skjulIdent ? (
-                    <div className={`flex flex-row gap-1 ${variant === "ident" ? "items-center" : ""}`}>
+                    <div
+                        className={[
+                            "flex flex-row gap-1",
+                            variant === "ident" ? "items-center" : "",
+                            highlightClassName,
+                        ]
+                            .join(" ")
+                            .trim()}
+                    >
                         <PersonIdent
                             ident={ident}
                             showCopyButton={showCopyButton}
@@ -108,12 +120,14 @@ export default function PersonNavnIdent({
                 as="span"
                 size="small"
                 title={genererTittel()}
-                className={`flex items-center gap-2 ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
+                className={`${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""} ${highlightClassName}`}
             >
-                <span className="inline-flex items-center">
-                    <Ikoner />
-                    <Ident visAlder={visAlder} />
-                </span>
+                <div className={`${paddingClassname} flex items-center gap-2`}>
+                    <span className="inline-flex items-center">
+                        <Ikoner />
+                        <Ident visAlder={visAlder} />
+                    </span>
+                </div>
             </BodyShort>
         );
     }
@@ -123,44 +137,18 @@ export default function PersonNavnIdent({
                 as="span"
                 size="small"
                 title={genererTittel()}
-                className={`flex items-center gap-2 ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
+                className={`${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""} ${highlightClassName}`}
             >
-                {rolle && <RolleTag rolleType={rolle} ident={ident} stønad18År={stønad18År} />}
+                <div className={`${paddingClassname} flex items-center gap-2`}>
+                    {rolle && <RolleTag rolleType={rolle} ident={ident} stønad18År={stønad18År} />}
 
-                {!skjulNavn ? (
-                    <>
-                        <span className="inline-flex">
-                            <Ikoner />
-                            <PersonNavn bold navn={personnavn} ident={ident} bareFornavn={bareFornavn} />
-                        </span>
-
-                        <Ident visAlder={visAlder} />
-                    </>
-                ) : (
-                    <span className="inline-flex">
-                        <Ikoner />
-                        <Ident visAlder={visAlder} />
-                    </span>
-                )}
-            </BodyShort>
-        );
-    }
-    if (variant === "navnIdent") {
-        return (
-            <BodyShort
-                as="span"
-                size="small"
-                title={genererTittel()}
-                className={`flex flex-row items-center gap-2 ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
-            >
-                {rolle && <RolleTag rolleType={rolle} ident={ident} stønad18År={stønad18År} />}
-
-                <div className="flex flex-col items-start">
                     {!skjulNavn ? (
                         <>
-                            <span className="inline-flex whitespace-nowrap">
+                            <span className="inline-flex">
                                 <Ikoner />
-                                <PersonNavn bold navn={personnavn} ident={ident} bareFornavn={bareFornavn} />
+                                <span>
+                                    <PersonNavn bold navn={personnavn} ident={ident} bareFornavn={bareFornavn} />
+                                </span>
                             </span>
 
                             <Ident visAlder={visAlder} />
@@ -175,30 +163,68 @@ export default function PersonNavnIdent({
             </BodyShort>
         );
     }
+    if (variant === "navnIdent") {
+        return (
+            <BodyShort
+                as="span"
+                size="small"
+                title={genererTittel()}
+                className={`${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""} ${highlightClassName}`}
+            >
+                <div className={`${paddingClassname} flex flex-row items-center gap-2`}>
+                    {rolle && <RolleTag rolleType={rolle} ident={ident} stønad18År={stønad18År} />}
+
+                    <div className="flex flex-col items-start">
+                        {!skjulNavn ? (
+                            <>
+                                <span className="inline-flex whitespace-nowrap">
+                                    <Ikoner />
+                                    <span>
+                                        <PersonNavn bold navn={personnavn} ident={ident} bareFornavn={bareFornavn} />
+                                    </span>
+                                </span>
+
+                                <Ident visAlder={visAlder} />
+                            </>
+                        ) : (
+                            <span className="inline-flex">
+                                <Ikoner />
+                                <Ident visAlder={visAlder} />
+                            </span>
+                        )}
+                    </div>
+                </div>
+            </BodyShort>
+        );
+    }
     return (
         <BodyShort
             as="span"
             size="small"
-            className={`flex gap-1 self-center items-center ${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""}`}
+            className={`${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""} ${highlightClassName}`}
             title={genererTittel()}
         >
-            {rolle && <RolleTag rolleType={rolle} className="h-max" ident={ident} stønad18År={stønad18År} />}
-            {!skjulNavn ? (
-                <>
+            <div className={`${paddingClassname} flex gap-1 self-center items-center `}>
+                {rolle && <RolleTag rolleType={rolle} className="h-max" ident={ident} stønad18År={stønad18År} />}
+                {!skjulNavn ? (
+                    <>
+                        <span className="inline-flex">
+                            <Ikoner />
+                            <span>
+                                <PersonNavn navn={personnavn} bareFornavn={bareFornavn} />
+                            </span>
+                        </span>
+                        <span> /</span>
+                        <Ident visAlder={visAlder} />
+                    </>
+                ) : (
                     <span className="inline-flex">
                         <Ikoner />
-                        <PersonNavn navn={personnavn} bareFornavn={bareFornavn} />
-                    </span>
-                    <span> /</span>
-                    <Ident visAlder={visAlder} />
-                </>
-            ) : (
-                <span className="inline-flex">
-                    <Ikoner />
 
-                    <Ident visAlder={visAlder} />
-                </span>
-            )}
+                        <Ident visAlder={visAlder} />
+                    </span>
+                )}
+            </div>
         </BodyShort>
     );
 }
