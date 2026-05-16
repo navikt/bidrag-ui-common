@@ -50,7 +50,7 @@ export default function PersonNavnIdent({
     // const skjermet = false; //ident ? graderingsinfo.identerTilSkjerming[ident] : false;
     const navnFraData = bareFornavn ? personData.fornavn : personData.visningsnavn;
     const personnavn = navn ?? navnFraData;
-    const highlightClassName = highlight ? "bg-[color-mix(in_srgb,var(--a-surface-selected)_80%,transparent)]" : "";
+    const highlightClassName = highlight ? "bg-[color-mix(in_srgb,var(--ax-bg-accent-soft)_80%,transparent)]" : "";
     const paddingClassname = "px-[5px]";
     const genererTittel = () => {
         let tittel = "";

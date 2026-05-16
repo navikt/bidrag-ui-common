@@ -19,9 +19,9 @@ interface ISakHeaderProps {
 
 export default function SakHeader({ saksnummer, roller, skjermbilde }: ISakHeaderProps) {
     return (
-        <div className="bg-[var(--a-gray-50)] border-[var(--a-border-divider)] border-solid border-b w-full border-0">
+        <div className="bg-[var(--ax-neutral-100)] border-[var(--ax-border-neutral-subtle)] border-solid border-b w-full border-0">
             {/** @ts-ignore **/}
-            <div className="px-6 py-1 flex items-center border-[var(--a-border-divider)] border-solid border-b border-0">
+            <div className="px-6 py-1 flex items-center border-[var(--ax-border-neutral-subtle)] border-solid border-b border-0">
                 <SkjermbildeDetaljer saksnummer={saksnummer} skjermbilde={skjermbilde} />
             </div>
             <BidragGrid

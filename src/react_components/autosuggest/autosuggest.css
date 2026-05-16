@@ -60,13 +60,13 @@
   padding: 0.5em;
   cursor: pointer;
   font-weight: bold;
-  background-color: var(--a-surface-active);
+  background-color: var(--ax-bg-neutral-moderate-pressedA);
   color: black;
 }
 
 .autosuggest .options li.option-active {
   font-weight: bold;
-  background-color: var(--a-surface-active);
+  background-color: var(--ax-bg-neutral-moderate-pressedA);
   color: black;
 }
 

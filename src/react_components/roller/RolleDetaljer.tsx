@@ -22,9 +22,9 @@ const RolleDetaljer = ({ rolle, withBorder = true, stønad18År = false }: IRoll
             as="div"
             size="small"
             className={`px-6 py-1 w-max ${
-                withBorder && "border-[var(--a-border-divider)] border-solid border-b"
+                withBorder && "border-[var(--ax-border-neutral-subtle)] border-solid border-b"
             } flex items-center ${
-                highlight ? "bg-[color-mix(in_srgb,var(--a-surface-selected)_30%,transparent)]" : ""
+                highlight ? "bg-[color-mix(in_srgb,var(--ax-bg-accent-soft)_30%,transparent)]" : ""
             }`}
         >
             <RolleTag rolleType={rolle.rolleType} ident={rolle.ident} stønad18År={stønad18År} />
