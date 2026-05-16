@@ -102,6 +102,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create GitHub Release
+        if: steps.bump.outputs.should_release == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: v${{ steps.version.outputs.version }}
+          generate_release_notes: true
       - name: Release skipped
         if: steps.bump.outputs.should_release != 'true'
         run: echo "Skipping release because no supported commit prefix was found (major:, feat:, fix:, bugfix:, refactor:)."
@@ -155,11 +162,17 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: v${{ steps.version.outputs.version }}
+          generate_release_notes: true
 
   release-branch-manual:
     if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
     permissions:
-      contents: "read"
+      contents: "write"
       id-token: "write"
       packages: "write"
     runs-on: ubuntu-latest
@@ -207,3 +220,19 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push prerelease tag
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git tag "v${{ steps.prerelease.outputs.version }}"
+          git push origin "v${{ steps.prerelease.outputs.version }}"
+      - name: Create GitHub prerelease
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.prerelease.outputs.version }}
+          name: v${{ steps.prerelease.outputs.version }}
+          prerelease: true
+          generate_release_notes: true
