@@ -24,17 +24,26 @@ registry=https://registry.npmjs.org/
 
 Push til alle andre brancher enn `main` vil bare kjøre lint og bygg. Pass på at bygget kjører grønt før det merges til main.
 
-Ved merge til main så kjører [release.yaml](.github/workflows/release.yaml) pipelinen som bruker [release-please](https://github.com/googleapis/release-please) action.
+Ved push til `main` så kjører [release.yaml](.github/workflows/release.yaml), men release skjer kun hvis commit-meldinger har støttet prefix.
 
-Release Please sjekker om commit meldingen inneholder [conventionalcommits](https://www.conventionalcommits.org/en/v1.0.0/) format.
+Versjonsbump bestemmes fra commit-meldinger i pushen:
 
-Det vil si at hvis commit meldingen har prefix:
+* uten støttet prefix -> ingen release
+* `feat:`, `fix:`, `bugfix:` eller `refactor:` -> minor (0.X.0)
+* `major:` -> major (X.0.0)
 
-* `fix:` som representerer bug fix så vil den bumpe versjonen med patch (0.0.X)
-* `feat:` som representerer ny featyre vil bumpe versjonen med minor (0.X.0)
-* `feat!:`, or `fix!:`, `refactor!:`, etc., som representerer "breaking change" (indikert av !) vil bumpe versjon med major (X.0.0)
+Workflowen oppdaterer `package.json`, lager commit + tag (`vX.Y.Z`) og publiserer pakken.
 
-Release please vil opprette en PR som oppdaterer CHANGELOG.md filen med commit meldingen siden forrige release. Når PR er merget til main så vil nye release publiseres til GPR (Github package registry) med oppdaterte versjonen
+Du kan også trigge workflowen manuelt (`workflow_dispatch`).
+
+* Fra `main`: velg `main_bump` (`patch`, `minor` eller `major`) for å bestemme release-versjon.
+* Fra andre brancher: workflow publiserer prerelease fra branch.
+
+Formatet blir:
+
+* `X.Y.Z-<branch-prefix>-XXXX`
+
+`<branch-prefix>` settes til første del av branchnavn før `/` (f.eks. `aksel4/changes` -> `aksel4`). Hvis branch ikke inneholder `/`, brukes hele branchnavnet.
 
 # Bruke React componenter
 

@@ -3,15 +3,165 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      main_bump:
+        description: "Version bump for manual release on main"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 env:
   NPM_TOKEN: ${{ secrets.READER_TOKEN }}
 jobs:
-  release-please:
+  release-main-push:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       contents: "write"
       id-token: "write"
       packages: "write"
-      pull-requests: "write"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '21.x'
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: Lint
+        run: yarn lint
+      - name: Determine bump level
+        id: bump
+        run: |
+          set -euo pipefail
+
+          RANGE="${{ github.event.before }}..${{ github.sha }}"
+          if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+            RANGE="${{ github.sha }}"
+          fi
+
+          BUMP=""
+          while IFS= read -r SUBJECT; do
+            LOWER_SUBJECT="$(echo "$SUBJECT" | tr '[:upper:]' '[:lower:]')"
+
+            if [[ "$LOWER_SUBJECT" =~ ^major(\(.+\))?: ]]; then
+              BUMP="major"
+              break
+            fi
+
+            if [[ -z "$BUMP" && "$LOWER_SUBJECT" =~ ^(feat|fix|bugfix|refactor)(\(.+\))?: ]]; then
+              BUMP="minor"
+            fi
+          done < <(git log --format=%s "$RANGE")
+
+          if [ -z "$BUMP" ]; then
+            echo "should_release=false" >> "$GITHUB_OUTPUT"
+            echo "No recognized prefix found; skipping release."
+            exit 0
+          fi
+
+          echo "should_release=true" >> "$GITHUB_OUTPUT"
+          echo "bump=$BUMP" >> "$GITHUB_OUTPUT"
+          echo "Selected bump: $BUMP"
+      - name: Bump package version
+        id: version
+        if: steps.bump.outputs.should_release == 'true'
+        run: |
+          set -euo pipefail
+
+          CURRENT_VERSION="$(node -p "require('./package.json').version")"
+          NEXT_VERSION="$(node -e "const [version, bump] = process.argv.slice(1); const match = version.match(/^(\\d+)\\.(\\d+)\\.(\\d+)(-.+)?$/); if (!match) { throw new Error('Invalid semantic version: ' + version); } let major = Number(match[1]); let minor = Number(match[2]); let patch = Number(match[3]); if (bump === 'major') { major += 1; minor = 0; patch = 0; } else if (bump === 'minor') { minor += 1; patch = 0; } else { patch += 1; } process.stdout.write(`${major}.${minor}.${patch}`);" "$CURRENT_VERSION" "${{ steps.bump.outputs.bump }}")"
+
+          npm version "$NEXT_VERSION" --no-git-tag-version
+
+          echo "version=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Released version: $NEXT_VERSION"
+      - name: Commit and tag version
+        if: steps.bump.outputs.should_release == 'true'
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add package.json
+          git commit -m "chore(release): v${{ steps.version.outputs.version }} [skip ci]"
+          git tag "v${{ steps.version.outputs.version }}"
+          git push origin HEAD:main --follow-tags
+      - name: Publish
+        if: steps.bump.outputs.should_release == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release skipped
+        if: steps.bump.outputs.should_release != 'true'
+        run: echo "Skipping release because no supported commit prefix was found (major:, feat:, fix:, bugfix:, refactor:)."
+
+  release-main-manual:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: "write"
+      id-token: "write"
+      packages: "write"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '21.x'
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: Lint
+        run: yarn lint
+      - name: Bump package version
+        id: version
+        run: |
+          set -euo pipefail
+
+          CURRENT_VERSION="$(node -p "require('./package.json').version")"
+          NEXT_VERSION="$(node -e "const [version, bump] = process.argv.slice(1); const match = version.match(/^(\\d+)\\.(\\d+)\\.(\\d+)(-.+)?$/); if (!match) { throw new Error('Invalid semantic version: ' + version); } let major = Number(match[1]); let minor = Number(match[2]); let patch = Number(match[3]); if (bump === 'major') { major += 1; minor = 0; patch = 0; } else if (bump === 'minor') { minor += 1; patch = 0; } else { patch += 1; } process.stdout.write(`${major}.${minor}.${patch}`);" "$CURRENT_VERSION" "${{ inputs.main_bump }}")"
+
+          npm version "$NEXT_VERSION" --no-git-tag-version
+
+          echo "version=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Manual main release version: $NEXT_VERSION"
+      - name: Commit and tag version
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add package.json
+          git commit -m "chore(release): v${{ steps.version.outputs.version }} [skip ci]"
+          git tag "v${{ steps.version.outputs.version }}"
+          git push origin HEAD:main --follow-tags
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  release-branch-manual:
+    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+    permissions:
+      contents: "read"
+      id-token: "write"
+      packages: "write"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,15 +173,37 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build
         run: yarn build
-      - run: yarn lint
-      - uses: google-github-actions/release-please-action@v3
-        id: release
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: node
-      - name: Publish
-        run: yarn publish
-        if: ${{ steps.release.outputs.release_created }}
+      - name: Lint
+        run: yarn lint
+      - name: Set prerelease version
+        id: prerelease
+        run: |
+          set -euo pipefail
+
+          BASE_VERSION="$(node -p "require('./package.json').version.split('-')[0]")"
+          BRANCH_NAME="${GITHUB_REF_NAME}"
+
+          if [[ "$BRANCH_NAME" == *"/"* ]]; then
+            BRANCH_PREFIX="${BRANCH_NAME%%/*}"
+          else
+            BRANCH_PREFIX="$BRANCH_NAME"
+          fi
+
+          BRANCH_PREFIX="$(echo "$BRANCH_PREFIX" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9-]+/-/g; s/^-+//; s/-+$//')"
+          if [ -z "$BRANCH_PREFIX" ]; then
+            BRANCH_PREFIX="branch"
+          fi
+
+          UNIQUE_SUFFIX="$(node -e "const crypto = require('crypto'); const seed = [process.env.GITHUB_RUN_ID, process.env.GITHUB_RUN_ATTEMPT, process.env.GITHUB_SHA, Date.now()].join('-'); const value = parseInt(crypto.createHash('sha1').update(seed).digest('hex').slice(0, 8), 16) % 10000; process.stdout.write(String(value).padStart(4, '0'));")"
+          PRERELEASE_VERSION="${BASE_VERSION}-${BRANCH_PREFIX}-${UNIQUE_SUFFIX}"
+
+          npm version "$PRERELEASE_VERSION" --no-git-tag-version
+
+          echo "version=$PRERELEASE_VERSION" >> "$GITHUB_OUTPUT"
+          echo "dist_tag=$BRANCH_PREFIX" >> "$GITHUB_OUTPUT"
+          echo "Branch prerelease version: $PRERELEASE_VERSION"
+      - name: Publish prerelease
+        run: npm publish --tag "${{ steps.prerelease.outputs.dist_tag }}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
