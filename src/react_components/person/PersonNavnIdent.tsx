@@ -40,7 +40,6 @@ export default function PersonNavnIdent({
     // const { data: graderingsinfo } = useHentPersonSkjermingInfo(ident);
     const { data: personData } = useHentPersonData(ident);
     const highlight = uthevPerson?.(ident, stønad18År) === true;
-    console.log("uthevPerson", ident, stønad18År, uthevPerson?.(ident, stønad18År));
 
     const erDød = personData.dødsdato || false;
     const erKode67 =
@@ -50,7 +49,7 @@ export default function PersonNavnIdent({
     // const skjermet = false; //ident ? graderingsinfo.identerTilSkjerming[ident] : false;
     const navnFraData = bareFornavn ? personData.fornavn : personData.visningsnavn;
     const personnavn = navn ?? navnFraData;
-    const highlightClassName = highlight ? "bg-[color-mix(in_srgb,var(--ax-bg-accent-soft)_80%,transparent)]" : "";
+    const highlightClassName = highlight ? "bg-[color-mix(in_srgb,var(--ax-bg-accent-moderate)_80%,transparent)]" : "";
     const paddingClassname = "px-[5px]";
     const genererTittel = () => {
         let tittel = "";
@@ -93,13 +92,7 @@ export default function PersonNavnIdent({
             <>
                 {ident && !skjulIdent ? (
                     <div
-                        className={[
-                            "flex flex-row gap-1",
-                            variant === "ident" ? "items-center" : "",
-                            highlightClassName,
-                        ]
-                            .join(" ")
-                            .trim()}
+                        className={["flex flex-row gap-1", variant === "ident" ? "items-center" : ""].join(" ").trim()}
                     >
                         <PersonIdent
                             ident={ident}
@@ -204,7 +197,7 @@ export default function PersonNavnIdent({
             className={`${erKode67 ? "skjermet" : ""} ${erDød ? "doed" : ""} ${highlightClassName}`}
             title={genererTittel()}
         >
-            <div className={`${paddingClassname} flex gap-1 self-center items-center `}>
+            <div className={`${paddingClassname} flex gap-1 self-center items-center ${highlightClassName}`}>
                 {rolle && <RolleTag rolleType={rolle} className="h-max" ident={ident} stønad18År={stønad18År} />}
                 {!skjulNavn ? (
                     <>

@@ -20,7 +20,7 @@ const RolleCard = ({ rolle, stønad18År = false }: IRolledetaljerProps) => {
         <div
             className={`rounded border border-[var(--ax-border-neutral-subtle)] px-2 py-1.5 min-w-[220px] ${
                 highlight
-                    ? "bg-[color-mix(in_srgb,var(--ax-bg-accent-soft)_80%,transparent)]"
+                    ? "bg-[color-mix(in_srgb,var(--ax-bg-accent-moderate)_80%,transparent)]"
                     : "bg-[var(--ax-bg-default)]"
             }`}
         >
