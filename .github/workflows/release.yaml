@@ -14,8 +14,6 @@ on:
           - patch
           - minor
           - major
-env:
-  NPM_TOKEN: ${{ secrets.READER_TOKEN }}
 jobs:
   release-main-push:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -96,12 +94,17 @@ jobs:
           git commit -m "chore(release): v${{ steps.version.outputs.version }} [skip ci]"
           git tag "v${{ steps.version.outputs.version }}"
           git push origin HEAD:main --follow-tags
-      - name: Publish
+      - name: Publish to GitHub Packages
         if: steps.bump.outputs.should_release == 'true'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create GitHub Release
+        if: steps.bump.outputs.should_release == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          generate_release_notes: true
       - name: Release skipped
         if: steps.bump.outputs.should_release != 'true'
         run: echo "Skipping release because no supported commit prefix was found (major:, feat:, fix:, bugfix:, refactor:)."
@@ -150,11 +153,15 @@ jobs:
           git commit -m "chore(release): v${{ steps.version.outputs.version }} [skip ci]"
           git tag "v${{ steps.version.outputs.version }}"
           git push origin HEAD:main --follow-tags
-      - name: Publish
+      - name: Publish to GitHub Packages
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          generate_release_notes: true
 
   release-branch-manual:
     if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
@@ -202,8 +209,7 @@ jobs:
           echo "version=$PRERELEASE_VERSION" >> "$GITHUB_OUTPUT"
           echo "dist_tag=$BRANCH_PREFIX" >> "$GITHUB_OUTPUT"
           echo "Branch prerelease version: $PRERELEASE_VERSION"
-      - name: Publish prerelease
+      - name: Publish prerelease to GitHub Packages
         run: npm publish --tag "${{ steps.prerelease.outputs.dist_tag }}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
