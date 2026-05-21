@@ -78,7 +78,7 @@ jobs:
           set -euo pipefail
 
           CURRENT_VERSION="$(node -p "require('./package.json').version")"
-          NEXT_VERSION="$(node -e "const [version, bump] = process.argv.slice(1); const match = version.match(/^(\\d+)\\.(\\d+)\\.(\\d+)(-.+)?$/); if (!match) { throw new Error('Invalid semantic version: ' + version); } let major = Number(match[1]); let minor = Number(match[2]); let patch = Number(match[3]); if (bump === 'major') { major += 1; minor = 0; patch = 0; } else if (bump === 'minor') { minor += 1; patch = 0; } else { patch += 1; } process.stdout.write(`${major}.${minor}.${patch}`);" "$CURRENT_VERSION" "${{ steps.bump.outputs.bump }}")"
+          NEXT_VERSION="$(node -e 'const [version, bump] = process.argv.slice(1); const match = version.match(/^(\d+)\.(\d+)\.(\d+)(-.+)?$/); if (!match) { throw new Error("Invalid semantic version: " + version); } let major = Number(match[1]); let minor = Number(match[2]); let patch = Number(match[3]); if (bump === "major") { major += 1; minor = 0; patch = 0; } else if (bump === "minor") { minor += 1; patch = 0; } else { patch += 1; } console.log(`${major}.${minor}.${patch}`);' "$CURRENT_VERSION" "${{ steps.bump.outputs.bump }}")"
 
           npm version "$NEXT_VERSION" --no-git-tag-version
 
@@ -96,7 +96,7 @@ jobs:
           git commit -m "chore(release): v${{ steps.version.outputs.version }} [skip ci]"
           git tag "v${{ steps.version.outputs.version }}"
           git push origin HEAD:main --follow-tags
-      - name: Publish
+      - name: Publish to GitHub Packages
         if: steps.bump.outputs.should_release == 'true'
         run: npm publish
         env:
@@ -157,7 +157,7 @@ jobs:
           git commit -m "chore(release): v${{ steps.version.outputs.version }} [skip ci]"
           git tag "v${{ steps.version.outputs.version }}"
           git push origin HEAD:main --follow-tags
-      - name: Publish
+      - name: Publish to GitHub Packages
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -215,7 +215,7 @@ jobs:
           echo "version=$PRERELEASE_VERSION" >> "$GITHUB_OUTPUT"
           echo "dist_tag=$BRANCH_PREFIX" >> "$GITHUB_OUTPUT"
           echo "Branch prerelease version: $PRERELEASE_VERSION"
-      - name: Publish prerelease
+      - name: Publish prerelease to GitHub Packages
         run: npm publish --tag "${{ steps.prerelease.outputs.dist_tag }}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
