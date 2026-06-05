@@ -1,4 +1,4 @@
-import { context, propagation, trace } from "@opentelemetry/api";
+import { context, propagation, Span, trace } from "@opentelemetry/api";
 import { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from "axios";
 
 import { LoggerService, SecureLoggerService } from "../../logging";
@@ -12,6 +12,7 @@ interface AxiosClient {
 
 interface AxiosRequestConfigWithCallSite extends InternalAxiosRequestConfig {
     _callSiteStack?: string;
+    _requestSpan?: Span;
 }
 
 interface UseApiOptions {
@@ -88,6 +89,16 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
             });
         }
     }
+
+    function endRequestSpan(config?: InternalAxiosRequestConfig) {
+        const requestConfig = config as AxiosRequestConfigWithCallSite | undefined;
+        if (!requestConfig?._requestSpan) {
+            return;
+        }
+
+        requestConfig._requestSpan.end();
+        requestConfig._requestSpan = undefined;
+    }
     // Synchronous interceptor runs inline (before zone.js reschedules), so new Error().stack captures real application frames.
     api.instance.interceptors.request.use(
         (config: InternalAxiosRequestConfig) => {
@@ -105,7 +116,9 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
             const tracer = trace.getTracer(tracename);
             // @ts-ignore
             const parentCtx = window.__otelSessionContext || context.active();
+            const requestConfig = config as AxiosRequestConfigWithCallSite;
             const apiSpan = tracer.startSpan(config?.baseURL ?? "ukjent", undefined, parentCtx);
+            requestConfig._requestSpan = apiSpan;
             const secHeaders = await createDefaultHeaders(app, cluster, config.baseURL, env, scope);
             const carrier: Record<string, string> = {};
             const sessionContext = trace.setSpan(parentCtx, apiSpan);
@@ -118,10 +131,10 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
                     config.headers[key] = value;
                 }
             });
-            apiSpan.end();
             return config;
         },
         async function (error: AxiosError) {
+            endRequestSpan(error.config);
             await logError(error);
             // error handling here
             return Promise.reject(error.stack);
@@ -130,9 +143,11 @@ export function useApi<T extends AxiosClient>(api: T, options: UseApiOptions): T
 
     api.instance.interceptors.response.use(
         function (response) {
+            endRequestSpan(response.config);
             return response;
         },
         async function (error: AxiosError) {
+            endRequestSpan(error.config);
             await logError(error);
             return Promise.reject(error);
         }
