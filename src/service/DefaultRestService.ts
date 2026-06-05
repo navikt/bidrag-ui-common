@@ -66,7 +66,8 @@ export class DefaultRestService {
         body?: string,
         config?: FetchConfig
     ): Promise<ApiResponse<T>> {
-        const headers = await this.createDefaultHeaders();
+        const requestTrace = SecuritySessionUtils.createRequestTrace(`${method} ${this.baseUrl}${url}`);
+        const headers = await this.createDefaultHeaders(requestTrace.correlationId);
         const requestStart = performance.now();
         return fetch(`${this.baseUrl}${url}`, {
             mode: "cors",
@@ -75,6 +76,7 @@ export class DefaultRestService {
             body,
             method,
             headers: {
+                ...requestTrace.headers,
                 ...headers,
                 ...config?.headers,
             },
@@ -102,9 +104,9 @@ export class DefaultRestService {
                 const requestTime = requestEnd - requestStart;
                 const requestInfo = `${method} kall utført til endepunkt=${this.baseUrl}${url} fra browserurl=${window.location.href} med requestTid=${requestTime}ms`;
                 if (err instanceof Error) {
-                    error = DefaultRestService.mapErrorToApiError(err);
+                    error = DefaultRestService.mapErrorToApiError(err, requestTrace.correlationId);
                 } else {
-                    error = await DefaultRestService.mapErrorResponseToApiError(err);
+                    error = await DefaultRestService.mapErrorResponseToApiError(err, requestTrace.correlationId);
                 }
                 const errorMessage = `${error.message} - ${requestInfo}`;
 
@@ -122,10 +124,13 @@ export class DefaultRestService {
                 }
 
                 throw error;
+            })
+            .finally(() => {
+                requestTrace.span.end();
             });
     }
 
-    private async createDefaultHeaders() {
+    private async createDefaultHeaders(correlationId: string) {
         const regexDevEnvironment = /-q\d+/;
         let appName = this.env ? `${this.app}-${this.env}` : this.app;
         const environmentMatch = this.baseUrl?.match(regexDevEnvironment);
@@ -137,7 +142,6 @@ export class DefaultRestService {
             this.app && this.app !== "self"
                 ? await SecuritySessionUtils.getSecurityTokenForApp(appName, this.cluster)
                 : "";
-        const correlationId = SecuritySessionUtils.getCorrelationId();
         return {
             Authorization: "Bearer " + idToken,
             "Content-type": "application/json; charset=UTF-8",
@@ -147,16 +151,17 @@ export class DefaultRestService {
         };
     }
 
-    private static async mapErrorResponseToApiError(error: Response) {
+    private static async mapErrorResponseToApiError(error: Response, correlationId: string) {
         const errorParsed = await DefaultRestService.parseResponseBody(error);
-        const correlationId = error.headers?.get("x-correlation-id") ?? SecuritySessionUtils.getCorrelationId();
+        const resolvedCorrelationId =
+            error.headers?.get("traceparent") ?? error.headers?.get("x-correlation-id") ?? correlationId;
         const warningMessage = error?.headers?.get("Warning");
         const stackTrace = this.getStackFromErrorBody(errorParsed);
         const errorMessageFromResponse = `${warningMessage ?? "ukjent feil"} - status=${error.statusText}(${
             error.status
         })`;
 
-        return new ApiError(errorMessageFromResponse, stackTrace, correlationId, 500, undefined);
+        return new ApiError(errorMessageFromResponse, stackTrace, resolvedCorrelationId, 500, undefined);
     }
 
     private static getStackFromErrorBody(errorParsed: object | string): string {
@@ -175,14 +180,8 @@ export class DefaultRestService {
         return "ukjent feil";
     }
 
-    private static mapErrorToApiError(error: Error) {
-        return new ApiError(
-            error.message,
-            error.stack ?? "",
-            SecuritySessionUtils.getCorrelationId() ?? uuidV4(),
-            500,
-            error
-        );
+    private static mapErrorToApiError(error: Error, correlationId: string) {
+        return new ApiError(error.message, error.stack ?? "", correlationId ?? uuidV4(), 500, error);
     }
 
     private static isDocument(response: Response) {

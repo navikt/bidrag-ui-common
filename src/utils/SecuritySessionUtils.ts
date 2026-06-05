@@ -1,6 +1,15 @@
+import { context, propagation, Span, trace } from "@opentelemetry/api";
 import { v4 as uuidV4 } from "uuid";
 
 import { SessionStorage } from "./Storage";
+
+const tracerName = "bidrag-ui-session";
+
+interface RequestTraceContext {
+    correlationId: string;
+    headers: Record<string, string>;
+    span: Span;
+}
 
 export class SecuritySessionUtils {
     static async hentSecuritySessionTokenFromBackend() {
@@ -25,6 +34,23 @@ export class SecuritySessionUtils {
 
     static getCorrelationId(): string {
         return SessionStorage.getOrDefault("traceparent", `${this.getAppName()}/${uuidV4()}`);
+    }
+
+    static createRequestTrace(spanName: string): RequestTraceContext {
+        const tracer = trace.getTracer(tracerName);
+        // @ts-ignore
+        const parentContext = window.__otelSessionContext || context.active();
+        const span = tracer.startSpan(spanName, undefined, parentContext);
+        const traceContext = trace.setSpan(parentContext, span);
+        const headers: Record<string, string> = {};
+
+        propagation.inject(traceContext, headers);
+
+        return {
+            correlationId: headers.traceparent ?? this.getCorrelationId(),
+            headers,
+            span,
+        };
     }
 
     static getAppModuleName() {
