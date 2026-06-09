@@ -9,11 +9,11 @@ interface IRolledetaljerProps {
     label?: string;
     rolle: IRolleDetaljer;
     withBorder?: boolean;
-    stønad18År?: boolean;
     highlight?: boolean;
+    boldNavn?: boolean;
 }
 
-const RolleCard = ({ rolle, stønad18År = false }: IRolledetaljerProps) => {
+const RolleCard = ({ rolle, boldNavn }: IRolledetaljerProps) => {
     const { uthevPerson } = useBidragCommons();
     const highlight = uthevPerson?.(rolle.ident, rolle.stønad18År) === true;
     return (
@@ -30,7 +30,12 @@ const RolleCard = ({ rolle, stønad18År = false }: IRolledetaljerProps) => {
                     ident={rolle.ident}
                     stønad18År={rolle.stønad18År}
                 />
-                <PersonNavnIdent ident={rolle.ident} variant="navnIdent" stønad18År={rolle.stønad18År} />
+                <PersonNavnIdent
+                    boldNavn={boldNavn}
+                    ident={rolle.ident}
+                    variant="navnIdent"
+                    stønad18År={rolle.stønad18År}
+                />
                 <CopyButton size="small" copyText={rolle.ident} />
             </div>
         </div>

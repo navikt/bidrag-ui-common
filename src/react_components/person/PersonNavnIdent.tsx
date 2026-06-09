@@ -17,6 +17,7 @@ type PersonNavnIdentProps = {
     skjulNavn?: boolean;
     skjulIdent?: boolean;
     showCopyButton?: boolean;
+    boldNavn?: boolean;
     visAlder?: boolean;
     ignoreClickOnIdent?: boolean;
     bareFornavn?: boolean;
@@ -31,6 +32,7 @@ export default function PersonNavnIdent({
     skjulNavn = false,
     skjulIdent = false,
     bareFornavn = false,
+    boldNavn = true,
     visAlder = false,
     showCopyButton = false,
     stønad18År = false,
@@ -140,7 +142,12 @@ export default function PersonNavnIdent({
                             <span className="inline-flex">
                                 <Ikoner />
                                 <span>
-                                    <PersonNavn bold navn={personnavn} ident={ident} bareFornavn={bareFornavn} />
+                                    <PersonNavn
+                                        bold={boldNavn}
+                                        navn={personnavn}
+                                        ident={ident}
+                                        bareFornavn={bareFornavn}
+                                    />
                                 </span>
                             </span>
 
@@ -173,7 +180,12 @@ export default function PersonNavnIdent({
                                 <span className="inline-flex whitespace-nowrap">
                                     <Ikoner />
                                     <span>
-                                        <PersonNavn bold navn={personnavn} ident={ident} bareFornavn={bareFornavn} />
+                                        <PersonNavn
+                                            bold={boldNavn}
+                                            navn={personnavn}
+                                            ident={ident}
+                                            bareFornavn={bareFornavn}
+                                        />
                                     </span>
                                 </span>
 
