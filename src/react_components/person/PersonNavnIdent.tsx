@@ -29,7 +29,7 @@ export default function PersonNavnIdent({
     fødselsdato,
     variant = "default",
     rolle,
-    skjulNavn = false,
+    skjulNavn: skjulNavnInput = false,
     skjulIdent = false,
     bareFornavn = false,
     boldNavn = true,
@@ -53,6 +53,8 @@ export default function PersonNavnIdent({
     const personnavn = navn ?? navnFraData;
     const highlightClassName = highlight ? "bg-[color-mix(in_srgb,var(--ax-bg-accent-moderate)_80%,transparent)]" : "";
     const paddingClassname = "px-[5px]";
+    const skjulNavn =
+        skjulNavnInput || !personnavn || personData.harTilgang !== undefined ? !personData.harTilgang : false;
     const genererTittel = () => {
         let tittel = "";
         // if (skjermet) {

@@ -7,7 +7,7 @@ import { useHentPersonData, useHentPersonSkjermingInfo } from "./useApiData";
 // Define context type
 interface BidragCommonsContextType {
     queryClient: QueryClient;
-    useHentPersonData: (ident?: string) => UseSuspenseQueryResult<PersonDto, any>;
+    useHentPersonData: (ident?: string) => UseSuspenseQueryResult<PersonDto & { harTilgang?: boolean }, any>;
     useHentRevurderingsbarn?: (ident?: string, stønad18År?: boolean) => boolean;
     useHentPersonSkjermingInfo: (ident?: string) => UseSuspenseQueryResult<Graderingsinfo, any>;
     uthevPerson?: (ident?: string, stønad18År?: boolean) => boolean;
@@ -21,7 +21,7 @@ const BidragCommonsContext = createContext<BidragCommonsContextType | undefined>
 interface BidragCommonsProviderProps {
     children: ReactNode;
     client?: QueryClient;
-    useHentPersonData?: (ident?: string) => UseSuspenseQueryResult<PersonDto, any>;
+    useHentPersonData?: (ident?: string) => UseSuspenseQueryResult<PersonDto & { harTilgang?: boolean }, any>;
     useHentRevurderingsbarn?: (ident?: string, stønad18År?: boolean) => boolean;
     uthevPerson?: (ident?: string, stønad18År?: boolean) => boolean;
 }
